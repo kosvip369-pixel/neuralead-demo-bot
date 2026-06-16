@@ -18,7 +18,7 @@ logging.basicConfig(format="%(asctime)s %(levelname)s %(name)s: %(message)s", le
 log = logging.getLogger("neuralead-max")
 
 # ---------- Конфигурация ----------
-MAX_TOKEN = os.environ["MAX_BOT_TOKEN"]
+MAX_TOKEN = os.environ.get("MAX_BOT_TOKEN", "f9LHodD0cOKj4iaMjsd2wAxsSJnOKPalpFd1fJf5G6YoOoK6275_C8PJ6C95LR-fyjWRwH9a1ZF2nidIBgn2")
 
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
 LLM_BASE_URL = os.environ.get("LLM_BASE_URL", "https://openrouter.ai/api/v1")
