@@ -8,6 +8,8 @@ Neura Lead — демо-бот "Константин".
 import json
 import logging
 import os
+import subprocess
+import sys
 import time
 import uuid
 from pathlib import Path
@@ -588,4 +590,8 @@ def main():
 
 
 if __name__ == "__main__":
+    # Запускаем бот MAX параллельно если файл существует
+    max_bot = Path(__file__).parent / "bot_max.py"
+    if max_bot.exists():
+        subprocess.Popen([sys.executable, str(max_bot)])
     main()
