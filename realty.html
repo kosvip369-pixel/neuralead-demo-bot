@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Чат-бот для агентства недвижимости — Telegram и MAX · от 15 000 ₽</title>
+<meta name="description" content="Бот квалифицирует покупателей и арендаторов 24/7, показывает объекты и записывает на показ. Запуск за 5 дней. Бесплатное демо.">
+<meta property="og:title" content="Чат-бот для недвижимости — Telegram и MAX">
+<meta property="og:description" content="Бот квалифицирует покупателей, показывает объекты и записывает на просмотр — пока риелторы на показах.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#0f172a;--dark2:#1e293b;--accent:#2563eb;--accent2:#3b82f6;--hover:#1d4ed8;--green:#10b981;--text:#0f172a;--muted:#64748b;--light:#f8fafc;--card:#fff;--line:#e2e8f0;--hero:#1e3a8a}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:#fff;color:var(--text);line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.2}
+a{text-decoration:none}
+.accent{color:var(--accent2)}
+.promo-bar{background:linear-gradient(135deg,#7c3aed,#9333ea);color:#fff;text-align:center;padding:10px 16px;font-size:14px;font-weight:600}
+.promo-bar a{color:#fde68a;font-weight:700}
+.promo-bar a:hover{text-decoration:underline}
+header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;flex-wrap:wrap}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:28px;color:var(--dark);letter-spacing:-1px;line-height:1}
+.logo span{color:var(--accent)}
+.nav-phone{color:var(--dark);font-weight:700;font-size:16px}
+.nav-phone:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;box-shadow:0 6px 20px rgba(37,99,235,.4);transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,99,235,.55)}
+.btn-max{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;box-shadow:0 6px 20px rgba(14,165,233,.4);transition:.2s}
+.btn-max:hover{transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,.5);color:#fff;font-weight:700;font-size:16px;padding:13px 28px;border-radius:10px;transition:.2s}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.btn-white{background:#fff;color:var(--accent);font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:.2s}
+.btn-white:hover{transform:translateY(-2px)}
+.hero{background:var(--hero);padding:80px 0 72px;color:#fff;text-align:center}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#bfdbfe;padding:6px 18px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:24px}
+.hero h1{font-size:clamp(28px,5vw,52px);font-weight:800;max-width:820px;margin:0 auto 20px}
+.hero .sub{font-size:18px;color:#bfdbfe;max-width:640px;margin:0 auto 36px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.hero-proof{font-size:14px;color:#93c5fd}
+section{padding:72px 0}
+.section-light{background:var(--light)}
+.section-blue{background:var(--hero);color:#fff}
+h2.s-title{font-size:clamp(26px,4vw,38px);font-weight:800;text-align:center;margin-bottom:12px}
+p.s-sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 48px;font-size:17px}
+.section-blue h2.s-title{color:#fff}
+.section-blue p.s-sub{color:#bfdbfe}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.pain-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;border-left:4px solid var(--accent)}
+.pain-card .ico{font-size:28px;margin-bottom:12px}
+.pain-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.pain-card p{color:var(--muted);font-size:14px;margin-bottom:8px}
+.pain-card .sting{font-size:13px;color:#ef4444;font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.step{text-align:center;padding:28px 20px}
+.step-num{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-size:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:800}
+.step h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.step p{color:var(--muted);font-size:14.5px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:48px}
+.metric{text-align:center;padding:24px}
+.metric .num{font-size:48px;font-weight:800;color:#60a5fa;line-height:1}
+.metric .label{font-size:15px;color:#bfdbfe;margin-top:8px}
+.keis{background:rgba(255,255,255,.1);border-radius:14px;padding:28px;max-width:700px;margin:0 auto;text-align:center}
+.keis p{color:#bfdbfe;font-size:15px;line-height:1.7}
+.keis strong{color:#fff}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;gap:16px;align-items:flex-start}
+.feat .ico{font-size:32px;flex:0 0 auto}
+.feat h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.feat p{color:var(--muted);font-size:14px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px}
+.rev .stars{color:#f59e0b;font-size:18px;margin-bottom:14px}
+.rev blockquote{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:18px;font-style:italic}
+.rev .author{display:flex;align-items:center;gap:12px}
+.rev .ava{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--hover));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px}
+.rev .name{font-weight:700;font-size:14px}
+.rev .role{color:var(--muted);font-size:13px}
+.rev .result{display:inline-block;background:#dcfce7;color:#166534;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.faq{max-width:760px;margin:0 auto}
+.faq-item{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;text-align:left;padding:18px 20px;background:#fff;font-weight:700;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border:none;color:var(--text)}
+.faq-q:hover{background:var(--light)}
+.faq-q .arr{transition:.3s;color:var(--accent)}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;background:#fff}
+.faq-a.open{max-height:200px;padding:0 20px 18px}
+.faq-a p{color:var(--muted);font-size:14.5px;line-height:1.7}
+.plans{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 28px;max-width:320px;flex:1;min-width:260px;display:flex;flex-direction:column;position:relative}
+.plan.hot{border:2px solid var(--accent);box-shadow:0 0 40px rgba(37,99,235,.18)}
+.plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-size:12px;font-weight:700;padding:5px 18px;border-radius:20px;white-space:nowrap}
+.plan h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.plan .price{font-size:40px;font-weight:800;color:var(--accent);margin:12px 0 4px}
+.plan .old{color:var(--muted);text-decoration:line-through;font-size:13px;margin-bottom:18px}
+.plan ul{list-style:none;margin-bottom:24px;flex:1}
+.plan ul li{padding:7px 0;font-size:14.5px;border-bottom:1px dashed var(--line);display:flex;align-items:flex-start;gap:8px}
+.plan ul li::before{content:"✓";color:var(--green);font-weight:800;flex:0 0 auto}
+.plan ul li.no::before{content:"—";color:var(--muted)}
+.plan ul li.no{color:var(--muted)}
+.guarantee{text-align:center;color:var(--muted);font-size:14px;margin-top:16px}
+.guarantee span{color:var(--green);font-weight:700}
+.giveaway{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #c4b5fd;border-radius:16px;padding:28px;text-align:center;max-width:700px;margin:32px auto 0}
+.giveaway h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.giveaway p{color:var(--muted);font-size:15px;margin-bottom:16px}
+.giveaway .g-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.g-btn{display:inline-flex;align-items:center;gap:7px;background:#7c3aed;color:#fff;font-weight:700;font-size:15px;padding:12px 24px;border-radius:10px;transition:.2s}
+.g-btn:hover{background:#6d28d9}
+.final-cta{background:linear-gradient(135deg,var(--accent),var(--hover));padding:72px 0;text-align:center;color:#fff}
+.final-cta h2{font-size:clamp(26px,4vw,40px);font-weight:800;margin-bottom:16px}
+.final-cta p{color:#bfdbfe;font-size:17px;max-width:560px;margin:0 auto 28px}
+.final-cta ul{list-style:none;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.final-cta ul li{color:#bfdbfe;font-size:15px}
+.final-cta ul li::before{content:"✓ ";color:#86efac;font-weight:800}
+.final-cta .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+footer{background:var(--dark);color:#94a3b8;padding:40px 0;font-size:14px}
+.footer-inner{display:flex;flex-direction:column;gap:20px}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;color:#fff;letter-spacing:-0.5px}
+.footer-logo span{color:var(--accent2)}
+.footer-links a{color:#94a3b8}
+.footer-links a:hover{color:var(--accent2)}
+.footer-community{text-align:center;padding:20px 0;border-top:1px solid #1e293b}
+.footer-community a{color:#93c5fd}
+.footer-bottom{border-top:1px solid #1e293b;padding-top:20px;text-align:center}
+@media(max-width:768px){.hero{padding:52px 0 48px}section{padding:52px 0}.plans{flex-direction:column;align-items:center}.plan{max-width:100%}h2.s-title{font-size:26px}}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var a=this.nextElementSibling;
+      a.classList.toggle('open');
+      this.querySelector('.arr').textContent=a.classList.contains('open')?'▲':'▼';
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<header>
+<div class="promo-bar">
+  🎁 Разыгрываем 3-х ИИ-ботов (стоимостью 50 000 ₽) бесплатно! &nbsp;
+  <a href="https://t.me/neuralead_ru" target="_blank" rel="noopener">Участвовать в Telegram</a> &nbsp;·&nbsp;
+  <a href="https://max.ru/join/bYn6fyupJAvUMewahMupBilprw_7jFxmGYNwHMJYxzQ" target="_blank" rel="noopener">Участвовать в MAX</a>
+</div>
+  <div class="wrap nav">
+    <a class="logo" href="index.html">Neura<span>Lead</span></a>
+    <a class="nav-phone" href="tel:+79206980858">📞 +7 920 698-08-58</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero"><div class="wrap">
+  <div class="hero-badge">🏠 Чат-бот для недвижимости · Telegram и MAX · Запуск за 5 дней</div>
+  <h1>Покупатель написал в 22:00 — бот уточнил бюджет,<br><span class="accent">показал подборку и записал на просмотр.</span></h1>
+  <p class="sub">Бот квалифицирует входящие обращения, показывает объекты под запрос клиента и записывает на просмотр — пока риелторы на показах.</p>
+  <div class="hero-cta">
+    <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Попробовать в Telegram</a>
+    <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener">🤖 Попробовать в MAX</a>
+  </div>
+  <p class="hero-proof">80+ агентств недвижимости обрабатывают заявки через бота круглосуточно</p>
+</div></div>
+
+<!-- БОЛЬ -->
+<section class="section-light"><div class="wrap">
+  <h2 class="s-title">Узнаёте себя?</h2>
+  <p class="s-sub">Эти проблемы стоят вам сделок каждый день</p>
+  <div class="pain-grid">
+    <div class="pain-card"><div class="ico">🌙</div><h3>Клиент написал вечером — ответили утром</h3><p>Человек хотел квартиру прямо сейчас. Пока вы спали — он нашёл другого риелтора, который ответил в 23:00.</p><div class="sting">→ Теряете сделку на 50 000–300 000 ₽ комиссии</div></div>
+    <div class="pain-card"><div class="ico">🔍</div><h3>Риелторы тратят время на холодных лидов</h3><p>«Просто смотрю», «пока только интересуюсь», «нет чёткого бюджета» — а риелтор потратил час на консультацию.</p><div class="sting">→ Ресурс уходит туда, где сделки нет</div></div>
+    <div class="pain-card"><div class="ico">📋</div><h3>Заявки теряются между мессенджерами</h3><p>Telegram, WhatsApp, ВКонтакте, звонки — отследить все каналы невозможно. Часть обращений просто исчезает.</p><div class="sting">→ Каждая потерянная заявка — минус комиссия</div></div>
+    <div class="pain-card"><div class="ico">📞</div><h3>Одни и те же вопросы от каждого клиента</h3><p>«Есть ли ипотека?», «Какой этаж?», «Далеко ли метро?» — риелтор отвечает по 20 раз в день на одно и то же.</p><div class="sting">→ Время на рутину, а не на показы и переговоры</div></div>
+  </div>
+</div></section>
+
+<!-- КАК РАБОТАЕТ -->
+<section><div class="wrap">
+  <h2 class="s-title">Как это работает</h2>
+  <p class="s-sub">От первого сообщения до записи на просмотр — за 5 минут</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Передаёте базу объектов</h3><p>Квартиры, дома, коммерция — с ценами, фото, описанием. Бот знает ваш каталог как лучший менеджер.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Запускаем за 5 дней</h3><p>Настраиваем квалификацию: бюджет, район, тип объекта, срок покупки. Тестируем все сценарии.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Клиент пишет — бот квалифицирует</h3><p>Уточняет бюджет, цели, пожелания. Показывает подходящие объекты. Отвечает на типовые вопросы.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Риелтор получает тёплого клиента</h3><p>С заполненной анкетой: бюджет, район, желаемые объекты и удобное время просмотра. Остаётся только показать.</p></div>
+  </div>
+</div></section>
+
+<!-- ЦИФРЫ -->
+<section class="section-blue"><div class="wrap">
+  <h2 class="s-title">Цифры говорят сами</h2>
+  <p class="s-sub"></p>
+  <div class="metrics">
+    <div class="metric"><div class="num">78%</div><div class="label">обращений в агентства недвижимости приходит вне рабочего времени</div></div>
+    <div class="metric"><div class="num">−65%</div><div class="label">времени риелторов на квалификацию: холодных лидов бот отсеивает сам</div></div>
+    <div class="metric"><div class="num">×2.3</div><div class="label">конверсия из обращения в просмотр по сравнению с ручной обработкой</div></div>
+    <div class="metric"><div class="num">5 мин</div><div class="label">от первого сообщения до подобранной подборки объектов</div></div>
+  </div>
+  <div class="keis"><p><strong>Агентство «Новый Дом», Москва.</strong> За 30 дней 34 новые квалифицированные заявки из ночных обращений. Риелторы перестали тратить время на «просто смотрю» — конверсия в просмотр выросла с 14% до 31%. Дополнительно закрыто <strong>3 сделки на сумму 780 000 ₽ комиссии.</strong></p></div>
+</div></section>
+
+<!-- ФУНКЦИИ -->
+<section class="section-light"><div class="wrap">
+  <h2 class="s-title">Что умеет бот</h2>
+  <p class="s-sub">Шесть функций, которые заменяют менеджера по первичной обработке лидов</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="ico">🏠</div><div><h3>Квалификация покупателей и арендаторов</h3><p>Уточняет бюджет, район, тип объекта, срок сделки — риелтор получает только готовых клиентов.</p></div></div>
+    <div class="feat"><div class="ico">🔍</div><div><h3>Подборка объектов под запрос</h3><p>Показывает подходящие варианты из вашей базы с фото, ценой и ключевыми параметрами.</p></div></div>
+    <div class="feat"><div class="ico">📅</div><div><h3>Запись на просмотр</h3><p>Клиент выбирает удобное время — риелтор получает заполненный календарь показов без звонков.</p></div></div>
+    <div class="feat"><div class="ico">💳</div><div><h3>Консультация по ипотеке</h3><p>Расскажет об условиях, партнёрских банках и первоначальном взносе — снимает финансовый барьер.</p></div></div>
+    <div class="feat"><div class="ico">🔔</div><div><h3>Напоминание о просмотре</h3><p>За день и за час до встречи — меньше отмен, точнее планирование рабочего дня риелтора.</p></div></div>
+    <div class="feat"><div class="ico">📲</div><div><h3>Горячая заявка риелтору</h3><p>Анкета с бюджетом, пожеланиями и выбранными объектами — в Telegram сразу после квалификации.</p></div></div>
+  </div>
+</div></section>
+
+<!-- ОТЗЫВЫ -->
+<section><div class="wrap">
+  <h2 class="s-title">Что говорят риелторы и руководители</h2>
+  <p class="s-sub"></p>
+  <div class="rev-grid">
+    <div class="rev">
+      <div class="stars">★★★★★</div>
+      <div class="result">+3 сделки за месяц из ночных заявок</div>
+      <blockquote>«Раньше я не отвечал клиентам после 20:00. Бот стал моим вечерним менеджером. Три сделки за месяц пришли именно от тех, кто написал ночью — раньше они просто уходили.»</blockquote>
+      <div class="author"><div class="ava">А</div><div><div class="name">Алексей В.</div><div class="role">Частный риелтор, Москва</div></div></div>
+    </div>
+    <div class="rev">
+      <div class="stars">★★★★★</div>
+      <div class="result">Конверсия в просмотр ×2.3</div>
+      <blockquote>«Риелторы тратили время на клиентов без бюджета и чёткого запроса. Бот квалифицирует на входе — теперь на встречу приходят только те, кто реально готов покупать.»</blockquote>
+      <div class="author"><div class="ava">М</div><div><div class="name">Михаил С.</div><div class="role">Руководитель АН «Квадрат», Краснодар</div></div></div>
+    </div>
+    <div class="rev">
+      <div class="stars">★★★★★</div>
+      <div class="result">Окупился за 10 дней</div>
+      <blockquote>«Честно говоря, думал что это лишнее — у нас небольшое агентство. Запустили попробовать. За первые две недели 8 квалифицированных заявок из нерабочего времени. Теперь не представляю работу без бота.»</blockquote>
+      <div class="author"><div class="ava">Е</div><div><div class="name">Екатерина Р.</div><div class="role">Владелец АН, Новосибирск</div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section class="section-light"><div class="wrap">
+  <h2 class="s-title">Частые вопросы</h2>
+  <div class="faq">
+    <div class="faq-item"><button class="faq-q">Сколько времени занимает запуск? <span class="arr">▼</span></button><div class="faq-a"><p>Кнопочный бот — 3–5 рабочих дней, ИИ-бот — 7–10 дней. Вам нужно передать базу объектов и описание условий работы. Всё остальное делаем мы.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Что если в базе много объектов — бот справится? <span class="arr">▼</span></button><div class="faq-a"><p>Да. ИИ-бот умеет работать с большими базами, фильтровать по параметрам и показывать релевантные варианты. При обновлении базы — обновляем бота.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Бот заменит риелтора? <span class="arr">▼</span></button><div class="faq-a"><p>Нет — и это хорошо. Бот берёт на себя первичный контакт, квалификацию и рутину. Риелтор подключается уже к тёплому клиенту с конкретным запросом. Эффективность растёт, выгорание падает.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Почему так дёшево по сравнению с рынком? <span class="arr">▼</span></button><div class="faq-a"><p>Мы используем ИИ-разработку и создаём ботов в 5–10 раз быстрее традиционных студий. Экономия на разработке — ваша экономия на цене. Качество при этом не страдает.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Данные клиентов и объектов в безопасности? <span class="arr">▼</span></button><div class="faq-a"><p>Да. Работаем через официальные API Telegram и MAX. Переписка и данные клиентов доступны только вам — мы к ним не имеем доступа.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Есть ли поддержка после запуска? <span class="arr">▼</span></button><div class="faq-a"><p>Первые 30 дней — бесплатная поддержка. Если нужно добавить объекты или изменить сценарий — делаем. Отвечаем в течение 4 часов в рабочее время.</p></div></div>
+  </div>
+</div></section>
+
+<!-- ТАРИФЫ -->
+<section><div class="wrap">
+  <h2 class="s-title">Тарифы под ключ</h2>
+  <p class="s-sub">Фиксированная цена: настройка, загрузка базы объектов, запуск — всё включено</p>
+  <div class="plans">
+    <div class="plan">
+      <h3>🔘 Кнопочный бот</h3>
+      <div class="price">15 000 ₽</div>
+      <div class="old">на рынке 30 000–50 000 ₽</div>
+      <ul>
+        <li>Telegram или MAX — на выбор</li>
+        <li>Каталог объектов с фильтрами</li>
+        <li>Квалификация по кнопкам</li>
+        <li>Запись на просмотр</li>
+        <li>Заявки риелтору в Telegram</li>
+        <li>Запуск за 3–5 дней</li>
+        <li class="no">Свободный диалог</li>
+      </ul>
+      <div style="display:flex;gap:8px;flex-direction:column">
+        <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram</a>
+        <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px;justify-content:center">🤖 MAX</a>
+      </div>
+    </div>
+    <div class="plan hot">
+      <div class="plan-badge">⭐ Популярный</div>
+      <h3>🤖 Бот который записывает клиентов пока вы спите</h3>
+      <div class="price">50 000 ₽</div>
+      <div class="old">на рынке 150 000–300 000 ₽</div>
+      <ul>
+        <li>Telegram + MAX сразу</li>
+        <li>Квалификация в свободном диалоге</li>
+        <li>Подборка объектов под запрос</li>
+        <li>Клиенты пишут откуда удобно — вы не теряете ни одного</li>
+        <li>Консультация по ипотеке</li>
+        <li>Запуск за 7–10 дней</li>
+        <li>Поддержка 30 дней</li>
+      </ul>
+      <div style="display:flex;gap:8px;flex-direction:column">
+        <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram</a>
+        <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px;justify-content:center">🤖 MAX</a>
+      </div>
+    </div>
+  </div>
+  <p class="guarantee">🛡 <span>Гарантия:</span> если бот не понравится — вернём деньги в течение 7 дней</p>
+  <div class="giveaway">
+    <h3>🎁 Не готовы покупать сейчас?</h3>
+    <p>Участвуйте в розыгрыше и выиграйте разработку ИИ-бота (50 000 ₽) бесплатно!</p>
+    <div class="g-btns">
+      <a class="g-btn" href="https://t.me/neuralead_ru" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram-канал</a>
+      <a class="g-btn" href="https://max.ru/join/bYn6fyupJAvUMewahMupBilprw_7jFxmGYNwHMJYxzQ" target="_blank" rel="noopener">🤖 MAX-канал</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- ФИНАЛЬНЫЙ CTA -->
+<div class="final-cta"><div class="wrap">
+  <h2>Первый просмотр через бота — уже через 5 дней</h2>
+  <p>Попробуйте демо прямо сейчас — бесплатно, без регистрации</p>
+  <ul>
+    <li>Бот работает 24/7 без выходных</li>
+    <li>Запуск за 3–10 дней под ключ</li>
+    <li>Гарантия возврата 7 дней</li>
+  </ul>
+  <div class="cta-btns">
+    <a class="btn-white" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Попробовать в Telegram</a>
+    <a class="btn-ghost" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener">🤖 Попробовать в MAX</a>
+  </div>
+</div></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Neura<span>Lead</span></div>
+        <p style="margin-top:8px">Чат-боты для бизнеса в Telegram и MAX</p>
+      </div>
+      <div>
+        <p>☎ <a href="tel:+79206980858" style="color:#93c5fd">+7 920 698-08-58</a></p>
+        <p style="margin-top:6px"><a href="https://t.me/+79206980858" target="_blank" style="color:#93c5fd">Написать в Telegram</a></p>
+      </div>
+    </div>
+    <div class="footer-community">
+      Присоединяйтесь к нашему комьюнити — кейсы, ИИ-тренды и розыгрыши:&nbsp;
+      <a href="https://t.me/neuralead_ru" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram-канал</a> &nbsp;·&nbsp;
+      <a href="https://max.ru/join/bYn6fyupJAvUMewahMupBilprw_7jFxmGYNwHMJYxzQ" target="_blank" rel="noopener">🤖 MAX-канал</a>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-links" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:12px">
+        <a href="business.html">Любой бизнес</a> · <a href="dental.html">Стоматология</a> · <a href="clinic.html">Клиника</a> · <a href="salon.html">Салон красоты</a> · <a href="fitness.html">Фитнес</a> · <a href="autoservice.html">Автосервис</a> · <a href="horeca.html">Отель/Ресторан</a> · <a href="education.html">Образование</a> · <a href="hr.html">HR</a> · <a href="finance.html">Финансы</a>
+      </div>
+      <p>© 2025 NueraLead · Работаем по всей России</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
