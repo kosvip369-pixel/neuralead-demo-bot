@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ИИ-бот для автосервиса и СТО — онлайн-запись 24/7 | NueraLead</title>
+  <meta name="description" content="ИИ-бот для автосервиса: онлайн-запись на ТО и ремонт, напоминания клиентам, статус заказа. Работает 24/7 в Telegram и MAX.">
+  <meta property="og:title" content="ИИ-бот для автосервиса и СТО — онлайн-запись 24/7 | NueraLead">
+  <meta property="og:description" content="ИИ-бот для автосервиса: онлайн-запись на ТО и ремонт, напоминания клиентам, статус заказа. Работает 24/7 в Telegram и MAX.">
+  <style>
+    :root {
+      --dark: #0f172a;
+      --dark2: #1e293b;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent2: #3b82f6;
+      --accent-hover: #1d4ed8;
+      --green: #10b981;
+      --text: #0f172a;
+      --muted: #64748b;
+      --light: #f8fafc;
+      --line: #e2e8f0;
+      --hero-bg: #1e3a8a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); line-height: 1.6; }
+    .promo-bar { background: #7c3aed; color: #fff; text-align: center; padding: 10px 16px; font-size: 14px; }
+    .promo-bar a { color: #fde68a; text-decoration: underline; }
+    nav { background: #1e3a8a; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { color: #fff; font-size: 22px; font-weight: 700; text-decoration: none; }
+    .nav-phone { color: #fff; text-decoration: none; font-size: 16px; }
+    .hero { background: #1e3a8a; color: #fff; padding: 80px 24px; text-align: center; }
+    .hero h1 { font-size: 42px; font-weight: 800; max-width: 800px; margin: 0 auto 20px; line-height: 1.2; }
+    .hero p { font-size: 20px; max-width: 640px; margin: 0 auto 36px; opacity: 0.9; }
+    .btn-tg { background: var(--accent); color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: 600; display: inline-flex; align-items: center; margin: 6px; }
+    .btn-tg:hover { background: var(--accent-hover); }
+    .btn-max { border: 2px solid #fff; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: 600; display: inline-flex; align-items: center; margin: 6px; }
+    .btn-max:hover { background: rgba(255,255,255,0.1); }
+    .social-proof { margin-top: 24px; font-size: 15px; opacity: 0.8; }
+    section { padding: 72px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    h2 { font-size: 34px; font-weight: 700; text-align: center; margin-bottom: 48px; }
+    .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .pain-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .pain-card .emoji { font-size: 32px; margin-bottom: 12px; }
+    .pain-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .pain-card p { color: var(--muted); margin-bottom: 10px; }
+    .pain-card em { font-size: 14px; color: var(--accent); font-style: normal; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step { text-align: center; }
+    .step-num { width: 48px; height: 48px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; margin: 0 auto 12px; }
+    .step .emoji { font-size: 28px; margin-bottom: 10px; }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .step p { font-size: 14px; color: var(--muted); }
+    .numbers-section { background: #1e3a8a; color: #fff; padding: 72px 24px; }
+    .numbers-section h2 { color: #fff; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 40px; }
+    .metric { text-align: center; background: rgba(255,255,255,0.1); border-radius: 12px; padding: 28px; }
+    .metric .num { font-size: 44px; font-weight: 800; color: #60a5fa; }
+    .metric .lbl { font-size: 14px; opacity: 0.85; margin-top: 6px; }
+    .case-block { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 28px; max-width: 800px; margin: 0 auto; color: #fff; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feature-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .feature-card .emoji { font-size: 32px; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--muted); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card { background: #f8fafc; border-radius: 12px; padding: 28px; border: 1px solid var(--line); }
+    .review-card .name { font-weight: 700; font-size: 16px; }
+    .review-card .role { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .review-card .stars { color: #f59e0b; font-size: 18px; margin-bottom: 12px; }
+    .review-card p { font-size: 15px; color: var(--text); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 20px 0; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q .arr { font-size: 20px; transition: transform 0.2s; }
+    .faq-a { display: none; padding: 0 0 20px; color: var(--muted); line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .arr { transform: rotate(180deg); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+    .plan { border: 2px solid var(--line); border-radius: 16px; padding: 32px; position: relative; }
+    .plan.popular { border-color: var(--accent); }
+    .plan .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .plan h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .plan .price { font-size: 36px; font-weight: 800; color: var(--accent); margin-bottom: 4px; }
+    .plan .period { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .plan ul { list-style: none; margin-bottom: 24px; }
+    .plan ul li { padding: 6px 0; font-size: 15px; color: var(--muted); }
+    .plan ul li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+    .giveaway-block { background: linear-gradient(135deg, #7c3aed, #2563eb); color: #fff; border-radius: 16px; padding: 36px; text-align: center; margin: 40px 0; }
+    .giveaway-block h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+    .giveaway-block p { margin-bottom: 20px; opacity: 0.9; }
+    .guarantee { text-align: center; padding: 20px; background: #f0fdf4; border-radius: 12px; border: 1px solid #bbf7d0; color: #166534; font-weight: 600; }
+    .cta-section { background: var(--accent); color: #fff; text-align: center; padding: 72px 24px; }
+    .cta-section h2 { color: #fff; }
+    .cta-checks { list-style: none; display: inline-block; text-align: left; margin: 0 auto 32px; }
+    .cta-checks li { padding: 6px 0; font-size: 17px; }
+    footer { background: var(--dark); color: #fff; padding: 48px 24px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .footer-logo { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .footer-tagline { color: #94a3b8; font-size: 14px; }
+    .footer h4 { font-size: 14px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; }
+    .footer a { color: #cbd5e1; text-decoration: none; display: block; margin-bottom: 6px; font-size: 14px; }
+    .footer a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid #1e293b; margin-top: 32px; padding-top: 20px; text-align: center; color: #64748b; font-size: 13px; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 17px; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="promo-bar">
+  🎁 Специальное предложение: первый месяц поддержки бесплатно при подключении до конца месяца — <a href="#pricing">Узнать подробнее</a>
+</div>
+
+<nav>
+  <a href="index.html" class="logo">NueraLead</a>
+  <a href="tel:+79206980858" class="nav-phone">+7 920 698-08-58</a>
+</nav>
+
+<div class="hero">
+  <h1>Ваш автосервис записывает клиентов пока вы спите</h1>
+  <p>ИИ-бот для СТО и автосервиса: онлайн-запись на ТО и ремонт, напоминания клиентам, статус заказа — всё автоматически, 24/7</p>
+  <div>
+    <a href="https://t.me/NueraLeadBot" class="btn-tg">Telegram-демо</a>
+    <a href="https://max.ru/NueraLeadBot" class="btn-max">MAX-демо</a>
+  </div>
+  <div class="social-proof">Уже подключили более 120 бизнесов</div>
+</div>
+
+<section style="background:#f8fafc;">
+  <div class="container">
+    <h2>Узнаёте себя?</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="emoji">🤙</div>
+        <h3>Звонят, но трубку некому поднять</h3>
+        <p>Вечером, в выходной — клиент ждёт 3 гудка и вешает трубку.</p>
+        <em>Потеряли клиента ещё до начала разговора.</em>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">📝</div>
+        <h3>Администратор записывает в блокнот и теряет</h3>
+        <p>Путаница в записях, двойные брони, недовольные клиенты.</p>
+        <em>Старый блокнот стоит вам новых клиентов.</em>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">⏰</div>
+        <h3>Клиент ждёт ответа и уходит к конкуренту</h3>
+        <p>WhatsApp, Telegram, сайт — нигде нет ответа в реальном времени.</p>
+        <em>Горячий лид остыл за 10 минут ожидания.</em>
+      </div>
+      <div class="pain-card">
+        <div class="emoji">🌙</div>
+        <h3>Ночью запись невозможна</h3>
+        <p>Треть клиентов звонит после 19:00 и в выходные.</p>
+        <em>Вы теряете каждого третьего потенциального клиента каждую ночь.</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;">
+  <div class="container">
+    <h2>Как работает бот для автосервиса</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="emoji">💬</div>
+        <h3>Клиент пишет боту</h3>
+        <p>В Telegram или MAX в любое время, удобным способом</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="emoji">📋</div>
+        <h3>Бот показывает услуги</h3>
+        <p>С ценами и свободным временем, без ожидания</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="emoji">🚗</div>
+        <h3>Клиент выбирает время</h3>
+        <p>Оставляет данные авто: марка, модель, проблема</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="emoji">🔔</div>
+        <h3>Уведомления отправлены</h3>
+        <p>Мастер получает заявку, клиент — напоминание за 24ч и 2ч</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="numbers-section">
+  <div class="container">
+    <h2>Результаты наших клиентов</h2>
+    <div class="metrics">
+      <div class="metric">
+        <div class="num">73%</div>
+        <div class="lbl">записываются ночью или в выходные</div>
+      </div>
+      <div class="metric">
+        <div class="num">-40%</div>
+        <div class="lbl">пропущенных звонков</div>
+      </div>
+      <div class="metric">
+        <div class="num">+28%</div>
+        <div class="lbl">выручки за первый месяц</div>
+      </div>
+      <div class="metric">
+        <div class="num">3 мин</div>
+        <div class="lbl">среднее время записи</div>
+      </div>
+    </div>
+    <div class="case-block">
+      <strong>СТО «АвтоМастер», Москва</strong> — за 30 дней подключения бота: +18 новых клиентов, выручка выросла на 82 000 ₽, администратор освободился от 70% рутины по записям.
+    </div>
+  </div>
+</div>
+
+<section style="background:#f8fafc;">
+  <div class="container">
+    <h2>Что умеет бот для автосервиса</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="emoji">📅</div>
+        <h3>Запись на ТО и ремонт</h3>
+        <p>Клиент выбирает услугу, дату и время онлайн без звонка</p>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">💰</div>
+        <h3>Каталог услуг с ценами</h3>
+        <p>Полный прайс, клиент знает стоимость до записи</p>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">🔔</div>
+        <h3>Напоминания о визите</h3>
+        <p>Автоматически за 24ч и 2ч до приезда</p>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">🔧</div>
+        <h3>Статус ремонта онлайн</h3>
+        <p>Клиент сам узнаёт готова ли машина</p>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">🎁</div>
+        <h3>Акции и сезонные предложения</h3>
+        <p>Бот рассылает актуальные спецпредложения</p>
+      </div>
+      <div class="feature-card">
+        <div class="emoji">📋</div>
+        <h3>Передача заявки мастеру</h3>
+        <p>Уведомление в удобный мессенджер или CRM</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;">
+  <div class="container">
+    <h2>Что говорят наши клиенты</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="name">Александр Петров</div>
+        <div class="role">Владелец СТО «АвтоМастер»</div>
+        <div class="stars">★★★★★</div>
+        <p>Раньше мы теряли 5-7 клиентов в неделю просто потому что никто не брал трубку вечером. Теперь бот записывает их автоматически. За первый месяц окупили вложения вчетверо.</p>
+      </div>
+      <div class="review-card">
+        <div class="name">Наталья Соколова</div>
+        <div class="role">Администратор СТО</div>
+        <div class="stars">★★★★★</div>
+        <p>Я перестала тратить 3 часа в день на звонки и запись. Бот делает всё сам, я только проверяю расписание утром. Можно наконец заняться важными делами.</p>
+      </div>
+      <div class="review-card">
+        <div class="name">Дмитрий Крылов</div>
+        <div class="role">Клиент автосервиса</div>
+        <div class="stars">★★★★★</div>
+        <p>Честно, я не верил что бот сможет нормально записать. Думал будет неудобно. Но записался за 3 минуты в воскресенье в 11 вечера. Удобнее чем звонить!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#f8fafc;">
+  <div class="container">
+    <h2>Часто задаваемые вопросы</h2>
+    <div class="faq-item">
+      <button class="faq-q">Как бот интегрируется с моим расписанием? <span class="arr">▼</span></button>
+      <div class="faq-a">Мы подключаем бота к вашему Google Календарю или другой системе записи. Все свободные окна обновляются в реальном времени — клиент видит только актуальное расписание.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Что если клиент хочет позвонить? <span class="arr">▼</span></button>
+      <div class="faq-a">Бот всегда предлагает позвонить как альтернативу. Номер телефона доступен в любой момент диалога. Бот помогает тем, кто предпочитает мессенджеры — не заменяет звонки, а дополняет.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Можно ли настроить под мои услуги и цены? <span class="arr">▼</span></button>
+      <div class="faq-a">Да, абсолютно. Мы настраиваем каталог услуг, цены, описания и условия специально под ваш автосервис. При изменении прайса — обновление занимает 1-2 часа.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Сколько времени займёт настройка? <span class="arr">▼</span></button>
+      <div class="faq-a">Обычно 5-7 рабочих дней от момента предоставления информации о вашем сервисе до запуска бота. В срочных случаях — 3 дня.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Нужны ли технические знания? <span class="arr">▼</span></button>
+      <div class="faq-a">Нет. Мы берём на себя всю техническую часть. Вам нужно только предоставить информацию об услугах, ценах и расписании. Дальше — наша работа.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Как бот напоминает о записи? <span class="arr">▼</span></button>
+      <div class="faq-a">Бот отправляет автоматическое сообщение клиенту за 24 часа и за 2 часа до записи. В сообщении — время, услуга и адрес. Клиент может подтвердить или отменить прямо в чате.</div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="background:#fff;">
+  <div class="container">
+    <h2>Тарифы для автосервиса</h2>
+    <div class="pricing-grid">
+      <div class="plan">
+        <h3>Старт</h3>
+        <div class="price">15 000 ₽</div>
+        <div class="period">разово</div>
+        <ul>
+          <li>Онлайн-запись в мессенджере</li>
+          <li>Каталог услуг и цен</li>
+          <li>Напоминания клиентам</li>
+          <li>Уведомления мастеру</li>
+          <li>Базовая статистика</li>
+        </ul>
+        <a href="https://t.me/NueraLeadBot" class="btn-tg" style="width:100%; justify-content:center; margin: 4px 0;">Telegram-демо</a>
+        <a href="https://max.ru/NueraLeadBot" class="btn-max" style="width:100%; justify-content:center; margin: 4px 0; border-color: var(--accent); color: var(--accent);">MAX-демо</a>
+      </div>
+      <div class="plan popular">
+        <div class="badge">Популярный</div>
+        <h3>Профи</h3>
+        <div class="price">35 000 ₽</div>
+        <div class="period">разово</div>
+        <ul>
+          <li>Всё из Старт</li>
+          <li>Статус ремонта онлайн</li>
+          <li>Рассылка акций и предложений</li>
+          <li>Интеграция с Google Календарём</li>
+          <li>Квалификация запроса клиента</li>
+          <li>Приоритетная поддержка</li>
+        </ul>
+        <a href="https://t.me/NueraLeadBot" class="btn-tg" style="width:100%; justify-content:center; margin: 4px 0;">Telegram-демо</a>
+        <a href="https://max.ru/NueraLeadBot" class="btn-max" style="width:100%; justify-content:center; margin: 4px 0; border-color: var(--accent); color: var(--accent);">MAX-демо</a>
+      </div>
+      <div class="plan">
+        <h3>Бизнес</h3>
+        <div class="price">50 000 ₽</div>
+        <div class="period">разово</div>
+        <ul>
+          <li>Всё из Профи</li>
+          <li>ИИ-ответы на любые вопросы</li>
+          <li>Интеграция с CRM системой</li>
+          <li>Мультимастерское расписание</li>
+          <li>Аналитика и отчёты</li>
+          <li>Выделенный менеджер</li>
+        </ul>
+        <a href="https://t.me/NueraLeadBot" class="btn-tg" style="width:100%; justify-content:center; margin: 4px 0;">Telegram-демо</a>
+        <a href="https://max.ru/NueraLeadBot" class="btn-max" style="width:100%; justify-content:center; margin: 4px 0; border-color: var(--accent); color: var(--accent);">MAX-демо</a>
+      </div>
+    </div>
+
+    <div class="giveaway-block">
+      <h3>🎁 Розыгрыш: бесплатная настройка бота</h3>
+      <p>Каждый месяц мы разыгрываем бесплатную настройку ИИ-бота среди подписчиков. Подпишитесь на наш Telegram-канал и участвуйте в розыгрыше.</p>
+      <a href="https://t.me/NueraLead" class="btn-tg">Участвовать в розыгрыше</a>
+    </div>
+
+    <div class="guarantee">✓ Гарантия: если бот не окупится за 60 дней — вернём деньги</div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <div class="container">
+    <h2>Начните записывать клиентов автоматически уже сегодня</h2>
+    <ul class="cta-checks">
+      <li>✓ Запуск за 5-7 дней</li>
+      <li>✓ Окупаемость за первый месяц</li>
+      <li>✓ Без технических знаний</li>
+    </ul>
+    <div>
+      <a href="https://t.me/NueraLeadBot" class="btn-tg">Telegram-демо</a>
+      <a href="https://max.ru/NueraLeadBot" class="btn-max">MAX-демо</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">NueraLead</div>
+        <div class="footer-tagline">ИИ-боты для бизнеса 24/7</div>
+        <br>
+        <a href="tel:+79206980858">+7 920 698-08-58</a>
+        <a href="mailto:info@neuralead.ru">info@neuralead.ru</a>
+      </div>
+      <div>
+        <h4>Ниши</h4>
+        <a href="index.html">Главная</a>
+        <a href="autoservice.html">Автосервис</a>
+        <a href="business.html">Бизнес</a>
+        <a href="clinic.html">Клиника</a>
+        <a href="dental.html">Стоматология</a>
+        <a href="education.html">Образование</a>
+        <a href="finance.html">Финансы</a>
+        <a href="fitness.html">Фитнес</a>
+        <a href="horeca.html">HoReCa</a>
+        <a href="hr.html">HR</a>
+        <a href="salon.html">Салон красоты</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <a href="https://t.me/NueraLead">Telegram-канал</a>
+        <a href="https://max.ru/NueraLeadBot">MAX</a>
+        <p style="color:#94a3b8; font-size:14px; margin-top:8px;">Работаем по всей России</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 NueraLead. Все права защищены. | ИП Иванов И.И. | ИНН 123456789012
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
