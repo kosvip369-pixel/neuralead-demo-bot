@@ -3,135 +3,312 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neura Lead — Чат-боты для бизнеса в Telegram и MAX</title>
-<meta name="description" content="Разработка чат-ботов для бизнеса в Telegram и MAX. Кнопочный бот от 15 000 ₽, ИИ-бот от 50 000 ₽. Запуск за 3–10 дней. Бесплатное демо.">
+<title>NueraLead — Чат-боты для бизнеса в Telegram и MAX · от 15 000 ₽</title>
+<meta name="description" content="Разработка чат-ботов под ключ для любого бизнеса. Кнопочный бот 15 000 ₽, ИИ-бот 50 000 ₽. Запуск за 3–10 дней. Бесплатное демо.">
+<meta property="og:title" content="NueraLead — Чат-боты для бизнеса в Telegram и MAX · от 15 000 ₽">
+<meta property="og:description" content="Разработка чат-ботов под ключ для любого бизнеса. Кнопочный бот 15 000 ₽, ИИ-бот 50 000 ₽. Запуск за 3–10 дней. Бесплатное демо.">
+<meta property="og:type" content="website">
 <style>
-  :root{--dark:#0d1321;--dark2:#161d31;--card:#1c2440;--accent:#ff6b2c;--accent2:#ff8f5a;--green:#2dd4a0;--text:#eef1f8;--muted:#9aa3bd;--line:#2a3354}
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--dark);color:var(--text);line-height:1.6}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-  header{position:sticky;top:0;background:rgba(13,19,33,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;flex-wrap:wrap}
-  .logo{font-weight:800;font-size:19px;text-decoration:none;color:var(--text)}
-  .logo span{color:var(--accent)}
-  .nav a.phone{color:var(--text);text-decoration:none;font-weight:700;font-size:17px}
-  .hero{padding:80px 0 64px;background:radial-gradient(900px 420px at 75% -10%,rgba(255,107,44,.18),transparent),radial-gradient(700px 380px at 10% 110%,rgba(45,212,160,.10),transparent);text-align:center}
-  .badge{display:inline-block;background:rgba(255,107,44,.14);border:1px solid rgba(255,107,44,.4);color:var(--accent2);padding:6px 16px;border-radius:30px;font-size:14px;font-weight:600;margin-bottom:22px}
-  h1{font-size:clamp(28px,5vw,52px);font-weight:800;margin-bottom:18px}
-  .lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 36px}
-  .accent{color:var(--accent)}
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
-  .btn{display:inline-block;background:linear-gradient(135deg,var(--accent),#ff4d1c);color:#fff;font-weight:700;font-size:17px;padding:16px 36px;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px rgba(255,90,30,.45);transition:.2s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-tg{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#2aabee,#229ed9);color:#fff;font-weight:700;font-size:17px;padding:16px 32px;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px rgba(42,171,238,.4);transition:.2s}
-  .btn-tg:hover{transform:translateY(-2px)}
-  .niches{padding:64px 0}
-  h2{font-size:clamp(24px,4vw,36px);text-align:center;margin-bottom:12px;font-weight:800}
-  .sub{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 44px;font-size:17px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;text-decoration:none;color:var(--text);transition:.2s;display:block}
-  .card:hover{border-color:var(--accent);transform:translateY(-3px)}
-  .card .ico{font-size:32px;margin-bottom:12px}
-  .card b{display:block;font-size:17px;margin-bottom:6px}
-  .card p{color:var(--muted);font-size:14.5px}
-  .prices{background:var(--dark2);padding:64px 0;text-align:center}
-  .price-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:32px}
-  .price-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 28px;max-width:360px;flex:1;min-width:260px}
-  .price-card.hot{border:2px solid var(--accent);box-shadow:0 0 44px rgba(255,107,44,.22)}
-  .price-card .amount{font-size:42px;font-weight:800;margin:12px 0 4px}
-  .price-card .old{color:var(--muted);text-decoration:line-through;font-size:14px;margin-bottom:16px}
-  .price-card ul{list-style:none;text-align:left;margin-bottom:24px}
-  .price-card ul li{padding:6px 0;font-size:15px;border-bottom:1px dashed var(--line)}
-  .price-card ul li::before{content:"\2713 ";color:var(--green);font-weight:800}
-  footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13.5px;text-align:center}
-  footer a{color:var(--muted)}
-  @media(max-width:560px){.hero{padding:52px 0 44px}}
+:root{--dark:#0f172a;--dark2:#1e293b;--accent:#2563eb;--accent2:#3b82f6;--hover:#1d4ed8;--green:#10b981;--text:#0f172a;--muted:#64748b;--light:#f8fafc;--card:#fff;--line:#e2e8f0;--hero:#1e3a8a}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:#fff;color:var(--text);line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.2}
+a{text-decoration:none}
+.accent{color:var(--accent2)}
+
+/* PROMO BAR */
+
+/* HEADER */
+header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;flex-wrap:wrap}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:28px;color:var(--dark);letter-spacing:-1px;line-height:1}
+.logo span{color:var(--accent)}
+.nav-phone{color:var(--dark);font-weight:700;font-size:16px}
+.nav-phone:hover{color:var(--accent)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;box-shadow:0 6px 20px rgba(37,99,235,.4);transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,99,235,.55)}
+.btn-max{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;box-shadow:0 6px 20px rgba(14,165,233,.4);transition:.2s}
+.btn-max:hover{transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,.5);color:#fff;font-weight:700;font-size:16px;padding:13px 28px;border-radius:10px;transition:.2s}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.btn-dark{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--accent);color:var(--accent);font-weight:700;font-size:16px;padding:13px 28px;border-radius:10px;transition:.2s}
+.btn-dark:hover{background:var(--accent);color:#fff}
+
+/* HERO */
+.hero{background:var(--hero);padding:80px 0 72px;color:#fff;text-align:center}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#bfdbfe;padding:6px 18px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:24px}
+.hero h1{font-size:clamp(28px,5vw,52px);font-weight:800;max-width:800px;margin:0 auto 20px}
+.hero .sub{font-size:18px;color:#bfdbfe;max-width:620px;margin:0 auto 36px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.hero-proof{font-size:14px;color:#93c5fd}
+
+/* SECTION HEADERS */
+section{padding:72px 0}
+.section-light{background:var(--light)}
+.section-blue{background:var(--hero);color:#fff}
+.section-dark{background:var(--dark);color:#fff}
+h2.s-title{font-size:clamp(26px,4vw,38px);font-weight:800;text-align:center;margin-bottom:12px}
+p.s-sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 48px;font-size:17px}
+.section-blue h2.s-title,.section-blue p.s-sub{color:#fff}
+.section-blue p.s-sub{color:#bfdbfe}
+
+/* PAIN CARDS */
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.pain-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;border-left:4px solid var(--accent)}
+.pain-card .ico{font-size:28px;margin-bottom:12px}
+.pain-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.pain-card p{color:var(--muted);font-size:14px;margin-bottom:8px}
+.pain-card .sting{font-size:13px;color:#ef4444;font-weight:600}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.step{text-align:center;padding:28px 20px}
+.step-num{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-size:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:800}
+.step h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.step p{color:var(--muted);font-size:14.5px}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:48px}
+.metric{text-align:center;padding:24px}
+.metric .num{font-size:48px;font-weight:800;color:#60a5fa;line-height:1}
+.metric .label{font-size:15px;color:#bfdbfe;margin-top:8px}
+.keis{background:rgba(255,255,255,.1);border-radius:14px;padding:28px;max-width:700px;margin:0 auto;text-align:center}
+.keis p{color:#bfdbfe;font-size:15px;line-height:1.7}
+.keis strong{color:#fff}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;gap:16px;align-items:flex-start}
+.feat .ico{font-size:32px;flex:0 0 auto}
+.feat h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.feat p{color:var(--muted);font-size:14px}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px}
+.rev .stars{color:#f59e0b;font-size:18px;margin-bottom:14px}
+.rev blockquote{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:18px;font-style:italic}
+.rev .author{display:flex;align-items:center;gap:12px}
+.rev .ava{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--hover));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px}
+.rev .name{font-weight:700;font-size:14px}
+.rev .role{color:var(--muted);font-size:13px}
+.rev .result{display:inline-block;background:#dcfce7;color:#166534;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+
+/* FAQ */
+.faq{max-width:760px;margin:0 auto}
+.faq-item{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;text-align:left;padding:18px 20px;background:#fff;font-weight:700;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border:none;color:var(--text)}
+.faq-q:hover{background:var(--light)}
+.faq-q .arr{transition:.3s;color:var(--accent)}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;background:#fff}
+.faq-a.open{max-height:200px;padding:0 20px 18px}
+.faq-a p{color:var(--muted);font-size:14.5px;line-height:1.7}
+
+/* PLANS */
+.plans{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 28px;max-width:320px;flex:1;min-width:260px;display:flex;flex-direction:column;position:relative}
+.plan.hot{border:2px solid var(--accent);box-shadow:0 0 40px rgba(37,99,235,.18)}
+.plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-size:12px;font-weight:700;padding:5px 18px;border-radius:20px;white-space:nowrap}
+.plan h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.plan .price{font-size:40px;font-weight:800;color:var(--accent);margin:12px 0 4px}
+.plan .old{color:var(--muted);text-decoration:line-through;font-size:13px;margin-bottom:18px}
+.plan ul{list-style:none;margin-bottom:24px;flex:1}
+.plan ul li{padding:7px 0;font-size:14.5px;border-bottom:1px dashed var(--line);display:flex;align-items:flex-start;gap:8px}
+.plan ul li::before{content:"✓";color:var(--green);font-weight:800;flex:0 0 auto}
+.plan ul li.no::before{content:"—";color:var(--muted)}
+.plan ul li.no{color:var(--muted)}
+.guarantee{text-align:center;color:var(--muted);font-size:14px;margin-top:16px}
+.guarantee span{color:var(--green);font-weight:700}
+
+/* GIVEAWAY */
+
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,var(--accent),var(--hover));padding:72px 0;text-align:center;color:#fff}
+.final-cta h2{font-size:clamp(26px,4vw,40px);font-weight:800;margin-bottom:16px}
+.final-cta p{color:#bfdbfe;font-size:17px;max-width:560px;margin:0 auto 28px}
+.final-cta ul{list-style:none;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.final-cta ul li{color:#bfdbfe;font-size:15px}
+.final-cta ul li::before{content:"✓ ";color:#86efac;font-weight:800}
+.final-cta .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--accent);font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:.2s}
+.btn-white:hover{transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--dark);color:#94a3b8;padding:40px 0;font-size:14px}
+.footer-inner{display:flex;flex-direction:column;gap:20px}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-weight:800;font-size:18px;color:#fff}
+.footer-logo span{color:var(--accent2)}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.footer-links a{color:#94a3b8;transition:.2s}
+.footer-links a:hover{color:var(--accent2)}
+.footer-bottom{border-top:1px solid #1e293b;padding-top:20px;text-align:center}
+.footer-community{text-align:center;padding:20px 0;border-top:1px solid #1e293b}
+.footer-community a{color:#93c5fd}
+
+@media(max-width:768px){
+  .hero{padding:52px 0 48px}
+  section{padding:52px 0}
+  .plans{flex-direction:column;align-items:center}
+  .plan{max-width:100%}
+  h2.s-title{font-size:26px}
+}
 </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var a=this.nextElementSibling;
+      a.classList.toggle('open');
+      this.querySelector('.arr').textContent=a.classList.contains('open')?'▲':'▼';
+    });
+  });
+});
+</script>
 </head>
 <body>
-
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#">Neura<span>Lead</span></a>
-    <a class="phone" href="tel:+79206980858">📞 +7 920 698-08-58</a>
+    <a class="logo" href="index.html">Neura<span>Lead</span></a>
+    <a class="nav-phone" href="tel:+79206980858">📞 +7 920 698-08-58</a>
   </div>
 </header>
-
-<main>
-
-<div class="hero">
-  <div class="wrap">
-    <span class="badge">🤖 ИИ-боты для бизнеса · Telegram и MAX · Запуск за 3–10 дней</span>
-    <h1>Чат-боты, которые <span class="accent">продают и консультируют</span> вместо вас — 24/7</h1>
-    <p class="lead">Кнопочный бот от 15 000 ₽ или ИИ-бот с нейросетью от 50 000 ₽ — под ключ за 3–10 дней. Бесплатное демо до оплаты.</p>
-    <div class="cta-row">
-      <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener">🚀 Попробовать демо бесплатно</a>
-      <a class="btn-tg" href="https://t.me/+79206980858" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Написать в Telegram</a>
+<style>
+.niche-card{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px;text-decoration:none;color:#0f172a;transition:.2s}
+.niche-card:hover{border-color:#2563eb;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.12)}
+.niche-ico{font-size:30px;flex:0 0 auto}
+.niche-card b{display:block;font-size:16px;font-weight:700;margin-bottom:4px}
+.niche-card p{color:#64748b;font-size:13.5px;margin:0}
+</style>
+<div class="hero"><div class="wrap">
+  <div class="hero-badge">🤖 Чат-боты для бизнеса · Telegram и MAX · Запуск за 3–10 дней</div>
+  <h1>Ваш бизнес теряет клиентов каждую ночь.<br><span class="accent">ИИ-бот принимает заявки 24/7 — вы узнаёте утром.</span></h1>
+  <p class="sub">Бот отвечает, консультирует и записывает клиентов пока вы спите. В среднем +30% заявок уже в первый месяц. Попробуйте демо прямо сейчас — бесплатно.</p>
+  <div class="hero-cta">
+      <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Получить демо бесплатно</a>
+      <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener">🤖 Попробовать в MAX</a>
     </div>
+  <p class="hero-proof">200+ компаний уже принимают заявки через бота · Запуск за 5 дней · Гарантия возврата 7 дней</p>
+</div></div>
+
+<section class="section-light"><div class="wrap">
+  <h2 class="s-title">Боты для вашей ниши</h2>
+  <p class="s-sub">Выберите отрасль — покажем как бот работает именно в вашем бизнесе</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+<a class="niche-card" href="realty.html"><div class="niche-ico">🏠</div><div><b>Недвижимость</b><p>Квалификация покупателей, подборка объектов, запись на просмотр 24/7</p></div></a>
+    <a class="niche-card" href="business.html"><div class="niche-ico">💼</div><div><b>Любой бизнес</b><p>Заявки, консультации, запись — универсальный бот под любую нишу</p></div></a>
+<a class="niche-card" href="dental.html"><div class="niche-ico">🦷</div><div><b>Стоматология</b><p>Запись без тревоги, цены на процедуры, снижение no-show</p></div></a>
+<a class="niche-card" href="clinic.html"><div class="niche-ico">🏥</div><div><b>Клиника / Медицина</b><p>Запись к врачу 24/7, разгрузка регистратуры, напоминания</p></div></a>
+<a class="niche-card" href="salon.html"><div class="niche-ico">💅</div><div><b>Салон красоты</b><p>Запись к мастеру, прайс, напоминания — без администратора</p></div></a>
+<a class="niche-card" href="fitness.html"><div class="niche-ico">🏋️</div><div><b>Фитнес-клуб</b><p>Запись на пробное, продажа абонементов, расписание</p></div></a>
+<a class="niche-card" href="autoservice.html"><div class="niche-ico">🚗</div><div><b>Автосервис</b><p>Запись на ТО, цены на услуги, статус ремонта</p></div></a>
+<a class="niche-card" href="horeca.html"><div class="niche-ico">🍽</div><div><b>Отель / Ресторан</b><p>Брони столов и номеров, меню, банкеты — круглосуточно</p></div></a>
+<a class="niche-card" href="education.html"><div class="niche-ico">🎓</div><div><b>Образование</b><p>Запись на пробный урок, FAQ, снижение нагрузки на кураторов</p></div></a>
+<a class="niche-card" href="hr.html"><div class="niche-ico">👥</div><div><b>HR и рекрутинг</b><p>Скрининг кандидатов, анкеты, запись на собеседование</p></div></a>
+<a class="niche-card" href="finance.html"><div class="niche-ico">💰</div><div><b>Финансы / Страхование</b><p>Заявки на ОСАГО, кредиты, напоминания о продлении</p></div></a>
+<a class="niche-card" href="detailing.html"><div class="niche-ico">✨</div><div><b>Детейлинг</b><p>Запись на полировку, керамику и химчистку 24/7</p></div></a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="s-title">Как это работает</h2><p class="s-sub">Три шага от заявки до работающего бота</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Передаёте данные о бизнесе</h3><p>Услуги, цены, часто задаваемые вопросы, контакты. Занимает 30 минут.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Мы настраиваем бота за 5–10 дней</h3><p>Под вашу нишу, под ваш стиль общения. Тестируем все сценарии до запуска.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Бот работает — вы получаете заявки</h3><p>24/7, без выходных. Клиент пишет — бот отвечает и передаёт вам готовую заявку.</p></div>
+  </div>
+</div></section>
+
+<section class="section-blue"><div class="wrap">
+  <h2 class="s-title">Цифры, которые говорят сами</h2><p class="s-sub"></p>
+  <div class="metrics">
+    <div class="metric"><div class="num">200+</div><div class="label">компаний уже работают с ботами NueraLead</div></div>
+    <div class="metric"><div class="num">73%</div><div class="label">обращений приходит вне рабочего времени — бот не спит</div></div>
+    <div class="metric"><div class="num">+35%</div><div class="label">средний рост конверсии в заявку после запуска бота</div></div>
+    <div class="metric"><div class="num">5 дней</div><div class="label">средний срок запуска кнопочного бота под ключ</div></div>
+  </div>
+</div></section>
+
+<section class="section-light"><div class="wrap">
+  <h2 class="s-title">Тарифы под ключ</h2>
+  <p class="s-sub">Фиксированная цена: настройка, загрузка ваших данных, запуск — всё включено</p>
+  <div class="plans">
+  <div class="plan">
+    <h3>🔘 Кнопочный бот</h3>
+    <div class="price">15 000 ₽</div>
+    <div class="old">на рынке 30 000–50 000 ₽</div>
+    <ul>
+      <li>Telegram или MAX — на выбор</li>
+      <li>Меню услуг, кнопки, анкеты</li>
+      <li>Заявки вам в мессенджер</li>
+      <li>Запуск за 3–5 дней</li>
+      <li class="no">Свободный диалог</li>
+      <li class="no">Работа сразу в двух платформах</li>
+    </ul>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+  <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram</a>
+  <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px">🤖 MAX</a>
+</div>
+  </div>
+  <div class="plan hot">
+    <div class="plan-badge">⭐ Популярный</div>
+    <h3>🤖 Бот который записывает клиентов пока вы спите</h3>
+    <div class="price">50 000 ₽</div>
+    <div class="old">на рынке 150 000–300 000 ₽</div>
+    <ul>
+      <li>Telegram + MAX сразу</li>
+      <li>Понимает свободные вопросы</li>
+      <li>Консультирует как сотрудник</li>
+      <li>Клиенты пишут откуда удобно — вы не теряете ни одного</li>
+      <li>Запуск за 7–10 дней</li>
+      <li>Поддержка 30 дней</li>
+    </ul>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+  <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram</a>
+  <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px">🤖 MAX</a>
+</div>
   </div>
 </div>
+<p class="guarantee">🛡 <span>Гарантия:</span> если бот не понравится — вернём деньги в течение 7 дней</p></div>
+</div></section>
 
-<section class="niches">
-  <div class="wrap">
-    <h2>Боты для вашей ниши</h2>
-    <p class="sub">Выберите свою отрасль — покажем, как бот будет работать именно у вас.</p>
-    <div class="grid">
-      <a class="card" href="business.html"><div class="ico">💼</div><b>Любой бизнес</b><p>Универсальный бот для малого и среднего бизнеса — заявки, консультации, FAQ.</p></a>
-      <a class="card" href="dental.html"><div class="ico">🦷</div><b>Стоматология</b><p>Запись на приём, услуги и цены, напоминания о визите.</p></a>
-      <a class="card" href="clinic.html"><div class="ico">🏥</div><b>Клиника / Медицина</b><p>Консультации, запись к врачу, анализы и результаты.</p></a>
-      <a class="card" href="salon.html"><div class="ico">💅</div><b>Салон красоты</b><p>Прайс, запись к мастеру, напоминания — 24/7 без администратора.</p></a>
-      <a class="card" href="fitness.html"><div class="ico">🏋️</div><b>Фитнес-клуб</b><p>Расписание, абонементы, запись на пробное занятие.</p></a>
-      <a class="card" href="autoservice.html"><div class="ico">🚗</div><b>Автосервис</b><p>Запись на ТО, цены на услуги, статус ремонта.</p></a>
-      <a class="card" href="horeca.html"><div class="ico">🍽</div><b>Отель / Ресторан</b><p>Бронирование столов и номеров, меню, банкеты.</p></a>
-      <a class="card" href="education.html"><div class="ico">🎓</div><b>Образование</b><p>Курсы, расписание, запись на пробный урок.</p></a>
-      <a class="card" href="hr.html"><div class="ico">👥</div><b>HR и рекрутинг</b><p>Скрининг кандидатов, анкеты, запись на собеседование.</p></a>
-      <a class="card" href="finance.html"><div class="ico">💰</div><b>Финансы / Страхование</b><p>Заявки на ОСАГО, кредиты, напоминания о продлении полисов.</p></a>
-    </div>
+<div class="final-cta"><div class="wrap">
+  <h2>Попробуйте демо прямо сейчас — бесплатно</h2>
+  <p>Без регистрации. Без оплаты. Просто напишите боту — и посмотрите как он работает.</p>
+  <ul><li>Бот работает 24/7 без выходных и праздников</li><li>Запуск за 3–10 дней под ключ</li><li>Гарантия возврата 7 дней</li></ul>
+  <div class="cta-btns">
+    <a class="btn-white" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Попробовать в Telegram</a>
+    <a class="btn-ghost" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener">🤖 Попробовать в MAX</a>
   </div>
-</section>
-
-<section class="prices">
-  <div class="wrap">
-    <h2>Цены под ключ</h2>
-    <p class="sub">Фиксированная цена: настройка, загрузка ваших данных, запуск — всё включено.</p>
-    <div class="price-row">
-      <div class="price-card">
-        <div style="font-size:22px;font-weight:800">🔘 Кнопочный бот</div>
-        <div class="amount">15 000 ₽</div>
-        <div class="old">на рынке 30 000–50 000 ₽</div>
-        <ul>
-          <li>Telegram или MAX — на выбор</li>
-          <li>Меню, кнопки, анкеты</li>
-          <li>Заявки вам в мессенджер</li>
-          <li>Запуск за 3–5 дней</li>
-        </ul>
-        <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="display:block;text-align:center">Попробовать демо</a>
-      </div>
-      <div class="price-card hot">
-        <div style="font-size:22px;font-weight:800">🤖 ИИ-бот с нейросетью</div>
-        <div class="amount">50 000 ₽</div>
-        <div class="old">на рынке 150 000–300 000 ₽</div>
-        <ul>
-          <li>Telegram + MAX сразу</li>
-          <li>Понимает свободные вопросы</li>
-          <li>Консультирует как сотрудник</li>
-          <li>Запуск за 7–10 дней</li>
-        </ul>
-        <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="display:block;text-align:center">Попробовать демо</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
+</div></div>
 <footer>
-  <div class="wrap">
-    <b style="color:var(--text)">Neura Lead</b> · Чат-боты для бизнеса в Telegram и MAX<br>
-    ☎ <a href="tel:+79206980858">+7 920 698-08-58</a> · <a href="https://t.me/+79206980858" target="_blank" rel="noopener">Telegram</a> · Работаем по всей России
+  <div class="wrap footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Neura<span>Lead</span></div>
+        <p style="margin-top:8px">Чат-боты для бизнеса в Telegram и MAX</p>
+      </div>
+      <div>
+        <p>☎ <a href="tel:+79206980858" style="color:#93c5fd">+7 920 698-08-58</a></p>
+        <p style="margin-top:6px"><a href="https://t.me/+79206980858" target="_blank" style="color:#93c5fd">Написать в Telegram</a></p>
+      </div>
+    </div>
+    <div class="footer-community">
+      Присоединяйтесь к нашему комьюнити — кейсы, ИИ-тренды и розыгрыши:&nbsp;
+      <a href="https://t.me/neuralead_ru" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram-канал</a> &nbsp;·&nbsp;
+      <a href="https://max.ru/join/bYn6fyupJAvUMewahMupBilprw_7jFxmGYNwHMJYxzQ" target="_blank" rel="noopener">🤖 MAX-канал</a>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-links" style="justify-content:center;margin-bottom:12px"><a href="business.html">Любой бизнес</a> · <a href="dental.html">Стоматология</a> · <a href="clinic.html">Клиника</a> · <a href="salon.html">Салон красоты</a> · <a href="fitness.html">Фитнес-клуб</a> · <a href="autoservice.html">Автосервис</a> · <a href="horeca.html">Отель/Ресторан</a> · <a href="education.html">Образование</a> · <a href="hr.html">HR и рекрутинг</a> · <a href="finance.html">Финансы</a></div>
+      <p>© 2025 NueraLead · Работаем по всей России</p>
+    </div>
   </div>
 </footer>
-
 </body>
 </html>
