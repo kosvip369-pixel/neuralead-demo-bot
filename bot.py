@@ -55,6 +55,22 @@ GIGACHAT_AUTH_KEY = os.environ.get("GIGACHAT_AUTH_KEY", "")
 GIGACHAT_MODEL = os.environ.get("GIGACHAT_MODEL", "GigaChat")
 
 ADMIN_CHAT_ID = os.environ.get("ADMIN_CHAT_ID")
+
+# Файл для хранения ID пользователей, которым уже отправили уведомление
+_SEEN_USERS_FILE = Path("seen_users.json")
+
+def _load_seen_users() -> set:
+    if _SEEN_USERS_FILE.exists():
+        try:
+            return set(json.loads(_SEEN_USERS_FILE.read_text()))
+        except Exception:
+            return set()
+    return set()
+
+def _save_seen_user(user_id: int):
+    seen = _load_seen_users()
+    seen.add(user_id)
+    _SEEN_USERS_FILE.write_text(json.dumps(list(seen)))
 WEBHOOK_URL = os.environ.get("WEBHOOK_URL")
 PORT = int(os.environ.get("PORT", 8080))
 
@@ -489,6 +505,23 @@ def niche_keyboard() -> InlineKeyboardMarkup:
 # ---------- Хендлеры ----------
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.clear()
+    u = update.effective_user
+    if ADMIN_CHAT_ID and u:
+        seen = _load_seen_users()
+        if u.id not in seen:
+            _save_seen_user(u.id)
+            name = " ".join(filter(None, [u.first_name, u.last_name])) or "—"
+            username = f"@{u.username}" if u.username else "без username"
+            try:
+                await context.bot.send_message(
+                    chat_id=int(ADMIN_CHAT_ID),
+                    text=f"👤 Новый пользователь зашёл в бот\n"
+                         f"Имя: {name}\n"
+                         f"Telegram: {username}\n"
+                         f"ID: {u.id}"
+                )
+            except Exception as e:
+                log.error("Не удалось отправить уведомление о новом пользователе: %s", e)
     await update.message.reply_text(
         "👋 Добро пожаловать в демо Neura Lead!\n\n"
         "Выберите сферу бизнеса — и я покажу, как AI-бот работает с клиентами "
