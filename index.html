@@ -311,5 +311,57 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </footer>
 <script src="/widget.js" data-niche="default" defer></script>
+
+<!-- CHAT WIDGET -->
+<div id="chat-widget">
+  <button id="chat-btn" onclick="document.getElementById('chat-popup').classList.toggle('open')" aria-label="Открыть чат">
+    <span id="chat-ico">💬</span>
+  </button>
+  <div id="chat-popup">
+    <div id="chat-head">
+      <div id="chat-ava">К</div>
+      <div>
+        <div id="chat-name">Константин</div>
+        <div id="chat-status">● Онлайн · консультант NueraLead</div>
+      </div>
+      <button id="chat-close" onclick="document.getElementById('chat-popup').classList.remove('open')">✕</button>
+    </div>
+    <div id="chat-body">
+      <div class="cmsg bot">Здравствуйте! 👋 Я Константин, консультант NueraLead.<br>Помогу подобрать ИИ-бота для вашего бизнеса. Попробуйте демо прямо сейчас:</div>
+    </div>
+    <div id="chat-actions">
+      <a class="cact-btn tg" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg>
+        Открыть в Telegram
+      </a>
+      <a class="cact-btn max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener">🤖 Открыть в MAX</a>
+    </div>
+    <div id="chat-note">Демо бесплатно · Отвечаем за 2 минуты</div>
+  </div>
+</div>
+<style>
+#chat-widget{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+#chat-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:.2s;display:flex;align-items:center;justify-content:center}
+#chat-btn:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,99,235,.6)}
+#chat-popup{position:absolute;bottom:72px;right:0;width:320px;background:#fff;border-radius:18px;box-shadow:0 8px 40px rgba(0,0,0,.18);overflow:hidden;display:none;flex-direction:column;animation:popIn .2s ease}
+#chat-popup.open{display:flex}
+@keyframes popIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#chat-head{background:#1e3a8a;padding:14px 16px;display:flex;align-items:center;gap:12px;color:#fff}
+#chat-ava{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex:0 0 auto}
+#chat-name{font-weight:700;font-size:15px}
+#chat-status{font-size:11px;color:#86efac;margin-top:2px}
+#chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;cursor:pointer;line-height:1;padding:4px}
+#chat-close:hover{color:#fff}
+#chat-body{padding:16px;background:#f8fafc;min-height:80px}
+.cmsg{font-size:14px;line-height:1.6;color:#1e293b;background:#fff;border-radius:12px 12px 12px 4px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+#chat-actions{padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+.cact-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:.2s}
+.cact-btn.tg{background:linear-gradient(135deg,#2aabee,#229ed9);color:#fff}
+.cact-btn.max{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff}
+.cact-btn:hover{opacity:.9;transform:translateY(-1px)}
+#chat-note{text-align:center;font-size:11px;color:#94a3b8;padding:0 16px 14px}
+@media(max-width:400px){#chat-popup{width:calc(100vw - 32px);right:-8px}}
+</style>
+
 </body>
 </html>
