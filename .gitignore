@@ -2,3 +2,4 @@
 .netlify
 .github/
 .claude/
+__pycache__/
