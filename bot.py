@@ -522,6 +522,19 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 )
             except Exception as e:
                 log.error("Не удалось отправить уведомление о новом пользователе: %s", e)
+    # Отправляем приветственное аудио
+    audio_path = Path(__file__).parent / "welcome.mp3"
+    if audio_path.exists():
+        try:
+            with open(audio_path, "rb") as audio:
+                await update.message.reply_audio(
+                    audio=audio,
+                    title="NueraLead — Бизнес умнее",
+                    performer="NueraLead",
+                    caption="🎵 Добро пожаловать в NueraLead!"
+                )
+        except Exception as e:
+            log.error("Не удалось отправить аудио: %s", e)
     await update.message.reply_text(
         "👋 Добро пожаловать в демо Neura Lead!\n\n"
         "Выберите сферу бизнеса — и я покажу, как AI-бот работает с клиентами "
