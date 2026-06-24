@@ -502,6 +502,10 @@ def niche_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(rows)
 
 
+def back_keyboard() -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup([[InlineKeyboardButton("🏠 На главную", callback_data="back:main")]])
+
+
 # ---------- Хендлеры ----------
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data.clear()
@@ -572,7 +576,14 @@ async def on_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"Сейчас Константин поприветствует вас как консультант {n['name']}...",
         )
         reply = await ask_llm_with_system(context, n["system"], n["greeting"])
-        await q.message.reply_text(reply)
+        await q.message.reply_text(reply, reply_markup=back_keyboard())
+
+    elif data == "back:main":
+        context.user_data.clear()
+        await q.edit_message_text(
+            "⬇️ Выберите нишу:",
+            reply_markup=niche_keyboard(),
+        )
 
 
 def _looks_like_phone(text: str) -> bool:
@@ -595,7 +606,7 @@ async def on_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.chat.send_action(ChatAction.TYPING)
     reply = await ask_llm(context, text)
-    await update.message.reply_text(reply)
+    await update.message.reply_text(reply, reply_markup=back_keyboard())
 
 
 async def save_lead(update: Update, context: ContextTypes.DEFAULT_TYPE, contact_text: str):
