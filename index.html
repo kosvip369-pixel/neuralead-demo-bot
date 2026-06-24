@@ -235,6 +235,76 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </div></section>
 
+<section id="demo-chat-section" style="background:#f0f4ff;padding:60px 0"><div class="wrap">
+  <h2 class="s-title">Посмотрите как работает бот</h2>
+  <p class="s-sub">Живой диалог — именно так ваши клиенты будут общаться с ботом 24/7</p>
+  <div id="demo-chat" style="max-width:400px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 8px 40px rgba(37,99,235,.15);overflow:hidden;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif">
+    <div style="background:#1e3a8a;padding:14px 18px;display:flex;align-items:center;gap:12px;color:#fff">
+      <div style="width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex:0 0 auto">К</div>
+      <div>
+        <div style="font-weight:700;font-size:15px">Константин</div>
+        <div style="font-size:12px;opacity:.8">● Онлайн · консультант NueraLead</div>
+      </div>
+    </div>
+    <div id="demo-msgs" style="height:320px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f8faff"></div>
+    <div style="padding:12px 16px;background:#fff;border-top:1px solid #e5e7eb;text-align:center">
+      <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="font-size:14px;padding:10px 24px;display:inline-block"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px;margin-right:6px"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg>Попробовать живого бота</a>
+    </div>
+  </div>
+</div></section>
+<style>
+.demo-bubble{max-width:78%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeUp .4s ease both}
+.demo-bubble.bot{background:#fff;border:1px solid #e2e8f0;border-radius:4px 16px 16px 16px;align-self:flex-start;color:#1e293b}
+.demo-bubble.user{background:#2563eb;color:#fff;border-radius:16px 4px 16px 16px;align-self:flex-end}
+.demo-time{font-size:11px;color:#94a3b8;align-self:flex-start;margin-top:-4px}
+.demo-typing{display:flex;gap:4px;align-items:center;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:4px 16px 16px 16px;align-self:flex-start;width:fit-content}
+.demo-typing span{width:7px;height:7px;border-radius:50%;background:#94a3b8;animation:blink 1.2s infinite}
+.demo-typing span:nth-child(2){animation-delay:.2s}
+.demo-typing span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<script>
+(function(){
+  const msgs=[
+    {from:'bot',text:'Привет! 👋 Я Константин, консультант NueraLead. Помогу подобрать бота для вашего бизнеса.\n\nЧем занимается ваша компания?'},
+    {from:'user',text:'У меня стоматология'},
+    {from:'bot',text:'Отлично! 🦷 Для стоматологии мы настраиваем бота, который:\n\n• Записывает пациентов 24/7\n• Отвечает на вопросы о ценах и процедурах\n• Снижает no-show на 40% через напоминания\n\nСколько пациентов обращается к вам в месяц?'},
+    {from:'user',text:'Примерно 150-200'},
+    {from:'bot',text:'Это хороший поток! 💪 При 200 пациентах в месяц бот освободит администратора от ~4 часов рутинных звонков ежедневно.\n\nОставьте номер — я свяжусь и покажу демо именно под вашу клинику 👇'},
+  ];
+  const box=document.getElementById('demo-msgs');
+  if(!box)return;
+  let i=0;
+  function showNext(){
+    if(i>=msgs.length)return;
+    const m=msgs[i++];
+    const typing=document.createElement('div');
+    typing.className='demo-typing';
+    typing.innerHTML='<span></span><span></span><span></span>';
+    if(m.from==='bot'){box.appendChild(typing);box.scrollTop=box.scrollHeight;}
+    setTimeout(function(){
+      if(typing.parentNode)typing.remove();
+      const b=document.createElement('div');
+      b.className='demo-bubble '+m.from;
+      b.style.whiteSpace='pre-wrap';
+      b.textContent=m.text;
+      box.appendChild(b);
+      const t=document.createElement('div');
+      t.className='demo-time';
+      t.textContent=m.from==='bot'?'Константин · сейчас':'Вы · сейчас';
+      box.appendChild(t);
+      box.scrollTop=box.scrollHeight;
+      setTimeout(showNext,m.from==='bot'?1800:900);
+    },m.from==='bot'?1200:300);
+  }
+  const obs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){obs.disconnect();setTimeout(showNext,800);}
+  },{threshold:.3});
+  obs.observe(document.getElementById('demo-chat-section'));
+})();
+</script>
+
 <section class="section-light"><div class="wrap">
   <h2 class="s-title">Тарифы под ключ</h2>
   <p class="s-sub">Фиксированная цена: настройка, загрузка ваших данных, запуск — всё включено</p>
@@ -310,7 +380,6 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
   </div>
 </footer>
-<script src="/widget.js" data-niche="default" defer></script>
 
 <!-- CHAT WIDGET -->
 <div id="chat-widget">
