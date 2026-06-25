@@ -374,7 +374,7 @@ async def send_audio(client: httpx.AsyncClient, user_id: int):
                 f"{API_BASE}/uploads",
                 headers={"Authorization": MAX_TOKEN},
                 files={"file": ("welcome.mp3", f, "audio/mpeg")},
-                params={"type": "audio"},
+                params={"type": "voice"},
                 timeout=60,
             )
             log.info("MAX upload response: %s %s", resp.status_code, resp.text[:200])
@@ -383,7 +383,7 @@ async def send_audio(client: httpx.AsyncClient, user_id: int):
             token = data.get("token") or data.get("fileId") or data.get("id")
         if token:
             await api_post(client, "/messages", {
-                "attachments": [{"type": "audio", "payload": {"token": token}}],
+                "attachments": [{"type": "voice", "payload": {"token": token}}],
             }, user_id=user_id)
     except Exception as e:
         log.error("Не удалось отправить аудио в MAX: %s", e)
@@ -481,9 +481,9 @@ async def handle_update(client: httpx.AsyncClient, update: dict):
 
         if text.lower() in ("/start", "start", "старт", "начать"):
             state.update({"niche": None, "history": [], "msg_count": 0})
+            await send_audio(client, user_id)
             await send_message(
                 client, user_id,
-                "🎵 NueraLead — Бизнес умнее\n\n"
                 "👋 Добро пожаловать в демо Neura Lead!\n\n"
                 "Выберите сферу бизнеса — покажу как AI-бот работает в роли живого консультанта:\n\n"
                 "⬇️ Выберите нишу:",
