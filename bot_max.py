@@ -375,13 +375,14 @@ async def send_audio(client: httpx.AsyncClient, user_id: int):
                 headers={"Authorization": MAX_TOKEN},
                 files={"file": ("welcome.mp3", f, "audio/mpeg")},
                 params={"type": "audio"},
-                timeout=30,
+                timeout=60,
             )
+            log.info("MAX upload response: %s %s", resp.status_code, resp.text[:200])
             resp.raise_for_status()
-            token = resp.json().get("token")
+            data = resp.json()
+            token = data.get("token") or data.get("fileId") or data.get("id")
         if token:
             await api_post(client, "/messages", {
-                "text": "🎵 Добро пожаловать в NueraLead!",
                 "attachments": [{"type": "audio", "payload": {"token": token}}],
             }, user_id=user_id)
     except Exception as e:
