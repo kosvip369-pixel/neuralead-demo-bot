@@ -502,8 +502,39 @@ def niche_keyboard() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(rows)
 
 
-def back_keyboard() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup([[InlineKeyboardButton("🏠 На главную", callback_data="back:main")]])
+UNIVERSAL_SYSTEM = """Ты — Константин, живой консультант агентства NeuraLead. Ты НЕ бот, ты человек.
+NeuraLead создаёт AI-ботов для бизнеса, которые общаются с клиентами 24/7.
+
+ТВОЯ ЗАДАЧА: провести демонстрацию того, как AI-бот работает в бизнесе клиента.
+
+СЦЕНАРИЙ:
+1. Пользователь называет свою нишу/бизнес — ты переключаешься в роль консультанта ЭТОГО бизнеса
+2. Общайся как живой сотрудник этого бизнеса: задавай вопросы, уточняй потребности, давай цены
+3. После 4-6 сообщений диалога — предложи оставить контакт для записи/заявки
+4. После получения контакта (телефон/имя) — РАСКРОЙ что ты AI
+
+ФИНАЛЬНЫЙ СКРИПТ (после контакта):
+"Кстати, признаюсь — я Константин, и я AI-бот 😊
+
+Вы только что пообщались с искусственным интеллектом!
+Именно так будет работать бот для вашего бизнеса.
+
+ТАКОЙ БОТ ДЛЯ ВАШЕЙ КОМПАНИИ:
+📈 Увеличит конверсию в заявку на 30-50%
+⏰ Работает 24/7 без выходных
+💰 Окупается за 2-4 недели
+
+Стоимость: от 50 000 рублей
+Запуск: 5-10 дней под ключ
+
+Хотите узнать точную стоимость для вашей ниши? Напишите 'Хочу расчет'! 📞"
+
+ПРАВИЛА:
+- Пиши коротко (2-4 строки), 1-2 эмодзи
+- Задавай по одному вопросу за раз
+- НЕ раскрывай что ты бот до финала
+- Адаптируйся под любую нишу
+- Если не понял нишу — уточни"""
 
 
 # ---------- Хендлеры ----------
@@ -526,7 +557,6 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 )
             except Exception as e:
                 log.error("Не удалось отправить уведомление о новом пользователе: %s", e)
-    # Отправляем приветственное аудио
     audio_path = Path(__file__).parent / "welcome.mp3"
     if audio_path.exists():
         try:
@@ -540,50 +570,10 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         except Exception as e:
             log.error("Не удалось отправить аудио: %s", e)
     await update.message.reply_text(
-        "👋 Добро пожаловать в демо Neura Lead!\n\n"
-        "Выберите сферу бизнеса — и я покажу, как AI-бот работает с клиентами "
-        "в роли живого консультанта:\n\n"
-        "⬇️ Выберите нишу:",
-        reply_markup=niche_keyboard(),
+        "👋 Здравствуйте! Меня зовут Константин, я представляю агентство NeuraLead.\n\n"
+        "Мы создаём AI-ботов для бизнеса, которые общаются с клиентами 24/7.\n\n"
+        "Подскажите, какая у вас ниша или сфера бизнеса?"
     )
-
-
-async def cmd_niche(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Выберите сферу:", reply_markup=niche_keyboard())
-
-
-async def cmd_contact(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    context.user_data["awaiting_contact"] = True
-    await update.message.reply_text(
-        "📞 Оставьте имя и телефон одним сообщением (например: Анна, +7 900 123-45-67)"
-    )
-
-
-async def on_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    q = update.callback_query
-    await q.answer()
-    data = q.data
-
-    if data.startswith("niche:"):
-        key = data.split(":", 1)[1]
-        if key not in NICHES:
-            return
-        context.user_data.clear()
-        context.user_data["niche"] = key
-        n = NICHES[key]
-        await q.edit_message_text(
-            f"Отлично! Переключаюсь на нишу: {n['title']}\n\n"
-            f"Сейчас Константин поприветствует вас как консультант {n['name']}...",
-        )
-        reply = await ask_llm_with_system(context, n["system"], n["greeting"])
-        await q.message.reply_text(reply, reply_markup=back_keyboard())
-
-    elif data == "back:main":
-        context.user_data.clear()
-        await q.edit_message_text(
-            "⬇️ Выберите нишу:",
-            reply_markup=niche_keyboard(),
-        )
 
 
 def _looks_like_phone(text: str) -> bool:
@@ -594,27 +584,18 @@ def _looks_like_phone(text: str) -> bool:
 async def on_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text or ""
 
-    if "niche" not in context.user_data:
-        await update.message.reply_text(
-            "Выберите нишу, чтобы начать демонстрацию:",
-            reply_markup=niche_keyboard(),
-        )
-        return
-
-    if context.user_data.pop("awaiting_contact", False) or _looks_like_phone(text):
+    if _looks_like_phone(text):
         await save_lead(update, context, text)
 
     await update.message.chat.send_action(ChatAction.TYPING)
     reply = await ask_llm(context, text)
-    await update.message.reply_text(reply, reply_markup=back_keyboard())
+    await update.message.reply_text(reply)
 
 
 async def save_lead(update: Update, context: ContextTypes.DEFAULT_TYPE, contact_text: str):
     u = update.effective_user
-    key = context.user_data.get("niche", "—")
-    niche_title = NICHES.get(key, {}).get("title", key)
     lead = (
-        f"🔥 НОВЫЙ ЛИД ({niche_title})\n"
+        f"🔥 НОВЫЙ ЛИД\n"
         f"Контакт: {contact_text}\n"
         f"Telegram: @{u.username or '—'} (id {u.id})"
     )
@@ -626,21 +607,15 @@ async def save_lead(update: Update, context: ContextTypes.DEFAULT_TYPE, contact_
             log.error("Не удалось отправить лид: %s", e)
 
 
-async def ask_llm_with_system(context: ContextTypes.DEFAULT_TYPE, system: str, user_text: str) -> str:
+async def ask_llm(context: ContextTypes.DEFAULT_TYPE, user_text: str) -> str:
     history = context.user_data.setdefault("history", [])
     history.append({"role": "user", "content": user_text})
     del history[:-MAX_HISTORY]
-    messages = [{"role": "system", "content": system}, *history]
+    messages = [{"role": "system", "content": UNIVERSAL_SYSTEM}, *history]
     answer = await _call_llm(messages)
     if answer:
         history.append({"role": "assistant", "content": answer})
     return answer or "Секунду, уточняю информацию... Повторите вопрос 🙂"
-
-
-async def ask_llm(context: ContextTypes.DEFAULT_TYPE, user_text: str) -> str:
-    niche_key = context.user_data.get("niche", "realty")
-    system = NICHES[niche_key]["system"]
-    return await ask_llm_with_system(context, system, user_text)
 
 
 async def _call_llm(messages: list) -> str:
@@ -685,9 +660,6 @@ async def _call_llm(messages: list) -> str:
 def main():
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", cmd_start))
-    app.add_handler(CommandHandler("niche", cmd_niche))
-    app.add_handler(CommandHandler("contact", cmd_contact))
-    app.add_handler(CallbackQueryHandler(on_button))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, on_message))
 
     if WEBHOOK_URL:

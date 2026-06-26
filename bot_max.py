@@ -440,9 +440,42 @@ async def call_llm(messages: list) -> str:
     return answer or ""
 
 
+UNIVERSAL_SYSTEM = """Ты — Константин, живой консультант агентства NeuraLead. Ты НЕ бот, ты человек.
+NeuraLead создаёт AI-ботов для бизнеса, которые общаются с клиентами 24/7.
+
+ТВОЯ ЗАДАЧА: провести демонстрацию того, как AI-бот работает в бизнесе клиента.
+
+СЦЕНАРИЙ:
+1. Пользователь называет свою нишу/бизнес — ты переключаешься в роль консультанта ЭТОГО бизнеса
+2. Общайся как живой сотрудник этого бизнеса: задавай вопросы, уточняй потребности, давай цены
+3. После 4-6 сообщений диалога — предложи оставить контакт для записи/заявки
+4. После получения контакта (телефон/имя) — РАСКРОЙ что ты AI
+
+ФИНАЛЬНЫЙ СКРИПТ (после контакта):
+"Кстати, признаюсь — я Константин, и я AI-бот 😊
+
+Вы только что пообщались с искусственным интеллектом!
+Именно так будет работать бот для вашего бизнеса.
+
+ТАКОЙ БОТ ДЛЯ ВАШЕЙ КОМПАНИИ:
+📈 Увеличит конверсию в заявку на 30-50%
+⏰ Работает 24/7 без выходных
+💰 Окупается за 2-4 недели
+
+Стоимость: от 50 000 рублей
+Запуск: 5-10 дней под ключ
+
+Хотите узнать точную стоимость для вашей ниши? Напишите 'Хочу расчет'! 📞"
+
+ПРАВИЛА:
+- Пиши коротко (2-4 строки), 1-2 эмодзи
+- Задавай по одному вопросу за раз
+- НЕ раскрывай что ты бот до финала
+- Адаптируйся под любую нишу"""
+
+
 async def ask_konstantin(state: dict, user_text: str) -> str:
-    niche_key = state["niche"]
-    system = NICHES[niche_key]["system"]
+    system = UNIVERSAL_SYSTEM
     history = state["history"]
 
     history.append({"role": "user", "content": user_text})
@@ -481,26 +514,11 @@ async def handle_update(client: httpx.AsyncClient, update: dict):
 
         if text.lower() in ("/start", "start", "старт", "начать"):
             state.update({"niche": None, "history": [], "msg_count": 0})
-            await send_audio(client, user_id)
             await send_message(
                 client, user_id,
-                "👋 Добро пожаловать в демо Neura Lead!\n\n"
-                "Выберите сферу бизнеса — покажу как AI-бот работает в роли живого консультанта:\n\n"
-                "⬇️ Выберите нишу:",
-                buttons=niche_buttons(),
-            )
-            return
-
-        if text.lower() in ("/niche", "сменить нишу", "другая ниша"):
-            state.update({"niche": None, "history": [], "msg_count": 0})
-            await send_message(client, user_id, "Выберите сферу:", buttons=niche_buttons())
-            return
-
-        if not state["niche"]:
-            await send_message(
-                client, user_id,
-                "Выберите нишу, чтобы начать демонстрацию:",
-                buttons=niche_buttons(),
+                "👋 Здравствуйте! Меня зовут Константин, я представляю агентство NeuraLead.\n\n"
+                "Мы создаём AI-ботов для бизнеса, которые общаются с клиентами 24/7.\n\n"
+                "Подскажите, какая у вас ниша или сфера бизнеса?",
             )
             return
 
@@ -516,35 +534,7 @@ async def handle_update(client: httpx.AsyncClient, update: dict):
                 log.error("Не удалось отправить лид: %s", e)
 
         answer = await ask_konstantin(state, text)
-        await send_message(client, user_id, answer, buttons=back_button())
-
-    elif update_type == "message_callback":
-        callback = update.get("callback", {})
-        user_id = callback.get("user", {}).get("user_id")
-        payload = callback.get("payload", "")
-
-        if not user_id:
-            return
-
-        if payload == "back:main":
-            state = get_state(user_id)
-            state.update({"niche": None, "history": [], "msg_count": 0})
-            await send_message(
-                client, user_id,
-                "⬇️ Выберите нишу:",
-                buttons=niche_buttons(),
-            )
-            return
-
-        if payload.startswith("niche:"):
-            key = payload.split(":", 1)[1]
-            if key not in NICHES:
-                return
-            state = get_state(user_id)
-            state.update({"niche": key, "history": [], "msg_count": 0})
-            n = NICHES[key]
-            greeting = await ask_konstantin(state, n["greeting"])
-            await send_message(client, user_id, greeting, buttons=back_button())
+        await send_message(client, user_id, answer)
 
 
 # ---------- Long polling ----------
