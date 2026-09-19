@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuraSite AI — Генератор сайтов на Polza AI | Создай крутой сайт за 30 секунд</title>
+<meta name="description" content="AI-генератор сайтов на Polza AI. Опиши идею — получи готовый сайт с анимациями, картинками, адаптивом. Чат-доработка, генерация изображений, экспорт.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { manrope: ['Manrope'], space: ['Space Grotesk'], mono: ['JetBrains Mono'] },
+      animation: { 'float': 'float 6s ease-in-out infinite', 'pulse-slow': 'pulse 4s ease-in-out infinite' }
+    }
+  }
+}
+</script>
+<style>
+:root{--bg:#070A12;--bg2:#0F1320;--card:#151A2D;--line:#1E2540;--accent:#6C5CFF;--accent2:#8B7DFF;--accent3:#4F46E5;--green:#00D492;--pink:#FF4D8D;--cyan:#00D9FF}
+*{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+*::-webkit-scrollbar{width:6px;height:6px}
+*::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+*::-webkit-scrollbar-track{background:transparent}
+body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflow-x:hidden}
+.glass{background:rgba(21,26,45,0.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06)}
+.glass-strong{background:rgba(15,19,32,0.9);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.08)}
+.gradient-text{background:linear-gradient(135deg,#6C5CFF 0%,#8B7DFF 30%,#00D9FF 70%,#FF4D8D 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-border{position:relative;background:var(--card);border-radius:16px}
+.gradient-border::before{content:'';position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,#6C5CFF,#00D9FF,#FF4D8D);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.btn-primary{background:linear-gradient(135deg,#6C5CFF 0%,#4F46E5 100%);box-shadow:0 0 20px rgba(108,92,255,0.4),0 4px 20px rgba(0,0,0,0.3);transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(108,92,255,0.6),0 8px 30px rgba(0,0,0,0.4)}
+.btn-ghost{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);transition:all 0.2s}
+.btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
+.input-field{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);transition:all 0.2s;font-family:'Manrope'}
+.input-field:focus{background:rgba(255,255,255,0.06);border-color:#6C5CFF;outline:none;box-shadow:0 0 0 3px rgba(108,92,255,0.15)}
+.shimmer{position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer{100%{left:100%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes glow{0%,100%{opacity:0.5}50%{opacity:1}}
+.dot-grid{background-image:radial-gradient(rgba(108,92,255,0.15) 1px,transparent 1px);background-size:24px 24px}
+.mesh-gradient{background:radial-gradient(at 0% 0%,rgba(108,92,255,0.3) 0px,transparent 50%),radial-gradient(at 100% 0%,rgba(0,217,255,0.2) 0px,transparent 50%),radial-gradient(at 100% 100%,rgba(255,77,141,0.2) 0px,transparent 50%),radial-gradient(at 0% 100%,rgba(0,212,146,0.15) 0px,transparent 50%)}
+.preview-device{transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.chat-bubble{animation:slideIn 0.3s ease-out}
+@keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.typing-dot{animation:typing 1.4s infinite}
+.typing-dot:nth-child(2){animation-delay:0.2s}
+.typing-dot:nth-child(3){animation-delay:0.4s}
+@keyframes typing{0%,60%,100%{opacity:0.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.code-block{background:#0A0E1A;border:1px solid #1E2540}
+</style>
+</head>
+<body class="min-h-screen relative">
+<!-- Background -->
+<div class="fixed inset-0 dot-grid opacity-40 pointer-events-none"></div>
+<div class="fixed inset-0 mesh-gradient opacity-30 pointer-events-none"></div>
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#6C5CFF]/20 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-[#00D9FF]/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 glass-strong border-b border-white/5">
+  <div class="max-w-[1600px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#6C5CFF] to-[#4F46E5] flex items-center justify-center font-bold text-white shadow-lg shadow-[#6C5CFF]/30">N</div>
+        <div>
+          <div class="font-space font-bold text-[16px] leading-none">NeuraSite AI</div>
+          <div class="text-[11px] text-white/50 font-mono tracking-wider">GENERATOR v2.0 • POLZA AI</div>
+        </div>
+      </div>
+      <div class="hidden lg:flex items-center gap-2">
+        <div class="px-3 py-1 rounded-full bg-[#00D492]/10 border border-[#00D492]/20 text-[#00D492] text-[11px] font-mono">● LIVE</div>
+        <div class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 text-[11px] font-mono">400+ моделей Polza</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 md:gap-3">
+      <div id="keyWrapper" class="hidden md:flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 border-transparent transition-all">
+        <div id="keyDot" class="w-2 h-2 rounded-full bg-[#FF4D8D] animate-pulse"></div>
+        <input id="polzaKey" type="password" value="pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4" placeholder="Polza API ключ (sk-...)" class="bg-transparent text-[13px] w-[240px] outline-none placeholder:text-white/30 font-mono">
+        <button onclick="toggleKey()" class="text-white/40 hover:text-white/80 text-[12px]">👁</button>
+        <button onclick="saveKey()" class="btn-primary px-2.5 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
+      </div>
+      <select id="modelSelect" class="hidden md:block glass px-3 py-2 rounded-xl text-[13px] outline-none bg-[#151A2D] border border-white/10">
+        <option value="anthropic/claude-sonnet-4-5">🔥 Claude Sonnet 4.5 — лучший для фронта</option>
+        <option value="openai/gpt-5">💎 GPT-5 — премиум логика</option>
+        <option value="google/gemini-2.5-pro">🎨 Gemini 2.5 Pro — креатив 1M контекст</option>
+        <option value="deepseek/deepseek-v3.2">⚡ DeepSeek V3.2 — быстро/дешево</option>
+        <option value="qwen/qwen3-235b-a22b:free">🆓 Qwen3 235B — бесплатно</option>
+      </select>
+      <a href="https://polza.ai/register" target="_blank" class="btn-ghost px-3 md:px-4 py-2 rounded-xl text-[13px] font-medium whitespace-nowrap">Получить ключ</a>
+      <button onclick="document.getElementById('brainsModal').classList.remove('hidden')" class="btn-primary px-3 md:px-4 py-2 rounded-xl text-[13px] font-bold text-white whitespace-nowrap">🧠 Мозги</button>
+    </div>
+  </div>
+  <!-- Mobile key -->
+  <div class="md:hidden px-4 pb-3 flex gap-2">
+    <div id="keyWrapperMobile" class="flex-1 flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 border-transparent">
+      <input id="polzaKeyMobile" type="password" value="pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4" placeholder="Polza API ключ" class="bg-transparent text-[13px] w-full outline-none placeholder:text-white/30 font-mono">
+      <button onclick="saveKey()" class="btn-primary px-3 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
+    </div>
+    <select id="modelSelectMobile" class="glass px-2 py-2 rounded-xl text-[12px] outline-none bg-[#151A2D] max-w-[140px]">
+      <option value="anthropic/claude-sonnet-4-5">Claude 4.5</option>
+      <option value="openai/gpt-5">GPT-5</option>
+      <option value="google/gemini-2.5-pro">Gemini Pro</option>
+      <option value="deepseek/deepseek-v3.2">DeepSeek</option>
+      <option value="qwen/qwen3-235b-a22b:free">Qwen Free</option>
+    </select>
+  </div>
+  <!-- Key banner -->
+  <div id="keyBanner" class="hidden bg-gradient-to-r from-[#FF4D8D]/20 to-[#6C5CFF]/20 border-y border-[#FF4D8D]/20 px-4 md:px-6 py-2.5 flex items-center justify-between gap-3 text-[13px]">
+    <div class="flex items-center gap-2"><span class="text-[16px]">🔑</span><span><b>Нужен Polza API ключ</b> — без него генерация не работает. Вставь ключ в поле выше ↑ или нажми "Получить ключ". Ключ сохраняется в браузере.</span></div>
+    <button onclick="document.getElementById('keyModal').classList.remove('hidden')" class="btn-primary px-3 py-1 rounded-lg text-[12px] text-white whitespace-nowrap">Где взять ключ?</button>
+  </div>
+</header>
+
+<!-- Main Layout -->
+<div class="max-w-[1600px] mx-auto px-4 md:px-6 py-4 md:py-6 grid grid-cols-1 lg:grid-cols-[360px_1fr_340px] gap-4 md:gap-5 items-start">
+
+  <!-- LEFT: Form -->
+  <div class="lg:sticky lg:top-[88px] space-y-4 order-2 lg:order-1">
+    <!-- Prompt Card -->
+    <div class="glass rounded-[20px] p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="font-space font-bold text-[15px] flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#6C5CFF]/20 flex items-center justify-center text-[12px]">✦</span> Опиши сайт мечты</h2>
+        <span class="text-[11px] font-mono text-white/40">AI + Polza</span>
+      </div>
+      
+      <div class="space-y-3">
+        <div>
+          <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Название / Бренд</label>
+          <input id="siteName" class="input-field w-full mt-1.5 px-3.5 py-2.5 rounded-xl text-[14px]" placeholder="Например: Lumen Studio">
+        </div>
+        
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Сфера</label>
+            <select id="businessType" class="input-field w-full mt-1.5 px-3 py-2.5 rounded-xl text-[13px]">
+              <option value="">Выбери нишу</option>
+              <option value="IT / SaaS / Стартап">IT / SaaS / Стартап</option>
+              <option value="E-commerce / Магазин">E-commerce / Магазин</option>
+              <option value="Ресторан / Кафе">Ресторан / Кафе / Food</option>
+              <option value="Клиника / Медицина">Клиника / Медицина</option>
+              <option value="Фитнес / Спорт">Фитнес / Спорт</option>
+              <option value="Недвижимость">Недвижимость</option>
+              <option value="Образование / Курсы">Образование / Курсы</option>
+              <option value="Красота / Салон">Красота / Салон / Barbershop</option>
+              <option value="Авто / Детейлинг">Авто / Детейлинг / Сервис</option>
+              <option value="Юрист / Консалтинг">Юрист / Консалтинг</option>
+              <option value="Портфолио / Личный бренд">Портфолио / Личный бренд</option>
+              <option value="Креатив / Агентство">Креатив / Агентство / Дизайн</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Тип сайта</label>
+            <select id="siteType" class="input-field w-full mt-1.5 px-3 py-2.5 rounded-xl text-[13px]">
+              <option value="landing">Landing Page</option>
+              <option value="corporate">Корпоративный</option>
+              <option value="saas">SaaS / Продукт</option>
+              <option value="ecommerce">Магазин</option>
+              <option value="portfolio">Портфолио</option>
+              <option value="blog">Блог / Медиа</option>
+              <option value="agency">Агентство</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Что за сайт? Подробно</label>
+          <textarea id="mainPrompt" rows="5" class="input-field w-full mt-1.5 px-3.5 py-3 rounded-xl text-[14px] resize-none leading-relaxed" placeholder="Например: Современный лендинг для AI-студии которая делает сайты. Темный, премиум, как Linear и Stripe. Hero с градиентом, 3 фичи, тарифы, отзывы. Хочу вау-эффект, анимации, glassmorphism..."></textarea>
+          <div class="flex gap-1.5 mt-2 flex-wrap">
+            <button onclick="setPrompt('Лендинг для кофейни specialty coffee, уютный, теплый, минимализм, много фото кофе, меню, адрес')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">☕ Кофейня</button>
+            <button onclick="setPrompt('SaaS продукт для управления задачами, как Linear, темный, tech, градиенты, фичи, тарифы, вау-анимации')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">🚀 SaaS</button>
+            <button onclick="setPrompt('Портфолио фотографа, минимализм, большие фото, сетка, темный, luxury')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">📸 Портфолио</button>
+            <button onclick="setPrompt('Клиника эстетической медицины, светлый, премиум, доверие, услуги, врачи, отзывы')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">🏥 Клиника</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Стиль дизайна</label>
+            <select id="styleSelect" class="input-field w-full mt-1.5 px-3 py-2.5 rounded-xl text-[13px]">
+              <option value="modern premium like Linear/Stripe">Modern Premium (Linear/Stripe)</option>
+              <option value="glassmorphism + gradients">Glassmorphism + Gradients</option>
+              <option value="minimalism + typography">Minimalism Typography</option>
+              <option value="neomorphism soft">Neomorphism Soft</option>
+              <option value="brutalism bold">Brutalism Bold</option>
+              <option value="luxury dark + gold">Luxury Dark + Gold</option>
+              <option value="cyberpunk neon">Cyberpunk Neon</option>
+              <option value="corporate trust blue">Corporate Trust Blue</option>
+              <option value="claymorphism 3d">Claymorphism 3D</option>
+              <option value="startup friendly bright">Startup Friendly</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Цвета</label>
+            <div class="flex gap-2 mt-1.5">
+              <input id="colorInput" class="input-field flex-1 px-3 py-2.5 rounded-xl text-[13px]" placeholder="#6C5CFF, #00D9FF">
+              <div class="flex gap-1">
+                <button onclick="setColors('#6C5CFF,#00D9FF,#FF4D8D')" class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6C5CFF] to-[#00D9FF] border border-white/10"></button>
+                <button onclick="setColors('#0F172A,#F8FAFC')" class="w-8 h-8 rounded-lg bg-[#0F172A] border border-white/20"></button>
+                <button onclick="setColors('#FF4D8D,#FFB86A')" class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF4D8D] to-[#FFB86A] border border-white/10"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contacts Card -->
+    <div class="glass rounded-[20px] p-5 space-y-3">
+      <h3 class="font-space font-semibold text-[13px] flex items-center gap-2"><span class="w-5 h-5 rounded-md bg-[#00D492]/20 flex items-center justify-center">◍</span> Контакты и CTA</h3>
+      <div class="grid grid-cols-2 gap-2.5">
+        <input id="contactPhone" class="input-field px-3 py-2.5 rounded-xl text-[13px]" placeholder="+7 999 123-45-67">
+        <input id="contactEmail" class="input-field px-3 py-2.5 rounded-xl text-[13px]" placeholder="hello@site.com">
+        <input id="contactAddress" class="input-field col-span-2 px-3 py-2.5 rounded-xl text-[13px]" placeholder="Адрес, город">
+        <input id="contactTg" class="input-field px-3 py-2.5 rounded-xl text-[13px]" placeholder="Telegram @">
+        <input id="contactInst" class="input-field px-3 py-2.5 rounded-xl text-[13px]" placeholder="Instagram @">
+        <input id="ctaText" class="input-field col-span-2 px-3 py-2.5 rounded-xl text-[13px]" placeholder="Текст кнопки: Получить демо">
+      </div>
+      <div class="flex flex-wrap gap-1.5 pt-1">
+        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="animations" checked class="feature-check accent-[#6C5CFF]"> Анимации</label>
+        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="parallax" checked class="feature-check"> Параллакс</label>
+        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="3d" class="feature-check"> 3D</label>
+        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="dark" checked class="feature-check"> Темная тема</label>
+        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="form" checked class="feature-check"> Форма заявки</label>
+      </div>
+    </div>
+
+    <!-- Generate Button -->
+    <button id="generateBtn" onclick="generateSite()" class="w-full btn-primary py-4 rounded-[16px] font-bold text-[15px] text-white flex items-center justify-center gap-2 shimmer">
+      <span class="text-[18px]">✦</span> Сгенерировать сайт <span class="text-[11px] font-mono bg-white/20 px-2 py-0.5 rounded-full">⌘ + Enter</span>
+    </button>
+    <div class="flex gap-2">
+      <button onclick="randomize()" class="flex-1 btn-ghost py-2.5 rounded-xl text-[12px]">🎲 Рандом</button>
+      <button onclick="clearAll()" class="flex-1 btn-ghost py-2.5 rounded-xl text-[12px]">↺ Очистить</button>
+      <button onclick="loadExample()" class="flex-1 btn-ghost py-2.5 rounded-xl text-[12px]">📄 Пример</button>
+    </div>
+
+    <!-- Image Tools -->
+    <div class="glass rounded-[20px] p-4 space-y-3">
+      <h3 class="font-space font-semibold text-[13px] flex items-center gap-2"><span class="w-5 h-5 rounded-md bg-[#FF4D8D]/20 flex items-center justify-center">◐</span> Картинки & Генерация</h3>
+      <div class="flex gap-2">
+        <input id="imageQuery" class="input-field flex-1 px-3 py-2 rounded-xl text-[13px]" placeholder="Найти картинку: business team">
+        <button onclick="searchImages()" class="btn-ghost px-3 py-2 rounded-xl text-[12px]">🔍</button>
+      </div>
+      <div class="flex gap-2">
+        <input id="imagePrompt" class="input-field flex-1 px-3 py-2 rounded-xl text-[13px]" placeholder="Сгенерить: futuristic office, neon">
+        <button onclick="generateImage()" class="btn-primary px-3 py-2 rounded-xl text-[12px] text-white">✦ Gen</button>
+      </div>
+      <div id="imageResults" class="grid grid-cols-3 gap-2 max-h-[180px] overflow-y-auto hidden"></div>
+    </div>
+  </div>
+
+  <!-- CENTER: Preview -->
+  <div class="order-1 lg:order-2 space-y-3">
+    <!-- Preview Toolbar -->
+    <div class="glass rounded-[16px] p-2.5 flex items-center justify-between gap-2 flex-wrap">
+      <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1 p-1 rounded-xl bg-black/30">
+          <button onclick="setDevice('desktop')" id="btn-desktop" class="device-btn px-3 py-1.5 rounded-lg bg-white text-black text-[12px] font-medium">🖥 Desktop</button>
+          <button onclick="setDevice('tablet')" id="btn-tablet" class="device-btn px-3 py-1.5 rounded-lg text-white/60 text-[12px] hover:text-white">📱 Tablet</button>
+          <button onclick="setDevice('mobile')" id="btn-mobile" class="device-btn px-3 py-1.5 rounded-lg text-white/60 text-[12px] hover:text-white">📲 Mobile</button>
+        </div>
+        <div class="hidden md:flex items-center gap-1.5 pl-2 border-l border-white/10">
+          <div class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-[#28CA42]"></div>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button onclick="openFullscreen()" class="btn-ghost px-3 py-1.5 rounded-lg text-[12px]">⛶ Full</button>
+        <button onclick="toggleCode()" class="btn-ghost px-3 py-1.5 rounded-lg text-[12px]">{"</>"} Код</button>
+        <button onclick="copyCode()" class="btn-ghost px-3 py-1.5 rounded-lg text-[12px]">📋 Копировать</button>
+        <button onclick="downloadSite()" class="btn-primary px-4 py-1.5 rounded-lg text-[12px] font-bold text-white">⬇ Скачать</button>
+      </div>
+    </div>
+
+    <!-- Preview Frame -->
+    <div id="previewWrapper" class="preview-device relative w-full bg-[#0A0E1A] rounded-[20px] overflow-hidden border border-white/10 shadow-2xl" style="height: 720px;">
+      <div id="previewPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+        <div class="w-[120px] h-[120px] rounded-[24px] bg-gradient-to-br from-[#6C5CFF]/20 to-[#00D9FF]/20 border border-white/10 flex items-center justify-center text-[48px] mb-6 animate-float">✦</div>
+        <h3 class="font-space font-bold text-[22px] mb-2">Твой сайт появится здесь</h3>
+        <p class="text-white/50 text-[14px] max-w-[360px] leading-relaxed">Опиши идею слева и нажми «Сгенерировать». AI на Polza создаст премиум сайт с анимациями, картинками и адаптивом за 20-40 секунд.</p>
+        <div class="flex gap-2 mt-6">
+          <div class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono">Tailwind • GSAP • Unsplash • Анимации</div>
+        </div>
+        <div class="grid grid-cols-3 gap-3 mt-8 w-full max-w-[400px]">
+          <div class="glass rounded-xl p-3 text-left">
+            <div class="text-[18px] mb-1">🎨</div>
+            <div class="text-[12px] font-medium">Дизайн топ 1%</div>
+            <div class="text-[11px] text-white/40">Как Stripe, Linear</div>
+          </div>
+          <div class="glass rounded-xl p-3 text-left">
+            <div class="text-[18px] mb-1">⚡</div>
+            <div class="text-[12px] font-medium">30 сек</div>
+            <div class="text-[11px] text-white/40">От идеи до сайта</div>
+          </div>
+          <div class="glass rounded-xl p-3 text-left">
+            <div class="text-[18px] mb-1">💬</div>
+            <div class="text-[12px] font-medium">Чат-правки</div>
+            <div class="text-[11px] text-white/40">Скажи что изменить</div>
+          </div>
+        </div>
+      </div>
+      <iframe id="previewFrame" class="w-full h-full border-0 hidden bg-white" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+      <div id="loadingOverlay" class="absolute inset-0 bg-[#070A12]/90 backdrop-blur-xl hidden flex-col items-center justify-center p-8">
+        <div class="relative w-20 h-20 mb-6">
+          <div class="absolute inset-0 rounded-full border-2 border-white/10"></div>
+          <div class="absolute inset-0 rounded-full border-2 border-t-[#6C5CFF] animate-spin"></div>
+          <div class="absolute inset-2 rounded-full bg-gradient-to-br from-[#6C5CFF]/20 to-[#00D9FF]/20 flex items-center justify-center text-[24px]">✦</div>
+        </div>
+        <div class="font-space font-bold text-[16px] mb-2" id="loadingTitle">Генерирую магию...</div>
+        <div class="text-[13px] text-white/50 text-center max-w-[320px]" id="loadingText">Claude Sonnet 4.5 пишет код, подбирает картинки, делает анимации</div>
+        <div class="mt-6 w-[280px] h-1 rounded-full bg-white/10 overflow-hidden">
+          <div id="loadingBar" class="h-full bg-gradient-to-r from-[#6C5CFF] to-[#00D9FF] transition-all duration-500" style="width: 10%"></div>
+        </div>
+        <div class="mt-3 text-[11px] font-mono text-white/30" id="loadingStep">Инициализация Polza AI...</div>
+      </div>
+    </div>
+
+    <!-- Code View -->
+    <div id="codeView" class="hidden glass rounded-[16px] overflow-hidden">
+      <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/10">
+        <div class="flex items-center gap-2 text-[12px] font-mono"><span class="w-2 h-2 rounded-full bg-[#00D492]"></span> generated.html • <span id="codeSize">0 KB</span></div>
+        <button onclick="toggleCode()" class="text-white/40 hover:text-white text-[12px]">✕ Закрыть</button>
+      </div>
+      <pre class="p-4 overflow-auto max-h-[400px] text-[12px] font-mono leading-relaxed"><code id="codeContent" class="text-white/80"></code></pre>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-3 gap-3">
+      <div class="glass rounded-xl p-3 flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-[#6C5CFF]/20 flex items-center justify-center text-[14px]">⚡</div>
+        <div><div class="text-[12px] font-medium" id="statTime">—</div><div class="text-[11px] text-white/40">Время генерации</div></div>
+      </div>
+      <div class="glass rounded-xl p-3 flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-[#00D9FF]/20 flex items-center justify-center text-[14px]">📦</div>
+        <div><div class="text-[12px] font-medium" id="statSize">—</div><div class="text-[11px] text-white/40">Размер кода</div></div>
+      </div>
+      <div class="glass rounded-xl p-3 flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-[#FF4D8D]/20 flex items-center justify-center text-[14px]">🧠</div>
+        <div><div class="text-[12px] font-medium" id="statModel">—</div><div class="text-[11px] text-white/40">Модель Polza</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Chat -->
+  <div class="lg:sticky lg:top-[88px] space-y-4 order-3">
+    <div class="glass rounded-[20px] flex flex-col" style="height: 520px;">
+      <div class="p-4 border-b border-white/5 flex items-center justify-between">
+        <h3 class="font-space font-bold text-[14px] flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#00D9FF]/20 flex items-center justify-center text-[12px]">💬</span> Чат-доработка</h3>
+        <span class="text-[10px] font-mono px-2 py-1 rounded-full bg-[#00D492]/10 border border-[#00D492]/20 text-[#00D492]">AI LIVE</span>
+      </div>
+      
+      <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3">
+        <div class="chat-bubble glass rounded-[14px] rounded-bl-[4px] p-3 text-[13px] leading-relaxed">
+          <div class="font-medium text-white mb-1">Привет! Я твой AI-дизайнер ✦</div>
+          <div class="text-white/60">Сгенерируй сайт, а потом пиши мне что исправить. Например:</div>
+          <div class="mt-2 space-y-1">
+            <button onclick="quickChat('Сделай более минималистично, убери лишнее')" class="block w-full text-left px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[12px] border border-white/5">→ «Сделай более минималистично»</button>
+            <button onclick="quickChat('Поменяй цвета на темную тему с золотыми акцентами')" class="block w-full text-left px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[12px] border border-white/5">→ «Темная тема + золото»</button>
+            <button onclick="quickChat('Добавь секцию с отзывами и логотипами клиентов')" class="block w-full text-left px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[12px] border border-white/5">→ «Добавь отзывы»</button>
+            <button onclick="quickChat('Сделай hero более вау, добавь 3D и градиенты')" class="block w-full text-left px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[12px] border border-white/5">→ «Вау hero с 3D»</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3 border-t border-white/5 space-y-2">
+        <div class="flex gap-1.5 flex-wrap">
+          <button onclick="quickChat('Сделай светлее')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">☀️ Светлее</button>
+          <button onclick="quickChat('Сделай темнее')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">🌙 Темнее</button>
+          <button onclick="quickChat('Добавь больше анимаций')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">✨ Анимаций</button>
+          <button onclick="quickChat('Добавь секцию тарифов')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">💳 Тарифы</button>
+        </div>
+        <div class="flex gap-2">
+          <input id="chatInput" class="input-field flex-1 px-3.5 py-2.5 rounded-xl text-[13px]" placeholder="Что исправить? Например: сделай кнопку больше" onkeydown="if(event.key==='Enter') sendChat()">
+          <button onclick="sendChat()" class="btn-primary w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold">↑</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export & History -->
+    <div class="glass rounded-[20px] p-4 space-y-3">
+      <h3 class="font-space font-semibold text-[13px]">Экспорт и деплой</h3>
+      <div class="grid grid-cols-2 gap-2">
+        <button onclick="downloadSite()" class="btn-ghost py-2.5 rounded-xl text-[12px] font-medium">⬇ HTML</button>
+        <button onclick="copyCode()" class="btn-ghost py-2.5 rounded-xl text-[12px] font-medium">📋 Копировать</button>
+        <button onclick="openInNewTab()" class="btn-ghost py-2.5 rounded-xl text-[12px] font-medium">↗ Открыть</button>
+        <button onclick="shareSite()" class="btn-ghost py-2.5 rounded-xl text-[12px] font-medium">🔗 Поделиться</button>
+      </div>
+      <div class="pt-2 border-t border-white/5">
+        <div class="text-[11px] font-mono text-white/40 mb-2">История генераций</div>
+        <div id="historyList" class="space-y-1.5 max-h-[120px] overflow-y-auto">
+          <div class="text-[11px] text-white/30">Пока пусто — сгенерируй первый сайт</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Polza Promo -->
+    <div class="rounded-[16px] p-4 bg-gradient-to-br from-[#6C5CFF]/20 to-[#00D9FF]/10 border border-[#6C5CFF]/20">
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 rounded-lg bg-[#6C5CFF] flex items-center justify-center text-white font-bold text-[14px]">P</div>
+        <div class="flex-1">
+          <div class="font-bold text-[13px]">Работает на Polza AI</div>
+          <div class="text-[11px] text-white/60 leading-relaxed mt-1">400+ моделей в одном API, оплата в рублях, без VPN. Лучшие цены в РФ.</div>
+          <a href="https://polza.ai/" target="_blank" class="inline-flex mt-2 text-[11px] text-[#8B7DFF] hover:text-white">polza.ai →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key Modal - ГДЕ ВЗЯТЬ КЛЮЧ -->
+<div id="keyModal" class="hidden fixed inset-0 z-[110] bg-black/80 backdrop-blur-xl p-4 md:p-8 overflow-y-auto">
+  <div class="max-w-[640px] mx-auto mt-10">
+    <div class="glass-strong rounded-[24px] p-6 md:p-8 border border-[#6C5CFF]/20">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-space font-bold text-[22px] md:text-[28px]">🔑 Куда вставить ключ Polza AI?</h2>
+        <button onclick="document.getElementById('keyModal').classList.add('hidden')" class="w-9 h-9 rounded-xl glass flex items-center justify-center">✕</button>
+      </div>
+      
+      <div class="space-y-5">
+        <div class="rounded-xl bg-[#6C5CFF]/10 border border-[#6C5CFF]/20 p-4">
+          <div class="font-bold text-[14px] mb-2">📍 Вариант 1: В браузере (для GitHub Pages) — самый простой</div>
+          <div class="text-[13px] text-white/70 leading-relaxed">
+            1. В шапке сайта найди поле <code class="px-2 py-0.5 rounded bg-white/10 font-mono text-[12px]">🔑 Polza API ключ (sk-polza-...)</code> — оно вверху справа<br>
+            2. Вставь туда ключ с Polza AI<br>
+            3. Нажми OK — ключ сохранится в браузере (localStorage) и подсветится зеленым ●<br>
+            4. Теперь можешь генерировать сайты!
+          </div>
+          <div class="mt-3 flex gap-2">
+            <img src="https://via.placeholder.com/600x80/151A2D/8B7DFF?text=HEADER+:+[●]+[____Polza+API+key____]+[👁]+[OK]+[Model]+[Получить+ключ]+[Мозги]" class="w-full rounded-lg border border-white/10 opacity-60">
+          </div>
+        </div>
+
+        <div class="rounded-xl bg-[#00D9FF]/10 border border-[#00D9FF]/20 p-4">
+          <div class="font-bold text-[14px] mb-2">📍 Вариант 2: На сервере (для локального запуска / Render / Railway)</div>
+          <div class="text-[13px] text-white/70 leading-relaxed">
+            Если запускаешь <code class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-[11px]">python generator_server.py</code>:
+            <div class="mt-2 p-3 rounded-lg bg-black/40 border border-white/5 font-mono text-[12px] leading-relaxed">
+              # Создай файл .env в корне проекта<br>
+              cp .env.example .env<br>
+              # Открой .env и вставь:<br>
+              POLZA_API_KEY=sk-polza-твой-ключ-сюда<br>
+              POLZA_BASE_URL=https://polza.ai/api/v1<br><br>
+              # Или через переменную окружения:<br>
+              export POLZA_API_KEY=sk-polza-...<br>
+              python generator_server.py
+            </div>
+            Тогда ключ в браузере указывать не нужно — бекенд сам проксирует запросы.
+          </div>
+        </div>
+
+        <div class="rounded-xl bg-[#00D492]/10 border border-[#00D492]/20 p-4">
+          <div class="font-bold text-[14px] mb-2">🔗 Где взять ключ Polza AI?</div>
+          <div class="text-[13px] text-white/70 leading-relaxed space-y-2">
+            <div>1. Иди на <a href="https://polza.ai/register" target="_blank" class="text-[#8B7DFF] underline">https://polza.ai/register</a> — регистрация за 30 сек</div>
+            <div>2. Пополни баланс на 100-300₽ (хватит на 20-30 сайтов) — оплата российской картой, без VPN</div>
+            <div>3. Dashboard → <b>API Keys</b> → Create Key → скопируй <code class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-[11px]">sk-polza-...</code></div>
+            <div>4. Вставь в генератор!</div>
+          </div>
+          <a href="https://polza.ai/register" target="_blank" class="mt-3 inline-flex btn-primary px-5 py-2.5 rounded-xl text-[13px] font-bold text-white">Получить ключ на polza.ai →</a>
+        </div>
+
+        <div class="rounded-xl bg-white/5 border border-white/10 p-4">
+          <div class="font-bold text-[13px] mb-2">🔒 Безопасность</div>
+          <div class="text-[12px] text-white/50 leading-relaxed">
+            • В браузере ключ хранится только у тебя в localStorage, никуда не отправляется кроме api.polza.ai<br>
+            • Для продакшена используй бекенд (generator_server.py) — он скрывает ключ<br>
+            • Можешь в любой момент удалить: очисти localStorage или нажми "Очистить" в генераторе
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <input id="keyModalInput" type="text" value="pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4" placeholder="Вставь сюда sk-polza-..." class="input-field flex-1 px-4 py-3 rounded-xl text-[14px] font-mono" onkeydown="if(event.key==='Enter') saveKeyFromModal()">
+          <button onclick="saveKeyFromModal()" class="btn-primary px-6 py-3 rounded-xl text-[14px] font-bold text-white">💾 Сохранить ключ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Brains Modal -->
+<div id="brainsModal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl p-4 md:p-8 overflow-y-auto">
+  <div class="max-w-[1100px] mx-auto">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="font-space font-bold text-[24px] md:text-[32px]">🧠 Мозги Polza AI — рекомендации</h2>
+      <button onclick="document.getElementById('brainsModal').classList.add('hidden')" class="w-9 h-9 rounded-xl glass flex items-center justify-center">✕</button>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="md:col-span-3 glass rounded-[20px] p-5 border border-[#6C5CFF]/20">
+        <h3 class="font-bold text-[16px] mb-3">💡 Как это работает? Единый API для 400+ моделей</h3>
+        <p class="text-[13px] text-white/60 leading-relaxed">Polza AI — агрегатор №1 в РФ. Один ключ, один баланс в рублях, доступ ко всем моделям OpenAI, Anthropic, Google, DeepSeek, Qwen, Meta и др. Без VPN, без прокси. OpenAI-совместимый API: <code class="px-1.5 py-0.5 rounded bg-white/10 text-[11px]">https://polza.ai/api/v1</code></p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded-full bg-[#6C5CFF]/20 text-[11px] border border-[#6C5CFF]/20">400+ моделей</span>
+          <span class="px-2.5 py-1 rounded-full bg-[#00D492]/10 text-[11px] border border-[#00D492]/20">Оплата в ₽</span>
+          <span class="px-2.5 py-1 rounded-full bg-[#00D9FF]/10 text-[11px] border border-[#00D9FF]/20">Без VPN</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[11px] border border-white/10">OpenAI SDK</span>
+        </div>
+      </div>
+
+      <div class="glass rounded-[20px] p-5">
+        <h4 class="font-bold text-[14px] mb-3 flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#6C5CFF]/20 flex items-center justify-center">💻</span> Генерация сайтов (текст → код)</h4>
+        <div class="space-y-2.5" id="textModelsList"></div>
+      </div>
+      <div class="glass rounded-[20px] p-5">
+        <h4 class="font-bold text-[14px] mb-3 flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#FF4D8D]/20 flex items-center justify-center">🎨</span> Картинки и иллюстрации</h4>
+        <div class="space-y-2.5" id="imageModelsList"></div>
+      </div>
+      <div class="glass rounded-[20px] p-5">
+        <h4 class="font-bold text-[14px] mb-3 flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#00D9FF]/20 flex items-center justify-center">🎬</span> Видео и анимации</h4>
+        <div class="space-y-2.5" id="videoModelsList"></div>
+      </div>
+
+      <div class="md:col-span-3 glass rounded-[20px] p-5">
+        <h4 class="font-bold text-[14px] mb-3">🏆 Наша рекомендация — связка для генератора</h4>
+        <div class="grid md:grid-cols-3 gap-3 text-[12px]">
+          <div class="rounded-xl bg-[#6C5CFF]/10 border border-[#6C5CFF]/20 p-3">
+            <div class="font-bold mb-1">🥇 Основной генератор</div>
+            <div class="font-mono text-[#8B7DFF]">anthropic/claude-sonnet-4-5</div>
+            <div class="text-white/50 mt-1">Лучший для фронтенда, понимает дизайн, пишет чистый Tailwind + GSAP, делает вау-анимации</div>
+          </div>
+          <div class="rounded-xl bg-[#FF4D8D]/10 border border-[#FF4D8D]/20 p-3">
+            <div class="font-bold mb-1">🎨 Картинки</div>
+            <div class="font-mono text-[#FF4D8D]">bytedance/seedream-4.5</div>
+            <div class="text-white/50 mt-1">Фотореализм топ уровня, фоны, hero изображения, продукт</div>
+          </div>
+          <div class="rounded-xl bg-[#00D9FF]/10 border border-[#00D9FF]/20 p-3">
+            <div class="font-bold mb-1">💬 Доработки в чате</div>
+            <div class="font-mono text-[#00D9FF]">anthropic/claude-haiku-4-5</div>
+            <div class="text-white/50 mt-1">Быстрый, дешевый, идеален для правок «сделай темнее», «добавь секцию»</div>
+          </div>
+        </div>
+        <div class="mt-4 p-3 rounded-xl bg-black/30 border border-white/5">
+          <div class="text-[11px] font-mono text-white/40 mb-1.5">Пример кода (Python, OpenAI SDK):</div>
+          <pre class="text-[11px] font-mono text-white/70 overflow-x-auto"><code>from openai import OpenAI
+client = OpenAI(
+  base_url="https://polza.ai/api/v1",
+  api_key="POLZA_KEY"
+)
+resp = client.chat.completions.create(
+  model="anthropic/claude-sonnet-4-5",
+  messages=[{"role":"user","content":"Создай лендинг..."}]
+)</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] hidden">
+  <div class="glass-strong px-4 py-2.5 rounded-full text-[13px] font-medium shadow-2xl flex items-center gap-2">
+    <span id="toastIcon">✦</span> <span id="toastText">Готово!</span>
+  </div>
+</div>
+
+<script>
+// ---------- State ----------
+let currentHtml = '';
+let history = JSON.parse(localStorage.getItem('neuralsite_history') || '[]');
+let isGenerating = false;
+
+// ---------- Models Data (fallback if API not available) ----------
+const MODELS = {
+  text: [
+    {id:"anthropic/claude-sonnet-4-5", name:"Claude Sonnet 4.5", best:"Фронтенд, дизайн, код - ЛУЧШИЙ", price:"~$3/1M", badge:"🔥 Рекомендуем", context:"200k"},
+    {id:"openai/gpt-5", name:"GPT-5", best:"Сложные SaaS, логика", price:"~$5/1M", badge:"💎 Премиум", context:"400k"},
+    {id:"google/gemini-2.5-pro", name:"Gemini 2.5 Pro", best:"Креатив, 1M контекст", price:"~$2.5/1M", badge:"🎨 Креатив", context:"1M"},
+    {id:"deepseek/deepseek-v3.2", name:"DeepSeek V3.2", best:"Быстро и дешево", price:"~$0.5/1M", badge:"⚡ Быстро", context:"128k"},
+    {id:"qwen/qwen3-235b-a22b:free", name:"Qwen3 235B", best:"Бесплатно, русский", price:"FREE", badge:"🆓 Бесплатно", context:"32k"},
+    {id:"anthropic/claude-haiku-4-5", name:"Claude Haiku 4.5", best:"Доработки в чате", price:"~$1/1M", badge:"💬 Чат", context:"200k"},
+  ],
+  image: [
+    {id:"bytedance/seedream-4.5", name:"Seedream 4.5", best:"Фотореализм, лучший", price:"~$0.05", badge:"🔥 Топ"},
+    {id:"openai/gpt-image-1.5", name:"GPT Image 1.5", best:"Иконки, точность", price:"~$0.08", badge:"🎯 Точность"},
+    {id:"black-forest-labs/flux-2-pro", name:"Flux 2 Pro", best:"Фоны, быстро", price:"~$0.03", badge:"⚡ Быстро"},
+    {id:"google/nano-banana-pro", name:"Nano Banana Pro", best:"Редактирование", price:"~$0.04", badge:"✏️ Редактор"},
+  ],
+  video: [
+    {id:"bytedance/seedance-2.5", name:"Seedance 2.5", best:"Видео для hero", price:"~$0.20/sec", badge:"🔥 Топ"},
+    {id:"kuaishou/kling-3.0", name:"Kling 3.0", best:"Кинематографичность", price:"~$0.15/sec", badge:"🎬 Кино"},
+    {id:"alibaba/wan-3.0", name:"Wan 3.0", best:"Моушн графика", price:"~$0.12/sec", badge:"✨ Моушн"},
+    {id:"google/veo-3.1", name:"Veo 3.1", best:"Макс качество", price:"~$0.30/sec", badge:"💎 Премиум"},
+  ]
+};
+
+function renderModels(){
+  const textEl = document.getElementById('textModelsList');
+  const imgEl = document.getElementById('imageModelsList');
+  const vidEl = document.getElementById('videoModelsList');
+  if(textEl) textEl.innerHTML = MODELS.text.map(m=>`
+    <div class="rounded-xl bg-white/[0.03] border border-white/5 p-3 hover:bg-white/[0.05] transition cursor-pointer" onclick="selectModel('${m.id}')">
+      <div class="flex items-center justify-between mb-1"><span class="font-bold text-[13px]">${m.name}</span><span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/10">${m.badge}</span></div>
+      <div class="text-[11px] text-white/50">${m.best}</div>
+      <div class="flex gap-2 mt-2 text-[10px] font-mono"><span class="px-1.5 py-0.5 rounded bg-black/30">${m.price}</span><span class="px-1.5 py-0.5 rounded bg-black/30">${m.context || ''}</span></div>
+      <div class="text-[10px] font-mono text-[#8B7DFF] mt-1 truncate">${m.id}</div>
+    </div>`).join('');
+  if(imgEl) imgEl.innerHTML = MODELS.image.map(m=>`
+    <div class="rounded-xl bg-white/[0.03] border border-white/5 p-3 hover:bg-white/[0.05] transition cursor-pointer" onclick="selectModel('${m.id}', 'image')">
+      <div class="flex items-center justify-between mb-1"><span class="font-bold text-[13px]">${m.name}</span><span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/10">${m.badge}</span></div>
+      <div class="text-[11px] text-white/50">${m.best}</div>
+      <div class="text-[10px] font-mono text-[#FF4D8D] mt-1 truncate">${m.id}</div>
+    </div>`).join('');
+  if(vidEl) vidEl.innerHTML = MODELS.video.map(m=>`
+    <div class="rounded-xl bg-white/[0.03] border border-white/5 p-3 hover:bg-white/[0.05] transition">
+      <div class="flex items-center justify-between mb-1"><span class="font-bold text-[13px]">${m.name}</span><span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/10">${m.badge}</span></div>
+      <div class="text-[11px] text-white/50">${m.best}</div>
+      <div class="text-[10px] font-mono text-[#00D9FF] mt-1 truncate">${m.id}</div>
+    </div>`).join('');
+}
+renderModels();
+
+function selectModel(id, type='text'){
+  if(type==='text'){
+    document.getElementById('modelSelect').value = id;
+    document.getElementById('modelSelectMobile').value = id;
+  }
+  toast(`Выбрана модель: ${id}`, '🧠');
+  document.getElementById('brainsModal').classList.add('hidden');
+}
+
+// ---------- Helpers ----------
+function getKey(){
+  const hardcoded = 'pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4';
+  return (document.getElementById('polzaKey')?.value || document.getElementById('polzaKeyMobile')?.value || document.getElementById('keyModalInput')?.value || '').trim() || localStorage.getItem('polza_key') || hardcoded;
+}
+function getModel(){
+  return document.getElementById('modelSelect')?.value || document.getElementById('modelSelectMobile')?.value || 'anthropic/claude-sonnet-4-5';
+}
+function toast(text, icon='✦'){
+  const t = document.getElementById('toast');
+  document.getElementById('toastText').textContent = text;
+  document.getElementById('toastIcon').textContent = icon;
+  t.classList.remove('hidden');
+  setTimeout(()=>t.classList.add('hidden'), 3000);
+}
+function toggleKey(){
+  const i = document.getElementById('polzaKey');
+  if(i) i.type = i.type==='password'?'text':'password';
+  const m = document.getElementById('polzaKeyMobile');
+  if(m) m.type = m.type==='password'?'text':'password';
+}
+function saveKey(){
+  const k = getKey();
+  if(!k){
+    toast('Вставь ключ Polza AI!', '🔑');
+    document.getElementById('keyModal').classList.remove('hidden');
+    return;
+  }
+  if(!k.startsWith('sk-')){
+    toast('Ключ должен начинаться с sk-...', '⚠️');
+    return;
+  }
+  localStorage.setItem('polza_key', k);
+  document.getElementById('polzaKey').value = k;
+  const mobile = document.getElementById('polzaKeyMobile');
+  if(mobile) mobile.value = k;
+  const modalInput = document.getElementById('keyModalInput');
+  if(modalInput) modalInput.value = k;
+  updateKeyUI();
+  toast('Ключ сохранен! Можно генерировать', '✅');
+}
+function saveKeyFromModal(){
+  const input = document.getElementById('keyModalInput');
+  const k = input.value.trim();
+  if(!k){ toast('Вставь ключ!', '🔑'); return; }
+  localStorage.setItem('polza_key', k);
+  document.getElementById('polzaKey').value = k;
+  const mobile = document.getElementById('polzaKeyMobile');
+  if(mobile) mobile.value = k;
+  updateKeyUI();
+  document.getElementById('keyModal').classList.add('hidden');
+  toast('Ключ сохранен! Теперь генерируй сайт', '✅');
+}
+function updateKeyUI(){
+  const k = getKey();
+  const hasKey = !!k;
+  const dot = document.getElementById('keyDot');
+  const wrapper = document.getElementById('keyWrapper');
+  const wrapperMobile = document.getElementById('keyWrapperMobile');
+  const banner = document.getElementById('keyBanner');
+  
+  if(dot){
+    dot.className = `w-2 h-2 rounded-full ${hasKey ? 'bg-[#00D492]' : 'bg-[#FF4D8D]'} animate-pulse`;
+  }
+  if(wrapper){
+    wrapper.className = `hidden md:flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 transition-all ${hasKey ? 'border-[#00D492]/30 bg-[#00D492]/5' : 'border-[#FF4D8D]/30 bg-[#FF4D8D]/5 animate-pulse'}`;
+  }
+  if(wrapperMobile){
+    wrapperMobile.className = `flex-1 flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 ${hasKey ? 'border-[#00D492]/30' : 'border-[#FF4D8D]/30'}`;
+  }
+  if(banner){
+    if(hasKey) banner.classList.add('hidden');
+    else banner.classList.remove('hidden');
+  }
+}
+function checkKeyOnStart(){
+  updateKeyUI();
+  const k = getKey();
+  if(!k){
+    setTimeout(()=>{
+      document.getElementById('keyModal').classList.remove('hidden');
+      toast('Сначала укажи Polza API ключ!', '🔑');
+    }, 1000);
+  }
+}
+function setPrompt(t){ document.getElementById('mainPrompt').value = t; }
+function setColors(c){ document.getElementById('colorInput').value = c; }
+
+function getFormData(){
+  const features = [...document.querySelectorAll('.feature-check:checked')].map(c=>c.value);
+  return {
+    prompt: document.getElementById('mainPrompt').value.trim(),
+    site_name: document.getElementById('siteName').value.trim() || 'NeuraSite',
+    business_type: document.getElementById('businessType').value,
+    site_type: document.getElementById('siteType').value,
+    style: document.getElementById('styleSelect').value,
+    colors: document.getElementById('colorInput').value,
+    contacts: {
+      phone: document.getElementById('contactPhone').value,
+      email: document.getElementById('contactEmail').value,
+      address: document.getElementById('contactAddress').value,
+      telegram: document.getElementById('contactTg').value,
+      instagram: document.getElementById('contactInst').value,
+      cta: document.getElementById('ctaText').value,
+    },
+    features
+  };
+}
+
+// ---------- Backend vs Direct ----------
+async function callGenerateAPI(data){
+  const apiKey = getKey();
+  const model = getModel();
+  
+  // Попробуем backend сначала
+  try{
+    const res = await fetch('/api/generate', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({...data, model, api_key: apiKey || undefined})
+    });
+    if(res.ok){
+      const j = await res.json();
+      return {html: j.html, model: j.model_used || model, source:'backend'};
+    }
+  }catch(e){ console.log('Backend not available, fallback to direct', e); }
+
+  // Direct Polza API
+  if(!apiKey){
+    throw new Error('Укажите Polza API ключ в шапке! Получить: https://polza.ai/register');
+  }
+  
+  const system = `Ты — элитный веб-дизайнер уровня Apple, Stripe, Linear + senior frontend. Сгенерируй ОДИН ПОЛНЫЙ HTML файл сайта. Требования: один файл, Tailwind CDN, Google Fonts, GSAP для анимаций, современный премиум дизайн, анимации обязательно (fade-up, parallax, hover), картинки с https://images.unsplash.com, адаптив, интерактив (меню, форма, FAQ). Структура: header sticky blur, hero вау, фичи, о компании, соцдоказательства, тарифы/каталог, FAQ, контакты+форма, footer. Русский язык. Только HTML код, без объяснений, начни с <!DOCTYPE html>. Стиль: ${data.style}, цвета: ${data.colors || 'подбери премиум палитру'}`;
+
+  const user = `Название: ${data.site_name}
+Сфера: ${data.business_type}
+Тип: ${data.site_type}
+Фичи: ${data.features.join(', ')}
+Контакты: ${JSON.stringify(data.contacts)}
+Описание: ${data.prompt}
+СГЕНЕРИРУЙ ПОЛНЫЙ HTML СЕЙЧАС.`;
+
+  const resp = await fetch('https://polza.ai/api/v1/chat/completions', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
+    body: JSON.stringify({model, messages:[{role:'system',content:system},{role:'user',content:user}], temperature:0.85, max_tokens:16000})
+  });
+  if(!resp.ok){
+    const err = await resp.text();
+    throw new Error(`Polza API error ${resp.status}: ${err.slice(0,500)}`);
+  }
+  const j = await resp.json();
+  let html = j.choices[0].message.content;
+  html = html.replace(/^```html\s*/,'').replace(/^```\s*/,'').replace(/\s*```$/,'').trim();
+  return {html, model, source:'direct'};
+}
+
+async function callRefineAPI(currentHtml, message){
+  const apiKey = getKey();
+  const model = document.getElementById('modelSelect')?.value?.includes('haiku') ? getModel() : 'anthropic/claude-haiku-4-5';
+  
+  try{
+    const res = await fetch('/api/refine', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({current_html: currentHtml, message, model, api_key: apiKey || undefined})
+    });
+    if(res.ok){
+      const j = await res.json();
+      return j.html;
+    }
+  }catch(e){}
+
+  if(!apiKey) throw new Error('Нужен Polza ключ');
+  
+  const system = `Ты senior frontend, дорабатываешь сайт. Дают текущий HTML и запрос что исправить. Верни ПОЛНЫЙ обновленный HTML, сохранив все остальное. Только код, без объяснений.`;
+  const user = `Запрос: ${message}\n\nТекущий HTML:\n${currentHtml.slice(0,80000)}\n\nВерни ПОЛНЫЙ обновленный HTML.`;
+  
+  const resp = await fetch('https://polza.ai/api/v1/chat/completions', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
+    body: JSON.stringify({model, messages:[{role:'system',content:system},{role:'user',content:user}], temperature:0.7, max_tokens:16000})
+  });
+  if(!resp.ok) throw new Error('Polza API error');
+  const j = await resp.json();
+  let html = j.choices[0].message.content;
+  html = html.replace(/^```html\s*/,'').replace(/^```\s*/,'').replace(/\s*```$/,'').trim();
+  return html;
+}
+
+// ---------- Generate ----------
+async function generateSite(){
+  const data = getFormData();
+  if(!data.prompt){
+    toast('Опиши какой сайт нужен!', '⚠️');
+    document.getElementById('mainPrompt').focus();
+    return;
+  }
+  if(isGenerating) return;
+  isGenerating = true;
+  
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ Генерирую...';
+  
+  const overlay = document.getElementById('loadingOverlay');
+  overlay.classList.remove('hidden');
+  overlay.classList.add('flex');
+  document.getElementById('previewPlaceholder').classList.add('hidden');
+  
+  const steps = [
+    'Подключаюсь к Polza AI...',
+    'Claude Sonnet 4.5 думает над дизайном...',
+    'Пишу Tailwind + GSAP анимации...',
+    'Подбираю картинки с Unsplash...',
+    'Делаю адаптив и интерактив...',
+    'Финальные штрихи...'
+  ];
+  let step = 0;
+  const interval = setInterval(()=>{
+    if(step < steps.length){
+      document.getElementById('loadingStep').textContent = steps[step];
+      document.getElementById('loadingBar').style.width = `${15 + step*15}%`;
+      step++;
+    }
+  }, 800);
+  
+  const start = Date.now();
+  try{
+    const result = await callGenerateAPI(data);
+    currentHtml = result.html;
+    
+    clearInterval(interval);
+    document.getElementById('loadingBar').style.width = '100%';
+    document.getElementById('loadingStep').textContent = 'Готово! Рендерю...';
+    
+    setTimeout(()=>{
+      renderPreview(currentHtml);
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      
+      const elapsed = ((Date.now()-start)/1000).toFixed(1);
+      document.getElementById('statTime').textContent = `${elapsed} сек`;
+      document.getElementById('statSize').textContent = `${(currentHtml.length/1024).toFixed(1)} KB`;
+      document.getElementById('statModel').textContent = result.model.split('/').pop();
+      
+      // History
+      history.unshift({name: data.site_name, prompt: data.prompt.slice(0,60), time: new Date().toLocaleTimeString(), size: currentHtml.length});
+      history = history.slice(0,10);
+      localStorage.setItem('neuralsite_history', JSON.stringify(history));
+      renderHistory();
+      
+      addChatMessage('assistant', `Готово! ✨ Сгенерировал сайт "${data.site_name}" за ${elapsed} сек на модели ${result.model}. Как тебе? Скажи что улучшить — я сразу исправлю.`);
+      toast('Сайт сгенерирован! 🔥', '✦');
+    }, 600);
+    
+  }catch(e){
+    clearInterval(interval);
+    overlay.classList.add('hidden');
+    overlay.classList.remove('flex');
+    document.getElementById('previewPlaceholder').classList.remove('hidden');
+    toast(e.message, '❌');
+    addChatMessage('assistant', `Ошибка: ${e.message}. Проверь Polza API ключ и баланс на https://polza.ai/dashboard`);
+  }finally{
+    isGenerating = false;
+    btn.disabled = false;
+    btn.innerHTML = '<span class="text-[18px]">✦</span> Сгенерировать сайт <span class="text-[11px] font-mono bg-white/20 px-2 py-0.5 rounded-full">⌘ + Enter</span>';
+    if(getKey()) localStorage.setItem('polza_key', getKey());
+  }
+}
+
+function renderPreview(html){
+  const frame = document.getElementById('previewFrame');
+  const placeholder = document.getElementById('previewPlaceholder');
+  placeholder.classList.add('hidden');
+  frame.classList.remove('hidden');
+  frame.srcdoc = html;
+  currentHtml = html;
+  document.getElementById('codeContent').textContent = html;
+  document.getElementById('codeSize').textContent = `${(html.length/1024).toFixed(1)} KB`;
+}
+
+function setDevice(type){
+  const wrapper = document.getElementById('previewWrapper');
+  document.querySelectorAll('.device-btn').forEach(b=>{b.classList.remove('bg-white','text-black'); b.classList.add('text-white/60')});
+  document.getElementById(`btn-${type}`).classList.add('bg-white','text-black');
+  document.getElementById(`btn-${type}`).classList.remove('text-white/60');
+  
+  if(type==='desktop'){ wrapper.style.width='100%'; wrapper.style.margin='0'; }
+  if(type==='tablet'){ wrapper.style.width='768px'; wrapper.style.margin='0 auto'; }
+  if(type==='mobile'){ wrapper.style.width='390px'; wrapper.style.margin='0 auto'; }
+}
+
+function toggleCode(){
+  document.getElementById('codeView').classList.toggle('hidden');
+}
+function copyCode(){
+  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
+  navigator.clipboard.writeText(currentHtml);
+  toast('Код скопирован!', '📋');
+}
+function downloadSite(){
+  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
+  const blob = new Blob([currentHtml], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${(document.getElementById('siteName').value || 'site').replace(/\s+/g,'-').toLowerCase()}.html`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast('Скачан!', '⬇');
+}
+function openInNewTab(){
+  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
+  const w = window.open();
+  w.document.write(currentHtml);
+  w.document.close();
+}
+function openFullscreen(){
+  const frame = document.getElementById('previewFrame');
+  if(frame.requestFullscreen) frame.requestFullscreen();
+}
+function shareSite(){
+  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
+  // Create data URL or use localStorage sharing via URL hash (compress?)
+  const encoded = btoa(unescape(encodeURIComponent(currentHtml))).slice(0,2000);
+  toast('Скопируй ссылку из адресной строки после сохранения', '🔗');
+}
+
+// ---------- Chat ----------
+function addChatMessage(role, text){
+  const cont = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `chat-bubble ${role==='user' ? 'ml-8 bg-[#6C5CFF] text-white rounded-[14px] rounded-br-[4px]' : 'glass rounded-[14px] rounded-bl-[4px]'} p-3 text-[13px] leading-relaxed`;
+  div.textContent = text;
+  cont.appendChild(div);
+  cont.scrollTop = cont.scrollHeight;
+}
+
+function quickChat(text){
+  document.getElementById('chatInput').value = text;
+  sendChat();
+}
+
+async function sendChat(){
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if(!msg) return;
+  if(!currentHtml){
+    toast('Сначала сгенерируй сайт', '⚠️');
+    return;
+  }
+  addChatMessage('user', msg);
+  input.value = '';
+  
+  const typing = document.createElement('div');
+  typing.className = 'chat-bubble glass rounded-[14px] rounded-bl-[4px] p-3 flex gap-1';
+  typing.innerHTML = '<span class="w-2 h-2 rounded-full bg-white/40 typing-dot"></span><span class="w-2 h-2 rounded-full bg-white/40 typing-dot"></span><span class="w-2 h-2 rounded-full bg-white/40 typing-dot"></span>';
+  typing.id = 'typing';
+  document.getElementById('chatMessages').appendChild(typing);
+  document.getElementById('chatMessages').scrollTop = 99999;
+  
+  try{
+    const newHtml = await callRefineAPI(currentHtml, msg);
+    document.getElementById('typing')?.remove();
+    renderPreview(newHtml);
+    addChatMessage('assistant', 'Готово! Исправил. Что еще улучшить?');
+    toast('Сайт обновлен!', '✦');
+  }catch(e){
+    document.getElementById('typing')?.remove();
+    addChatMessage('assistant', `Ошибка: ${e.message}`);
+    toast(e.message, '❌');
+  }
+}
+
+// ---------- Images ----------
+async function searchImages(){
+  const q = document.getElementById('imageQuery').value.trim();
+  if(!q) return;
+  const cont = document.getElementById('imageResults');
+  cont.classList.remove('hidden');
+  cont.innerHTML = '<div class="col-span-3 text-center py-4 text-[12px] text-white/40">Ищу...</div>';
+  
+  try{
+    // Try backend
+    let images = [];
+    try{
+      const res = await fetch('/api/search-images', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query:q, count:6})});
+      if(res.ok){ const j = await res.json(); images = j.images; }
+    }catch{}
+    
+    if(!images.length){
+      // Fallback unsplash
+      images = Array.from({length:6}, (_,i)=>({url:`https://images.unsplash.com/photo-${1490000000000+i*1000}?w=400&h=300&fit=crop&q=80&auto=format&ixlib=rb-4.0.3&ixid=${i}&q=${encodeURIComponent(q)}`, query:q}));
+      // Use real working urls
+      const real = [
+        `https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop`,
+        `https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop`,
+        `https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop`,
+        `https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop`,
+        `https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop`,
+        `https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop`,
+      ];
+      images = real.map(url=>({url, query:q}));
+    }
+    
+    cont.innerHTML = images.map(img=>`<div class="group relative rounded-xl overflow-hidden aspect-[4/3] bg-white/5 border border-white/10 cursor-pointer hover:border-[#6C5CFF]/50" onclick="insertImage('${img.url}')">
+      <img src="${img.url}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+      <div class="absolute bottom-1 left-1 right-1 text-[10px] text-white opacity-0 group-hover:opacity-100 transition truncate">${img.query}</div>
+    </div>`).join('');
+  }catch(e){
+    cont.innerHTML = `<div class="col-span-3 text-[12px] text-red-400">${e.message}</div>`;
+  }
+}
+
+function insertImage(url){
+  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
+  quickChat(`Замени одну из картинок на ${url} — подбери подходящее место`);
+  toast('Отправляю в чат...', '🖼');
+}
+
+async function generateImage(){
+  const prompt = document.getElementById('imagePrompt').value.trim();
+  if(!prompt) return toast('Опиши что сгенерить', '⚠️');
+  
+  const apiKey = getKey();
+  if(!apiKey) return toast('Нужен Polza API ключ', '⚠️');
+  
+  toast('Генерю картинку... 10-20 сек', '🎨');
+  
+  try{
+    // Try backend
+    let result;
+    try{
+      const res = await fetch('/api/generate-image', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({prompt, api_key: apiKey})});
+      if(res.ok) result = await res.json();
+    }catch{}
+    
+    if(!result || result.fallback){
+      // Direct
+      const resp = await fetch('https://polza.ai/api/v1/images/generations', {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
+        body: JSON.stringify({model:'bytedance/seedream-4.5', prompt, size:'1024x1024', n:1})
+      });
+      if(!resp.ok) throw new Error('Image gen failed, попробуй другую модель');
+      result = await resp.json();
+      result.url = result.data?.[0]?.url;
+    }
+    
+    if(result.url){
+      const cont = document.getElementById('imageResults');
+      cont.classList.remove('hidden');
+      cont.innerHTML = `<div class="col-span-3 rounded-xl overflow-hidden border border-[#6C5CFF]/30">
+        <img src="${result.url}" class="w-full aspect-square object-cover">
+        <div class="p-2 flex gap-2">
+          <button onclick="insertImage('${result.url}')" class="flex-1 btn-primary py-1.5 rounded-lg text-[11px] text-white">Вставить в сайт</button>
+          <a href="${result.url}" target="_blank" class="btn-ghost px-3 py-1.5 rounded-lg text-[11px]">Открыть</a>
+        </div>
+      </div>` + cont.innerHTML;
+      toast('Картинка готова!', '✦');
+    }
+  }catch(e){
+    toast(e.message, '❌');
+  }
+}
+
+// ---------- Utils ----------
+function randomize(){
+  const niches = ["IT / SaaS / Стартап","Ресторан / Кафе","Клиника / Медицина","Фитнес / Спорт","Недвижимость","Образование / Курсы","Красота / Салон","Креатив / Агентство"];
+  const styles = ["modern premium like Linear/Stripe","glassmorphism + gradients","minimalism + typography","luxury dark + gold","cyberpunk neon","corporate trust blue"];
+  const prompts = [
+    "Лендинг для AI-агентства которое делает чат-ботов, темный премиум, как Linear, с градиентами, анимациями, тарифами",
+    "Сайт кофейни specialty, уютный, теплый, много фото, меню, история, адрес с картой",
+    "Клиника косметологии, светлый, премиум, доверие, услуги, врачи, до/после, отзывы",
+    "Фитнес-клуб, темный, мощный, брутальный, тарифы, тренеры, расписание",
+    "Агентство недвижимости, корпоративный, синий, каталог квартир, преимущества, отзывы"
+  ];
+  document.getElementById('businessType').value = niches[Math.floor(Math.random()*niches.length)];
+  document.getElementById('styleSelect').value = styles[Math.floor(Math.random()*styles.length)];
+  document.getElementById('mainPrompt').value = prompts[Math.floor(Math.random()*prompts.length)];
+  document.getElementById('siteName').value = ['Lumen','Aurora','Nova','Pulse','Velo','Astra','Flux'][Math.floor(Math.random()*7)] + ' Studio';
+  toast('Рандомайзер 🎲', '✦');
+}
+function clearAll(){
+  document.querySelectorAll('input, textarea').forEach(i=>{ if(i.id!=='polzaKey' && i.id!=='polzaKeyMobile') i.value=''; });
+  toast('Очищено', '↺');
+}
+function loadExample(){
+  document.getElementById('siteName').value = 'Lumen AI Studio';
+  document.getElementById('businessType').value = 'IT / SaaS / Стартап';
+  document.getElementById('siteType').value = 'saas';
+  document.getElementById('styleSelect').value = 'modern premium like Linear/Stripe';
+  document.getElementById('colorInput').value = '#6C5CFF,#00D9FF';
+  document.getElementById('mainPrompt').value = 'Современный SaaS лендинг для AI-студии которая делает сайты за 30 секунд. Темный премиум дизайн как Linear, Stripe, Vercel. Hero с анимированным градиентом и мокапом, 6 фич с иконками, секция как это работает (3 шага), тарифы (3 плана), отзывы с фото, FAQ, финальный CTA. Хочу glassmorphism, GSAP анимации при скролле, floating элементы, вау-эффект.';
+  document.getElementById('contactPhone').value = '+7 999 123-45-67';
+  document.getElementById('contactEmail').value = 'hello@lumen.studio';
+  document.getElementById('ctaText').value = 'Создать сайт за 30 сек';
+  toast('Пример загружен', '📄');
+}
+function renderHistory(){
+  const el = document.getElementById('historyList');
+  if(!history.length){ el.innerHTML = '<div class="text-[11px] text-white/30">Пока пусто</div>'; return; }
+  el.innerHTML = history.map((h,i)=>`<div class="flex items-center justify-between p-2 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 cursor-pointer" onclick="document.getElementById('siteName').value='${h.name}'; document.getElementById('mainPrompt').value='${h.prompt}'">
+    <div><div class="text-[12px] font-medium truncate max-w-[150px]">${h.name}</div><div class="text-[10px] text-white/40 truncate max-w-[150px]">${h.prompt}</div></div>
+    <div class="text-[10px] font-mono text-white/30">${h.time}</div>
+  </div>`).join('');
+}
+renderHistory();
+
+// Load saved key
+const savedKey = localStorage.getItem('polza_key');
+if(savedKey){
+  document.getElementById('polzaKey').value = savedKey;
+  const m = document.getElementById('polzaKeyMobile');
+  if(m) m.value = savedKey;
+  const modal = document.getElementById('keyModalInput');
+  if(modal) modal.value = savedKey;
+}
+updateKeyUI();
+
+// Keyboard shortcut
+document.addEventListener('keydown', (e)=>{
+  if((e.metaKey || e.ctrlKey) && e.key==='Enter'){
+    e.preventDefault();
+    generateSite();
+  }
+});
+
+// Init - check key
+setTimeout(checkKeyOnStart, 800);
+
+// Sync key inputs
+['polzaKey','polzaKeyMobile','keyModalInput'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el){
+    el.addEventListener('input', ()=>{
+      const v = el.value.trim();
+      if(v){
+        document.getElementById('polzaKey').value = v;
+        const m = document.getElementById('polzaKeyMobile');
+        if(m) m.value = v;
+        const modal = document.getElementById('keyModalInput');
+        if(modal) modal.value = v;
+        localStorage.setItem('polza_key', v);
+        updateKeyUI();
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>
