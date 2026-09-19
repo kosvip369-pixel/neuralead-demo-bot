@@ -42,6 +42,23 @@ python bot.py
 - Установите `WEBHOOK_URL=https://your-app.onrender.com`
 - Start command: `python bot.py`
 
+## Сайт (GitHub Pages)
+
+Лендинг (`index.html` + страницы ниш) публикуется через **GitHub Pages** прямо из этого репозитория
+(Settings → Pages → Deploy from a branch, папка `/`). Файл `.nojekyll` отключает обработку Jekyll.
+
+Адрес без домена: `https://kosvip369-pixel.github.io/neuralead-demo-bot/`
+
+### Подключить домен neuralead.ru
+
+1. Убедиться, что домен зарегистрирован и продлён у регистратора.
+2. В DNS домена добавить записи:
+   - `A @ 185.199.108.153`, `A @ 185.199.109.153`, `A @ 185.199.110.153`, `A @ 185.199.111.153`
+   - `CNAME www kosvip369-pixel.github.io`
+3. Создать в корне репозитория файл `CNAME` с одной строкой: `neuralead.ru`
+   (или указать домен в Settings → Pages → Custom domain — GitHub создаст файл сам).
+4. Через 10–60 минут включить **Enforce HTTPS** в Settings → Pages.
+
 ## Стоимость
 
 Кнопочный бот — от 15 000 ₽ | ИИ-бот — от 50 000 ₽  
