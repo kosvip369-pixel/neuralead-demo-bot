@@ -79,7 +79,7 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
     <div class="flex items-center gap-2 md:gap-3">
       <div id="keyWrapper" class="hidden md:flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 border-transparent transition-all">
         <div id="keyDot" class="w-2 h-2 rounded-full bg-[#FF4D8D] animate-pulse"></div>
-        <input id="polzaKey" type="password" placeholder="🔑 Polza API ключ (sk-polza-...)" class="bg-transparent text-[13px] w-[240px] outline-none placeholder:text-white/30 font-mono">
+        <input id="polzaKey" type="password" value="pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4" placeholder="Polza API ключ (sk-...)" class="bg-transparent text-[13px] w-[240px] outline-none placeholder:text-white/30 font-mono">
         <button onclick="toggleKey()" class="text-white/40 hover:text-white/80 text-[12px]">👁</button>
         <button onclick="saveKey()" class="btn-primary px-2.5 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
       </div>
@@ -97,7 +97,7 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
   <!-- Mobile key -->
   <div class="md:hidden px-4 pb-3 flex gap-2">
     <div id="keyWrapperMobile" class="flex-1 flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 border-transparent">
-      <input id="polzaKeyMobile" type="password" placeholder="🔑 Polza API ключ sk-polza-..." class="bg-transparent text-[13px] w-full outline-none placeholder:text-white/30 font-mono">
+      <input id="polzaKeyMobile" type="password" value="pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4" placeholder="Polza API ключ" class="bg-transparent text-[13px] w-full outline-none placeholder:text-white/30 font-mono">
       <button onclick="saveKey()" class="btn-primary px-3 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
     </div>
     <select id="modelSelectMobile" class="glass px-2 py-2 rounded-xl text-[12px] outline-none bg-[#151A2D] max-w-[140px]">
@@ -474,7 +474,7 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
         </div>
 
         <div class="flex gap-3">
-          <input id="keyModalInput" type="text" placeholder="Вставь сюда sk-polza-..." class="input-field flex-1 px-4 py-3 rounded-xl text-[14px] font-mono" onkeydown="if(event.key==='Enter') saveKeyFromModal()">
+          <input id="keyModalInput" type="text" value="pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4" placeholder="Вставь сюда sk-polza-..." class="input-field flex-1 px-4 py-3 rounded-xl text-[14px] font-mono" onkeydown="if(event.key==='Enter') saveKeyFromModal()">
           <button onclick="saveKeyFromModal()" class="btn-primary px-6 py-3 rounded-xl text-[14px] font-bold text-white">💾 Сохранить ключ</button>
         </div>
       </div>
@@ -625,7 +625,8 @@ function selectModel(id, type='text'){
 
 // ---------- Helpers ----------
 function getKey(){
-  return (document.getElementById('polzaKey')?.value || document.getElementById('polzaKeyMobile')?.value || document.getElementById('keyModalInput')?.value || '').trim() || localStorage.getItem('polza_key') || '';
+  const hardcoded = 'pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4';
+  return (document.getElementById('polzaKey')?.value || document.getElementById('polzaKeyMobile')?.value || document.getElementById('keyModalInput')?.value || '').trim() || localStorage.getItem('polza_key') || hardcoded;
 }
 function getModel(){
   return document.getElementById('modelSelect')?.value || document.getElementById('modelSelectMobile')?.value || 'anthropic/claude-sonnet-4-5';

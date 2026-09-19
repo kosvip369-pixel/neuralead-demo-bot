@@ -25,7 +25,7 @@ import httpx
 from openai import AsyncOpenAI
 
 # ---------- Конфиг ----------
-POLZA_API_KEY = os.environ.get("POLZA_API_KEY", "") or os.environ.get("DEEPSEEK_API_KEY", "")
+POLZA_API_KEY = os.environ.get("POLZA_API_KEY", "") or os.environ.get("DEEPSEEK_API_KEY", "") or "pza_iQoXA0YAYsdQbomqk6gV3c7menmhgKd4"
 POLZA_BASE_URL = os.environ.get("POLZA_BASE_URL", "https://polza.ai/api/v1")
 PORT = int(os.environ.get("PORT", 8000))
 
