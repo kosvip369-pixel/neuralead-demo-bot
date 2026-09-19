@@ -77,10 +77,11 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
       </div>
     </div>
     <div class="flex items-center gap-2 md:gap-3">
-      <div class="hidden md:flex items-center gap-2 glass px-3 py-2 rounded-xl">
-        <div class="w-2 h-2 rounded-full bg-[#00D492] animate-pulse"></div>
-        <input id="polzaKey" type="password" placeholder="Polza API ключ (sk-...)" class="bg-transparent text-[13px] w-[220px] outline-none placeholder:text-white/30 font-mono">
+      <div id="keyWrapper" class="hidden md:flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 border-transparent transition-all">
+        <div id="keyDot" class="w-2 h-2 rounded-full bg-[#FF4D8D] animate-pulse"></div>
+        <input id="polzaKey" type="password" placeholder="🔑 Polza API ключ (sk-polza-...)" class="bg-transparent text-[13px] w-[240px] outline-none placeholder:text-white/30 font-mono">
         <button onclick="toggleKey()" class="text-white/40 hover:text-white/80 text-[12px]">👁</button>
+        <button onclick="saveKey()" class="btn-primary px-2.5 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
       </div>
       <select id="modelSelect" class="hidden md:block glass px-3 py-2 rounded-xl text-[13px] outline-none bg-[#151A2D] border border-white/10">
         <option value="anthropic/claude-sonnet-4-5">🔥 Claude Sonnet 4.5 — лучший для фронта</option>
@@ -95,8 +96,9 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
   </div>
   <!-- Mobile key -->
   <div class="md:hidden px-4 pb-3 flex gap-2">
-    <div class="flex-1 flex items-center gap-2 glass px-3 py-2 rounded-xl">
-      <input id="polzaKeyMobile" type="password" placeholder="Polza API ключ" class="bg-transparent text-[13px] w-full outline-none placeholder:text-white/30 font-mono">
+    <div id="keyWrapperMobile" class="flex-1 flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 border-transparent">
+      <input id="polzaKeyMobile" type="password" placeholder="🔑 Polza API ключ sk-polza-..." class="bg-transparent text-[13px] w-full outline-none placeholder:text-white/30 font-mono">
+      <button onclick="saveKey()" class="btn-primary px-3 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
     </div>
     <select id="modelSelectMobile" class="glass px-2 py-2 rounded-xl text-[12px] outline-none bg-[#151A2D] max-w-[140px]">
       <option value="anthropic/claude-sonnet-4-5">Claude 4.5</option>
@@ -105,6 +107,11 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
       <option value="deepseek/deepseek-v3.2">DeepSeek</option>
       <option value="qwen/qwen3-235b-a22b:free">Qwen Free</option>
     </select>
+  </div>
+  <!-- Key banner -->
+  <div id="keyBanner" class="hidden bg-gradient-to-r from-[#FF4D8D]/20 to-[#6C5CFF]/20 border-y border-[#FF4D8D]/20 px-4 md:px-6 py-2.5 flex items-center justify-between gap-3 text-[13px]">
+    <div class="flex items-center gap-2"><span class="text-[16px]">🔑</span><span><b>Нужен Polza API ключ</b> — без него генерация не работает. Вставь ключ в поле выше ↑ или нажми "Получить ключ". Ключ сохраняется в браузере.</span></div>
+    <button onclick="document.getElementById('keyModal').classList.remove('hidden')" class="btn-primary px-3 py-1 rounded-lg text-[12px] text-white whitespace-nowrap">Где взять ключ?</button>
   </div>
 </header>
 
@@ -405,6 +412,76 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
   </div>
 </div>
 
+<!-- Key Modal - ГДЕ ВЗЯТЬ КЛЮЧ -->
+<div id="keyModal" class="hidden fixed inset-0 z-[110] bg-black/80 backdrop-blur-xl p-4 md:p-8 overflow-y-auto">
+  <div class="max-w-[640px] mx-auto mt-10">
+    <div class="glass-strong rounded-[24px] p-6 md:p-8 border border-[#6C5CFF]/20">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-space font-bold text-[22px] md:text-[28px]">🔑 Куда вставить ключ Polza AI?</h2>
+        <button onclick="document.getElementById('keyModal').classList.add('hidden')" class="w-9 h-9 rounded-xl glass flex items-center justify-center">✕</button>
+      </div>
+      
+      <div class="space-y-5">
+        <div class="rounded-xl bg-[#6C5CFF]/10 border border-[#6C5CFF]/20 p-4">
+          <div class="font-bold text-[14px] mb-2">📍 Вариант 1: В браузере (для GitHub Pages) — самый простой</div>
+          <div class="text-[13px] text-white/70 leading-relaxed">
+            1. В шапке сайта найди поле <code class="px-2 py-0.5 rounded bg-white/10 font-mono text-[12px]">🔑 Polza API ключ (sk-polza-...)</code> — оно вверху справа<br>
+            2. Вставь туда ключ с Polza AI<br>
+            3. Нажми OK — ключ сохранится в браузере (localStorage) и подсветится зеленым ●<br>
+            4. Теперь можешь генерировать сайты!
+          </div>
+          <div class="mt-3 flex gap-2">
+            <img src="https://via.placeholder.com/600x80/151A2D/8B7DFF?text=HEADER+:+[●]+[____Polza+API+key____]+[👁]+[OK]+[Model]+[Получить+ключ]+[Мозги]" class="w-full rounded-lg border border-white/10 opacity-60">
+          </div>
+        </div>
+
+        <div class="rounded-xl bg-[#00D9FF]/10 border border-[#00D9FF]/20 p-4">
+          <div class="font-bold text-[14px] mb-2">📍 Вариант 2: На сервере (для локального запуска / Render / Railway)</div>
+          <div class="text-[13px] text-white/70 leading-relaxed">
+            Если запускаешь <code class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-[11px]">python generator_server.py</code>:
+            <div class="mt-2 p-3 rounded-lg bg-black/40 border border-white/5 font-mono text-[12px] leading-relaxed">
+              # Создай файл .env в корне проекта<br>
+              cp .env.example .env<br>
+              # Открой .env и вставь:<br>
+              POLZA_API_KEY=sk-polza-твой-ключ-сюда<br>
+              POLZA_BASE_URL=https://polza.ai/api/v1<br><br>
+              # Или через переменную окружения:<br>
+              export POLZA_API_KEY=sk-polza-...<br>
+              python generator_server.py
+            </div>
+            Тогда ключ в браузере указывать не нужно — бекенд сам проксирует запросы.
+          </div>
+        </div>
+
+        <div class="rounded-xl bg-[#00D492]/10 border border-[#00D492]/20 p-4">
+          <div class="font-bold text-[14px] mb-2">🔗 Где взять ключ Polza AI?</div>
+          <div class="text-[13px] text-white/70 leading-relaxed space-y-2">
+            <div>1. Иди на <a href="https://polza.ai/register" target="_blank" class="text-[#8B7DFF] underline">https://polza.ai/register</a> — регистрация за 30 сек</div>
+            <div>2. Пополни баланс на 100-300₽ (хватит на 20-30 сайтов) — оплата российской картой, без VPN</div>
+            <div>3. Dashboard → <b>API Keys</b> → Create Key → скопируй <code class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-[11px]">sk-polza-...</code></div>
+            <div>4. Вставь в генератор!</div>
+          </div>
+          <a href="https://polza.ai/register" target="_blank" class="mt-3 inline-flex btn-primary px-5 py-2.5 rounded-xl text-[13px] font-bold text-white">Получить ключ на polza.ai →</a>
+        </div>
+
+        <div class="rounded-xl bg-white/5 border border-white/10 p-4">
+          <div class="font-bold text-[13px] mb-2">🔒 Безопасность</div>
+          <div class="text-[12px] text-white/50 leading-relaxed">
+            • В браузере ключ хранится только у тебя в localStorage, никуда не отправляется кроме api.polza.ai<br>
+            • Для продакшена используй бекенд (generator_server.py) — он скрывает ключ<br>
+            • Можешь в любой момент удалить: очисти localStorage или нажми "Очистить" в генераторе
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <input id="keyModalInput" type="text" placeholder="Вставь сюда sk-polza-..." class="input-field flex-1 px-4 py-3 rounded-xl text-[14px] font-mono" onkeydown="if(event.key==='Enter') saveKeyFromModal()">
+          <button onclick="saveKeyFromModal()" class="btn-primary px-6 py-3 rounded-xl text-[14px] font-bold text-white">💾 Сохранить ключ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Brains Modal -->
 <div id="brainsModal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl p-4 md:p-8 overflow-y-auto">
   <div class="max-w-[1100px] mx-auto">
@@ -548,7 +625,7 @@ function selectModel(id, type='text'){
 
 // ---------- Helpers ----------
 function getKey(){
-  return (document.getElementById('polzaKey')?.value || document.getElementById('polzaKeyMobile')?.value || '').trim() || localStorage.getItem('polza_key') || '';
+  return (document.getElementById('polzaKey')?.value || document.getElementById('polzaKeyMobile')?.value || document.getElementById('keyModalInput')?.value || '').trim() || localStorage.getItem('polza_key') || '';
 }
 function getModel(){
   return document.getElementById('modelSelect')?.value || document.getElementById('modelSelectMobile')?.value || 'anthropic/claude-sonnet-4-5';
@@ -562,7 +639,73 @@ function toast(text, icon='✦'){
 }
 function toggleKey(){
   const i = document.getElementById('polzaKey');
-  i.type = i.type==='password'?'text':'password';
+  if(i) i.type = i.type==='password'?'text':'password';
+  const m = document.getElementById('polzaKeyMobile');
+  if(m) m.type = m.type==='password'?'text':'password';
+}
+function saveKey(){
+  const k = getKey();
+  if(!k){
+    toast('Вставь ключ Polza AI!', '🔑');
+    document.getElementById('keyModal').classList.remove('hidden');
+    return;
+  }
+  if(!k.startsWith('sk-')){
+    toast('Ключ должен начинаться с sk-...', '⚠️');
+    return;
+  }
+  localStorage.setItem('polza_key', k);
+  document.getElementById('polzaKey').value = k;
+  const mobile = document.getElementById('polzaKeyMobile');
+  if(mobile) mobile.value = k;
+  const modalInput = document.getElementById('keyModalInput');
+  if(modalInput) modalInput.value = k;
+  updateKeyUI();
+  toast('Ключ сохранен! Можно генерировать', '✅');
+}
+function saveKeyFromModal(){
+  const input = document.getElementById('keyModalInput');
+  const k = input.value.trim();
+  if(!k){ toast('Вставь ключ!', '🔑'); return; }
+  localStorage.setItem('polza_key', k);
+  document.getElementById('polzaKey').value = k;
+  const mobile = document.getElementById('polzaKeyMobile');
+  if(mobile) mobile.value = k;
+  updateKeyUI();
+  document.getElementById('keyModal').classList.add('hidden');
+  toast('Ключ сохранен! Теперь генерируй сайт', '✅');
+}
+function updateKeyUI(){
+  const k = getKey();
+  const hasKey = !!k;
+  const dot = document.getElementById('keyDot');
+  const wrapper = document.getElementById('keyWrapper');
+  const wrapperMobile = document.getElementById('keyWrapperMobile');
+  const banner = document.getElementById('keyBanner');
+  
+  if(dot){
+    dot.className = `w-2 h-2 rounded-full ${hasKey ? 'bg-[#00D492]' : 'bg-[#FF4D8D]'} animate-pulse`;
+  }
+  if(wrapper){
+    wrapper.className = `hidden md:flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 transition-all ${hasKey ? 'border-[#00D492]/30 bg-[#00D492]/5' : 'border-[#FF4D8D]/30 bg-[#FF4D8D]/5 animate-pulse'}`;
+  }
+  if(wrapperMobile){
+    wrapperMobile.className = `flex-1 flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 ${hasKey ? 'border-[#00D492]/30' : 'border-[#FF4D8D]/30'}`;
+  }
+  if(banner){
+    if(hasKey) banner.classList.add('hidden');
+    else banner.classList.remove('hidden');
+  }
+}
+function checkKeyOnStart(){
+  updateKeyUI();
+  const k = getKey();
+  if(!k){
+    setTimeout(()=>{
+      document.getElementById('keyModal').classList.remove('hidden');
+      toast('Сначала укажи Polza API ключ!', '🔑');
+    }, 1000);
+  }
 }
 function setPrompt(t){ document.getElementById('mainPrompt').value = t; }
 function setColors(c){ document.getElementById('colorInput').value = c; }
@@ -996,7 +1139,10 @@ if(savedKey){
   document.getElementById('polzaKey').value = savedKey;
   const m = document.getElementById('polzaKeyMobile');
   if(m) m.value = savedKey;
+  const modal = document.getElementById('keyModalInput');
+  if(modal) modal.value = savedKey;
 }
+updateKeyUI();
 
 // Keyboard shortcut
 document.addEventListener('keydown', (e)=>{
@@ -1006,8 +1152,27 @@ document.addEventListener('keydown', (e)=>{
   }
 });
 
-// Init
-setTimeout(()=>{ if(!getKey()) toast('Укажи Polza API ключ для генерации!', '🔑'); }, 1500);
+// Init - check key
+setTimeout(checkKeyOnStart, 800);
+
+// Sync key inputs
+['polzaKey','polzaKeyMobile','keyModalInput'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el){
+    el.addEventListener('input', ()=>{
+      const v = el.value.trim();
+      if(v){
+        document.getElementById('polzaKey').value = v;
+        const m = document.getElementById('polzaKeyMobile');
+        if(m) m.value = v;
+        const modal = document.getElementById('keyModalInput');
+        if(modal) modal.value = v;
+        localStorage.setItem('polza_key', v);
+        updateKeyUI();
+      }
+    });
+  }
+});
 </script>
 </body>
 </html>
