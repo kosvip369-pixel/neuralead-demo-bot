@@ -3,1176 +3,447 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuraSite AI — Генератор сайтов на Polza AI | Создай крутой сайт за 30 секунд</title>
-<meta name="description" content="AI-генератор сайтов на Polza AI. Опиши идею — получи готовый сайт с анимациями, картинками, адаптивом. Чат-доработка, генерация изображений, экспорт.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      fontFamily: { manrope: ['Manrope'], space: ['Space Grotesk'], mono: ['JetBrains Mono'] },
-      animation: { 'float': 'float 6s ease-in-out infinite', 'pulse-slow': 'pulse 4s ease-in-out infinite' }
-    }
-  }
-}
-</script>
+<title>NueraLead — Чат-боты для бизнеса в Telegram и MAX · от 15 000 ₽</title>
+<meta name="description" content="Разработка чат-ботов под ключ для любого бизнеса. Кнопочный бот 15 000 ₽, ИИ-бот 50 000 ₽. Запуск за 3–10 дней. Бесплатное демо.">
+<meta property="og:title" content="NueraLead — Чат-боты для бизнеса в Telegram и MAX · от 15 000 ₽">
+<meta property="og:description" content="Разработка чат-ботов под ключ для любого бизнеса. Кнопочный бот 15 000 ₽, ИИ-бот 50 000 ₽. Запуск за 3–10 дней. Бесплатное демо.">
+<meta property="og:type" content="website">
 <style>
-:root{--bg:#070A12;--bg2:#0F1320;--card:#151A2D;--line:#1E2540;--accent:#6C5CFF;--accent2:#8B7DFF;--accent3:#4F46E5;--green:#00D492;--pink:#FF4D8D;--cyan:#00D9FF}
-*{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
-*::-webkit-scrollbar{width:6px;height:6px}
-*::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
-*::-webkit-scrollbar-track{background:transparent}
-body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflow-x:hidden}
-.glass{background:rgba(21,26,45,0.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06)}
-.glass-strong{background:rgba(15,19,32,0.9);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.08)}
-.gradient-text{background:linear-gradient(135deg,#6C5CFF 0%,#8B7DFF 30%,#00D9FF 70%,#FF4D8D 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.gradient-border{position:relative;background:var(--card);border-radius:16px}
-.gradient-border::before{content:'';position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,#6C5CFF,#00D9FF,#FF4D8D);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.btn-primary{background:linear-gradient(135deg,#6C5CFF 0%,#4F46E5 100%);box-shadow:0 0 20px rgba(108,92,255,0.4),0 4px 20px rgba(0,0,0,0.3);transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(108,92,255,0.6),0 8px 30px rgba(0,0,0,0.4)}
-.btn-ghost{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);transition:all 0.2s}
-.btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
-.input-field{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);transition:all 0.2s;font-family:'Manrope'}
-.input-field:focus{background:rgba(255,255,255,0.06);border-color:#6C5CFF;outline:none;box-shadow:0 0 0 3px rgba(108,92,255,0.15)}
-.shimmer{position:relative;overflow:hidden}
-.shimmer::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);animation:shimmer 2s infinite}
-@keyframes shimmer{100%{left:100%}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes glow{0%,100%{opacity:0.5}50%{opacity:1}}
-.dot-grid{background-image:radial-gradient(rgba(108,92,255,0.15) 1px,transparent 1px);background-size:24px 24px}
-.mesh-gradient{background:radial-gradient(at 0% 0%,rgba(108,92,255,0.3) 0px,transparent 50%),radial-gradient(at 100% 0%,rgba(0,217,255,0.2) 0px,transparent 50%),radial-gradient(at 100% 100%,rgba(255,77,141,0.2) 0px,transparent 50%),radial-gradient(at 0% 100%,rgba(0,212,146,0.15) 0px,transparent 50%)}
-.preview-device{transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
-.chat-bubble{animation:slideIn 0.3s ease-out}
-@keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.typing-dot{animation:typing 1.4s infinite}
-.typing-dot:nth-child(2){animation-delay:0.2s}
-.typing-dot:nth-child(3){animation-delay:0.4s}
-@keyframes typing{0%,60%,100%{opacity:0.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
-.code-block{background:#0A0E1A;border:1px solid #1E2540}
-</style>
-</head>
-<body class="min-h-screen relative">
-<!-- Background -->
-<div class="fixed inset-0 dot-grid opacity-40 pointer-events-none"></div>
-<div class="fixed inset-0 mesh-gradient opacity-30 pointer-events-none"></div>
-<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#6C5CFF]/20 rounded-full blur-[120px] pointer-events-none"></div>
-<div class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-[#00D9FF]/15 rounded-full blur-[100px] pointer-events-none"></div>
+:root{--dark:#0f172a;--dark2:#1e293b;--accent:#2563eb;--accent2:#3b82f6;--hover:#1d4ed8;--green:#10b981;--text:#0f172a;--muted:#64748b;--light:#f8fafc;--card:#fff;--line:#e2e8f0;--hero:#1e3a8a}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:#fff;color:var(--text);line-height:1.6}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.2}
+a{text-decoration:none}
+.accent{color:var(--accent2)}
 
-<!-- Header -->
-<header class="sticky top-0 z-50 glass-strong border-b border-white/5">
-  <div class="max-w-[1600px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-4">
-    <div class="flex items-center gap-6">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#6C5CFF] to-[#4F46E5] flex items-center justify-center font-bold text-white shadow-lg shadow-[#6C5CFF]/30">N</div>
-        <div>
-          <div class="font-space font-bold text-[16px] leading-none">NeuraSite AI</div>
-          <div class="text-[11px] text-white/50 font-mono tracking-wider">GENERATOR v2.0 • POLZA AI</div>
-        </div>
-      </div>
-      <div class="hidden lg:flex items-center gap-2">
-        <div class="px-3 py-1 rounded-full bg-[#00D492]/10 border border-[#00D492]/20 text-[#00D492] text-[11px] font-mono">● LIVE</div>
-        <div class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 text-[11px] font-mono">400+ моделей Polza</div>
-      </div>
+/* PROMO BAR */
+
+/* HEADER */
+header{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;flex-wrap:wrap}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:28px;color:var(--dark);letter-spacing:-1px;line-height:1}
+.logo span{color:var(--accent)}
+.nav-phone{color:var(--dark);font-weight:700;font-size:16px}
+.nav-phone:hover{color:var(--accent)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;box-shadow:0 6px 20px rgba(37,99,235,.4);transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,99,235,.55)}
+.btn-max{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;box-shadow:0 6px 20px rgba(14,165,233,.4);transition:.2s}
+.btn-max:hover{transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,.5);color:#fff;font-weight:700;font-size:16px;padding:13px 28px;border-radius:10px;transition:.2s}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.btn-dark{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--accent);color:var(--accent);font-weight:700;font-size:16px;padding:13px 28px;border-radius:10px;transition:.2s}
+.btn-dark:hover{background:var(--accent);color:#fff}
+
+/* HERO */
+.hero{background:var(--hero);padding:80px 0 72px;color:#fff;text-align:center}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#bfdbfe;padding:6px 18px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:24px}
+.hero h1{font-size:clamp(28px,5vw,52px);font-weight:800;max-width:800px;margin:0 auto 20px}
+.hero .sub{font-size:18px;color:#bfdbfe;max-width:620px;margin:0 auto 36px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.hero-proof{font-size:14px;color:#93c5fd}
+
+/* SECTION HEADERS */
+section{padding:72px 0}
+.section-light{background:var(--light)}
+.section-blue{background:var(--hero);color:#fff}
+.section-dark{background:var(--dark);color:#fff}
+h2.s-title{font-size:clamp(26px,4vw,38px);font-weight:800;text-align:center;margin-bottom:12px}
+p.s-sub{text-align:center;color:var(--muted);max-width:640px;margin:0 auto 48px;font-size:17px}
+.section-blue h2.s-title,.section-blue p.s-sub{color:#fff}
+.section-blue p.s-sub{color:#bfdbfe}
+
+/* PAIN CARDS */
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.pain-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;border-left:4px solid var(--accent)}
+.pain-card .ico{font-size:28px;margin-bottom:12px}
+.pain-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.pain-card p{color:var(--muted);font-size:14px;margin-bottom:8px}
+.pain-card .sting{font-size:13px;color:#ef4444;font-weight:600}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.step{text-align:center;padding:28px 20px}
+.step-num{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-size:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:800}
+.step h3{font-size:17px;font-weight:700;margin-bottom:8px}
+.step p{color:var(--muted);font-size:14.5px}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:48px}
+.metric{text-align:center;padding:24px}
+.metric .num{font-size:48px;font-weight:800;color:#60a5fa;line-height:1}
+.metric .label{font-size:15px;color:#bfdbfe;margin-top:8px}
+.keis{background:rgba(255,255,255,.1);border-radius:14px;padding:28px;max-width:700px;margin:0 auto;text-align:center}
+.keis p{color:#bfdbfe;font-size:15px;line-height:1.7}
+.keis strong{color:#fff}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;gap:16px;align-items:flex-start}
+.feat .ico{font-size:32px;flex:0 0 auto}
+.feat h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.feat p{color:var(--muted);font-size:14px}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px}
+.rev .stars{color:#f59e0b;font-size:18px;margin-bottom:14px}
+.rev blockquote{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:18px;font-style:italic}
+.rev .author{display:flex;align-items:center;gap:12px}
+.rev .ava{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--hover));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px}
+.rev .name{font-weight:700;font-size:14px}
+.rev .role{color:var(--muted);font-size:13px}
+.rev .result{display:inline-block;background:#dcfce7;color:#166534;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+
+/* FAQ */
+.faq{max-width:760px;margin:0 auto}
+.faq-item{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;text-align:left;padding:18px 20px;background:#fff;font-weight:700;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border:none;color:var(--text)}
+.faq-q:hover{background:var(--light)}
+.faq-q .arr{transition:.3s;color:var(--accent)}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;background:#fff}
+.faq-a.open{max-height:200px;padding:0 20px 18px}
+.faq-a p{color:var(--muted);font-size:14.5px;line-height:1.7}
+
+/* PLANS */
+.plans{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 28px;max-width:320px;flex:1;min-width:260px;display:flex;flex-direction:column;position:relative}
+.plan.hot{border:2px solid var(--accent);box-shadow:0 0 40px rgba(37,99,235,.18)}
+.plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--hover));color:#fff;font-size:12px;font-weight:700;padding:5px 18px;border-radius:20px;white-space:nowrap}
+.plan h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.plan .price{font-size:40px;font-weight:800;color:var(--accent);margin:12px 0 4px}
+.plan .old{color:var(--muted);text-decoration:line-through;font-size:13px;margin-bottom:18px}
+.plan ul{list-style:none;margin-bottom:24px;flex:1}
+.plan ul li{padding:7px 0;font-size:14.5px;border-bottom:1px dashed var(--line);display:flex;align-items:flex-start;gap:8px}
+.plan ul li::before{content:"✓";color:var(--green);font-weight:800;flex:0 0 auto}
+.plan ul li.no::before{content:"—";color:var(--muted)}
+.plan ul li.no{color:var(--muted)}
+.guarantee{text-align:center;color:var(--muted);font-size:14px;margin-top:16px}
+.guarantee span{color:var(--green);font-weight:700}
+
+/* GIVEAWAY */
+
+/* FINAL CTA */
+.final-cta{background:linear-gradient(135deg,var(--accent),var(--hover));padding:72px 0;text-align:center;color:#fff}
+.final-cta h2{font-size:clamp(26px,4vw,40px);font-weight:800;margin-bottom:16px}
+.final-cta p{color:#bfdbfe;font-size:17px;max-width:560px;margin:0 auto 28px}
+.final-cta ul{list-style:none;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.final-cta ul li{color:#bfdbfe;font-size:15px}
+.final-cta ul li::before{content:"✓ ";color:#86efac;font-weight:800}
+.final-cta .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--accent);font-weight:700;font-size:16px;padding:14px 28px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:.2s}
+.btn-white:hover{transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--dark);color:#94a3b8;padding:40px 0;font-size:14px}
+.footer-inner{display:flex;flex-direction:column;gap:20px}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-weight:800;font-size:18px;color:#fff}
+.footer-logo span{color:var(--accent2)}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.footer-links a{color:#94a3b8;transition:.2s}
+.footer-links a:hover{color:var(--accent2)}
+.footer-bottom{border-top:1px solid #1e293b;padding-top:20px;text-align:center}
+.footer-community{text-align:center;padding:20px 0;border-top:1px solid #1e293b}
+.footer-community a{color:#93c5fd}
+
+@media(max-width:768px){
+  .hero{padding:52px 0 48px}
+  section{padding:52px 0}
+  .plans{flex-direction:column;align-items:center}
+  .plan{max-width:100%}
+  h2.s-title{font-size:26px}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var a=this.nextElementSibling;
+      a.classList.toggle('open');
+      this.querySelector('.arr').textContent=a.classList.contains('open')?'▲':'▼';
+    });
+  });
+});
+</script>
+</head>
+<body>
+<!-- NEW GENERATOR BANNER -->
+<div style="background:linear-gradient(135deg,#070A12 0%,#151A2D 100%);border-bottom:1px solid #1E2540;padding:12px 0;position:sticky;top:0;z-index:100;font-family:-apple-system,Manrope,sans-serif">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:10px;color:#E6E8F0">
+      <span style="background:linear-gradient(135deg,#6C5CFF,#00D9FF);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:white">NEW</span>
+      <span style="font-size:14px"><b>NeuraSite AI</b> — генератор сайтов на Polza AI: опиши идею → получи сайт за 30 сек</span>
     </div>
-    <div class="flex items-center gap-2 md:gap-3">
-      <div id="keyWrapper" class="hidden md:flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 border-transparent transition-all">
-        <div id="keyDot" class="w-2 h-2 rounded-full bg-[#FF4D8D] animate-pulse"></div>
-        <input id="polzaKey" type="password" placeholder="🔑 Polza API ключ (sk-polza-...)" class="bg-transparent text-[13px] w-[240px] outline-none placeholder:text-white/30 font-mono">
-        <button onclick="toggleKey()" class="text-white/40 hover:text-white/80 text-[12px]">👁</button>
-        <button onclick="saveKey()" class="btn-primary px-2.5 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
-      </div>
-      <select id="modelSelect" class="hidden md:block glass px-3 py-2 rounded-xl text-[13px] outline-none bg-[#151A2D] border border-white/10">
-        <option value="anthropic/claude-sonnet-4-5">🔥 Claude Sonnet 4.5 — лучший для фронта</option>
-        <option value="openai/gpt-5">💎 GPT-5 — премиум логика</option>
-        <option value="google/gemini-2.5-pro">🎨 Gemini 2.5 Pro — креатив 1M контекст</option>
-        <option value="deepseek/deepseek-v3.2">⚡ DeepSeek V3.2 — быстро/дешево</option>
-        <option value="qwen/qwen3-235b-a22b:free">🆓 Qwen3 235B — бесплатно</option>
-      </select>
-      <a href="https://polza.ai/register" target="_blank" class="btn-ghost px-3 md:px-4 py-2 rounded-xl text-[13px] font-medium whitespace-nowrap">Получить ключ</a>
-      <button onclick="document.getElementById('brainsModal').classList.remove('hidden')" class="btn-primary px-3 md:px-4 py-2 rounded-xl text-[13px] font-bold text-white whitespace-nowrap">🧠 Мозги</button>
+    <div style="display:flex;gap:8px">
+      <a href="generator.html" style="background:linear-gradient(135deg,#6C5CFF,#4F46E5);color:white;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 0 20px rgba(108,92,255,0.4)">✦ Открыть генератор</a>
+      <a href="https://github.com/kosvip369-pixel/neurasite-ai-generator" target="_blank" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:white;padding:8px 14px;border-radius:10px;font-size:13px;text-decoration:none">GitHub</a>
     </div>
   </div>
-  <!-- Mobile key -->
-  <div class="md:hidden px-4 pb-3 flex gap-2">
-    <div id="keyWrapperMobile" class="flex-1 flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 border-transparent">
-      <input id="polzaKeyMobile" type="password" placeholder="🔑 Polza API ключ sk-polza-..." class="bg-transparent text-[13px] w-full outline-none placeholder:text-white/30 font-mono">
-      <button onclick="saveKey()" class="btn-primary px-3 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
-    </div>
-    <select id="modelSelectMobile" class="glass px-2 py-2 rounded-xl text-[12px] outline-none bg-[#151A2D] max-w-[140px]">
-      <option value="anthropic/claude-sonnet-4-5">Claude 4.5</option>
-      <option value="openai/gpt-5">GPT-5</option>
-      <option value="google/gemini-2.5-pro">Gemini Pro</option>
-      <option value="deepseek/deepseek-v3.2">DeepSeek</option>
-      <option value="qwen/qwen3-235b-a22b:free">Qwen Free</option>
-    </select>
-  </div>
-  <!-- Key banner -->
-  <div id="keyBanner" class="hidden bg-gradient-to-r from-[#FF4D8D]/20 to-[#6C5CFF]/20 border-y border-[#FF4D8D]/20 px-4 md:px-6 py-2.5 flex items-center justify-between gap-3 text-[13px]">
-    <div class="flex items-center gap-2"><span class="text-[16px]">🔑</span><span><b>Нужен Polza API ключ</b> — без него генерация не работает. Вставь ключ в поле выше ↑ или нажми "Получить ключ". Ключ сохраняется в браузере.</span></div>
-    <button onclick="document.getElementById('keyModal').classList.remove('hidden')" class="btn-primary px-3 py-1 rounded-lg text-[12px] text-white whitespace-nowrap">Где взять ключ?</button>
+</div>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html">Neura<span>Lead</span></a>
+    <a class="nav-phone" href="tel:+79206980858">📞 +7 920 698-08-58</a>
   </div>
 </header>
+<style>
+.niche-card{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px;text-decoration:none;color:#0f172a;transition:.2s}
+.niche-card:hover{border-color:#2563eb;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.12)}
+.niche-ico{font-size:30px;flex:0 0 auto}
+.niche-card b{display:block;font-size:16px;font-weight:700;margin-bottom:4px}
+.niche-card p{color:#64748b;font-size:13.5px;margin:0}
+</style>
+<div class="hero"><div class="wrap">
+  <div class="hero-badge">🤖 Чат-боты для бизнеса · Telegram и MAX · Запуск за 3–10 дней</div>
+  <h1>Ваш бизнес теряет клиентов каждую ночь.<br><span class="accent">ИИ-бот принимает заявки 24/7 — вы узнаёте утром.</span></h1>
+  <p class="sub">Бот отвечает, консультирует и записывает клиентов пока вы спите. В среднем +30% заявок уже в первый месяц. Попробуйте демо прямо сейчас — бесплатно.</p>
+  <div class="hero-cta">
+      <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Получить демо бесплатно</a>
+      <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener">🤖 Попробовать в MAX</a>
+    </div>
+  <p class="hero-proof">200+ компаний уже принимают заявки через бота · Запуск за 5 дней · Гарантия возврата 7 дней</p>
+</div></div>
 
-<!-- Main Layout -->
-<div class="max-w-[1600px] mx-auto px-4 md:px-6 py-4 md:py-6 grid grid-cols-1 lg:grid-cols-[360px_1fr_340px] gap-4 md:gap-5 items-start">
+<section class="section-light"><div class="wrap">
+  <h2 class="s-title">Боты для вашей ниши</h2>
+  <p class="s-sub">Выберите отрасль — покажем как бот работает именно в вашем бизнесе</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+<a class="niche-card" href="realty.html"><div class="niche-ico">🏠</div><div><b>Недвижимость</b><p>Квалификация покупателей, подборка объектов, запись на просмотр 24/7</p></div></a>
+    <a class="niche-card" href="business.html"><div class="niche-ico">💼</div><div><b>Любой бизнес</b><p>Заявки, консультации, запись — универсальный бот под любую нишу</p></div></a>
+<a class="niche-card" href="dental.html"><div class="niche-ico">🦷</div><div><b>Стоматология</b><p>Запись без тревоги, цены на процедуры, снижение no-show</p></div></a>
+<a class="niche-card" href="clinic.html"><div class="niche-ico">🏥</div><div><b>Клиника / Медицина</b><p>Запись к врачу 24/7, разгрузка регистратуры, напоминания</p></div></a>
+<a class="niche-card" href="salon.html"><div class="niche-ico">💅</div><div><b>Салон красоты</b><p>Запись к мастеру, прайс, напоминания — без администратора</p></div></a>
+<a class="niche-card" href="fitness.html"><div class="niche-ico">🏋️</div><div><b>Фитнес-клуб</b><p>Запись на пробное, продажа абонементов, расписание</p></div></a>
+<a class="niche-card" href="autoservice.html"><div class="niche-ico">🚗</div><div><b>Автосервис</b><p>Запись на ТО, цены на услуги, статус ремонта</p></div></a>
+<a class="niche-card" href="horeca.html"><div class="niche-ico">🍽</div><div><b>Отель / Ресторан</b><p>Брони столов и номеров, меню, банкеты — круглосуточно</p></div></a>
+<a class="niche-card" href="education.html"><div class="niche-ico">🎓</div><div><b>Образование</b><p>Запись на пробный урок, FAQ, снижение нагрузки на кураторов</p></div></a>
+<a class="niche-card" href="hr.html"><div class="niche-ico">👥</div><div><b>HR и рекрутинг</b><p>Скрининг кандидатов, анкеты, запись на собеседование</p></div></a>
+<a class="niche-card" href="finance.html"><div class="niche-ico">💰</div><div><b>Финансы / Страхование</b><p>Заявки на ОСАГО, кредиты, напоминания о продлении</p></div></a>
+<a class="niche-card" href="detailing.html"><div class="niche-ico">✨</div><div><b>Детейлинг</b><p>Запись на полировку, керамику и химчистку 24/7</p></div></a>
+  </div>
+</div></section>
 
-  <!-- LEFT: Form -->
-  <div class="lg:sticky lg:top-[88px] space-y-4 order-2 lg:order-1">
-    <!-- Prompt Card -->
-    <div class="glass rounded-[20px] p-5 space-y-4">
-      <div class="flex items-center justify-between">
-        <h2 class="font-space font-bold text-[15px] flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#6C5CFF]/20 flex items-center justify-center text-[12px]">✦</span> Опиши сайт мечты</h2>
-        <span class="text-[11px] font-mono text-white/40">AI + Polza</span>
-      </div>
-      
-      <div class="space-y-3">
-        <div>
-          <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Название / Бренд</label>
-          <input id="siteName" class="input-field w-full mt-1.5 px-3.5 py-2.5 rounded-xl text-[14px]" placeholder="Например: Lumen Studio">
-        </div>
-        
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Сфера</label>
-            <select id="businessType" class="input-field w-full mt-1.5 px-3 py-2.5 rounded-xl text-[13px]">
-              <option value="">Выбери нишу</option>
-              <option value="IT / SaaS / Стартап">IT / SaaS / Стартап</option>
-              <option value="E-commerce / Магазин">E-commerce / Магазин</option>
-              <option value="Ресторан / Кафе">Ресторан / Кафе / Food</option>
-              <option value="Клиника / Медицина">Клиника / Медицина</option>
-              <option value="Фитнес / Спорт">Фитнес / Спорт</option>
-              <option value="Недвижимость">Недвижимость</option>
-              <option value="Образование / Курсы">Образование / Курсы</option>
-              <option value="Красота / Салон">Красота / Салон / Barbershop</option>
-              <option value="Авто / Детейлинг">Авто / Детейлинг / Сервис</option>
-              <option value="Юрист / Консалтинг">Юрист / Консалтинг</option>
-              <option value="Портфолио / Личный бренд">Портфолио / Личный бренд</option>
-              <option value="Креатив / Агентство">Креатив / Агентство / Дизайн</option>
-            </select>
-          </div>
-          <div>
-            <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Тип сайта</label>
-            <select id="siteType" class="input-field w-full mt-1.5 px-3 py-2.5 rounded-xl text-[13px]">
-              <option value="landing">Landing Page</option>
-              <option value="corporate">Корпоративный</option>
-              <option value="saas">SaaS / Продукт</option>
-              <option value="ecommerce">Магазин</option>
-              <option value="portfolio">Портфолио</option>
-              <option value="blog">Блог / Медиа</option>
-              <option value="agency">Агентство</option>
-            </select>
-          </div>
-        </div>
+<section><div class="wrap">
+  <h2 class="s-title">Как это работает</h2><p class="s-sub">Три шага от заявки до работающего бота</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Передаёте данные о бизнесе</h3><p>Услуги, цены, часто задаваемые вопросы, контакты. Занимает 30 минут.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Мы настраиваем бота за 5–10 дней</h3><p>Под вашу нишу, под ваш стиль общения. Тестируем все сценарии до запуска.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Бот работает — вы получаете заявки</h3><p>24/7, без выходных. Клиент пишет — бот отвечает и передаёт вам готовую заявку.</p></div>
+  </div>
+</div></section>
 
-        <div>
-          <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Что за сайт? Подробно</label>
-          <textarea id="mainPrompt" rows="5" class="input-field w-full mt-1.5 px-3.5 py-3 rounded-xl text-[14px] resize-none leading-relaxed" placeholder="Например: Современный лендинг для AI-студии которая делает сайты. Темный, премиум, как Linear и Stripe. Hero с градиентом, 3 фичи, тарифы, отзывы. Хочу вау-эффект, анимации, glassmorphism..."></textarea>
-          <div class="flex gap-1.5 mt-2 flex-wrap">
-            <button onclick="setPrompt('Лендинг для кофейни specialty coffee, уютный, теплый, минимализм, много фото кофе, меню, адрес')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">☕ Кофейня</button>
-            <button onclick="setPrompt('SaaS продукт для управления задачами, как Linear, темный, tech, градиенты, фичи, тарифы, вау-анимации')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">🚀 SaaS</button>
-            <button onclick="setPrompt('Портфолио фотографа, минимализм, большие фото, сетка, темный, luxury')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">📸 Портфолио</button>
-            <button onclick="setPrompt('Клиника эстетической медицины, светлый, премиум, доверие, услуги, врачи, отзывы')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">🏥 Клиника</button>
-          </div>
-        </div>
+<section class="section-blue"><div class="wrap">
+  <h2 class="s-title">Цифры, которые говорят сами</h2><p class="s-sub"></p>
+  <div class="metrics">
+    <div class="metric"><div class="num">200+</div><div class="label">компаний уже работают с ботами NueraLead</div></div>
+    <div class="metric"><div class="num">73%</div><div class="label">обращений приходит вне рабочего времени — бот не спит</div></div>
+    <div class="metric"><div class="num">+35%</div><div class="label">средний рост конверсии в заявку после запуска бота</div></div>
+    <div class="metric"><div class="num">5 дней</div><div class="label">средний срок запуска кнопочного бота под ключ</div></div>
+  </div>
+</div></section>
 
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Стиль дизайна</label>
-            <select id="styleSelect" class="input-field w-full mt-1.5 px-3 py-2.5 rounded-xl text-[13px]">
-              <option value="modern premium like Linear/Stripe">Modern Premium (Linear/Stripe)</option>
-              <option value="glassmorphism + gradients">Glassmorphism + Gradients</option>
-              <option value="minimalism + typography">Minimalism Typography</option>
-              <option value="neomorphism soft">Neomorphism Soft</option>
-              <option value="brutalism bold">Brutalism Bold</option>
-              <option value="luxury dark + gold">Luxury Dark + Gold</option>
-              <option value="cyberpunk neon">Cyberpunk Neon</option>
-              <option value="corporate trust blue">Corporate Trust Blue</option>
-              <option value="claymorphism 3d">Claymorphism 3D</option>
-              <option value="startup friendly bright">Startup Friendly</option>
-            </select>
-          </div>
-          <div>
-            <label class="text-[11px] font-mono text-white/50 uppercase tracking-wider">Цвета</label>
-            <div class="flex gap-2 mt-1.5">
-              <input id="colorInput" class="input-field flex-1 px-3 py-2.5 rounded-xl text-[13px]" placeholder="#6C5CFF, #00D9FF">
-              <div class="flex gap-1">
-                <button onclick="setColors('#6C5CFF,#00D9FF,#FF4D8D')" class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6C5CFF] to-[#00D9FF] border border-white/10"></button>
-                <button onclick="setColors('#0F172A,#F8FAFC')" class="w-8 h-8 rounded-lg bg-[#0F172A] border border-white/20"></button>
-                <button onclick="setColors('#FF4D8D,#FFB86A')" class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF4D8D] to-[#FFB86A] border border-white/10"></button>
-              </div>
-            </div>
-          </div>
-        </div>
+<section id="demo-chat-section" style="background:#f0f4ff;padding:60px 0"><div class="wrap">
+  <h2 class="s-title">Посмотрите как работает бот</h2>
+  <p class="s-sub">Живой диалог — именно так ваши клиенты будут общаться с ботом 24/7</p>
+  <div id="demo-chat" style="max-width:400px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 8px 40px rgba(37,99,235,.15);overflow:hidden;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif">
+    <div style="background:#1e3a8a;padding:14px 18px;display:flex;align-items:center;gap:12px;color:#fff">
+      <div style="width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex:0 0 auto">К</div>
+      <div>
+        <div style="font-weight:700;font-size:15px">Константин</div>
+        <div style="font-size:12px;opacity:.8">● Онлайн · консультант NueraLead</div>
       </div>
     </div>
-
-    <!-- Contacts Card -->
-    <div class="glass rounded-[20px] p-5 space-y-3">
-      <h3 class="font-space font-semibold text-[13px] flex items-center gap-2"><span class="w-5 h-5 rounded-md bg-[#00D492]/20 flex items-center justify-center">◍</span> Контакты и CTA</h3>
-      <div class="grid grid-cols-2 gap-2.5">
-        <input id="contactPhone" class="input-field px-3 py-2.5 rounded-xl text-[13px]" placeholder="+7 999 123-45-67">
-        <input id="contactEmail" class="input-field px-3 py-2.5 rounded-xl text-[13px]" placeholder="hello@site.com">
-        <input id="contactAddress" class="input-field col-span-2 px-3 py-2.5 rounded-xl text-[13px]" placeholder="Адрес, город">
-        <input id="contactTg" class="input-field px-3 py-2.5 rounded-xl text-[13px]" placeholder="Telegram @">
-        <input id="contactInst" class="input-field px-3 py-2.5 rounded-xl text-[13px]" placeholder="Instagram @">
-        <input id="ctaText" class="input-field col-span-2 px-3 py-2.5 rounded-xl text-[13px]" placeholder="Текст кнопки: Получить демо">
-      </div>
-      <div class="flex flex-wrap gap-1.5 pt-1">
-        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="animations" checked class="feature-check accent-[#6C5CFF]"> Анимации</label>
-        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="parallax" checked class="feature-check"> Параллакс</label>
-        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="3d" class="feature-check"> 3D</label>
-        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="dark" checked class="feature-check"> Темная тема</label>
-        <label class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-[11px] cursor-pointer hover:bg-white/10"><input type="checkbox" value="form" checked class="feature-check"> Форма заявки</label>
-      </div>
-    </div>
-
-    <!-- Generate Button -->
-    <button id="generateBtn" onclick="generateSite()" class="w-full btn-primary py-4 rounded-[16px] font-bold text-[15px] text-white flex items-center justify-center gap-2 shimmer">
-      <span class="text-[18px]">✦</span> Сгенерировать сайт <span class="text-[11px] font-mono bg-white/20 px-2 py-0.5 rounded-full">⌘ + Enter</span>
-    </button>
-    <div class="flex gap-2">
-      <button onclick="randomize()" class="flex-1 btn-ghost py-2.5 rounded-xl text-[12px]">🎲 Рандом</button>
-      <button onclick="clearAll()" class="flex-1 btn-ghost py-2.5 rounded-xl text-[12px]">↺ Очистить</button>
-      <button onclick="loadExample()" class="flex-1 btn-ghost py-2.5 rounded-xl text-[12px]">📄 Пример</button>
-    </div>
-
-    <!-- Image Tools -->
-    <div class="glass rounded-[20px] p-4 space-y-3">
-      <h3 class="font-space font-semibold text-[13px] flex items-center gap-2"><span class="w-5 h-5 rounded-md bg-[#FF4D8D]/20 flex items-center justify-center">◐</span> Картинки & Генерация</h3>
-      <div class="flex gap-2">
-        <input id="imageQuery" class="input-field flex-1 px-3 py-2 rounded-xl text-[13px]" placeholder="Найти картинку: business team">
-        <button onclick="searchImages()" class="btn-ghost px-3 py-2 rounded-xl text-[12px]">🔍</button>
-      </div>
-      <div class="flex gap-2">
-        <input id="imagePrompt" class="input-field flex-1 px-3 py-2 rounded-xl text-[13px]" placeholder="Сгенерить: futuristic office, neon">
-        <button onclick="generateImage()" class="btn-primary px-3 py-2 rounded-xl text-[12px] text-white">✦ Gen</button>
-      </div>
-      <div id="imageResults" class="grid grid-cols-3 gap-2 max-h-[180px] overflow-y-auto hidden"></div>
+    <div id="demo-msgs" style="height:320px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#f8faff"></div>
+    <div style="padding:12px 16px;background:#fff;border-top:1px solid #e5e7eb;text-align:center">
+      <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="font-size:14px;padding:10px 24px;display:inline-block"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px;margin-right:6px"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg>Попробовать живого бота</a>
     </div>
   </div>
-
-  <!-- CENTER: Preview -->
-  <div class="order-1 lg:order-2 space-y-3">
-    <!-- Preview Toolbar -->
-    <div class="glass rounded-[16px] p-2.5 flex items-center justify-between gap-2 flex-wrap">
-      <div class="flex items-center gap-2">
-        <div class="flex items-center gap-1 p-1 rounded-xl bg-black/30">
-          <button onclick="setDevice('desktop')" id="btn-desktop" class="device-btn px-3 py-1.5 rounded-lg bg-white text-black text-[12px] font-medium">🖥 Desktop</button>
-          <button onclick="setDevice('tablet')" id="btn-tablet" class="device-btn px-3 py-1.5 rounded-lg text-white/60 text-[12px] hover:text-white">📱 Tablet</button>
-          <button onclick="setDevice('mobile')" id="btn-mobile" class="device-btn px-3 py-1.5 rounded-lg text-white/60 text-[12px] hover:text-white">📲 Mobile</button>
-        </div>
-        <div class="hidden md:flex items-center gap-1.5 pl-2 border-l border-white/10">
-          <div class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></div>
-          <div class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
-          <div class="w-2.5 h-2.5 rounded-full bg-[#28CA42]"></div>
-        </div>
-      </div>
-      <div class="flex items-center gap-1.5">
-        <button onclick="openFullscreen()" class="btn-ghost px-3 py-1.5 rounded-lg text-[12px]">⛶ Full</button>
-        <button onclick="toggleCode()" class="btn-ghost px-3 py-1.5 rounded-lg text-[12px]">{"</>"} Код</button>
-        <button onclick="copyCode()" class="btn-ghost px-3 py-1.5 rounded-lg text-[12px]">📋 Копировать</button>
-        <button onclick="downloadSite()" class="btn-primary px-4 py-1.5 rounded-lg text-[12px] font-bold text-white">⬇ Скачать</button>
-      </div>
-    </div>
-
-    <!-- Preview Frame -->
-    <div id="previewWrapper" class="preview-device relative w-full bg-[#0A0E1A] rounded-[20px] overflow-hidden border border-white/10 shadow-2xl" style="height: 720px;">
-      <div id="previewPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-        <div class="w-[120px] h-[120px] rounded-[24px] bg-gradient-to-br from-[#6C5CFF]/20 to-[#00D9FF]/20 border border-white/10 flex items-center justify-center text-[48px] mb-6 animate-float">✦</div>
-        <h3 class="font-space font-bold text-[22px] mb-2">Твой сайт появится здесь</h3>
-        <p class="text-white/50 text-[14px] max-w-[360px] leading-relaxed">Опиши идею слева и нажми «Сгенерировать». AI на Polza создаст премиум сайт с анимациями, картинками и адаптивом за 20-40 секунд.</p>
-        <div class="flex gap-2 mt-6">
-          <div class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono">Tailwind • GSAP • Unsplash • Анимации</div>
-        </div>
-        <div class="grid grid-cols-3 gap-3 mt-8 w-full max-w-[400px]">
-          <div class="glass rounded-xl p-3 text-left">
-            <div class="text-[18px] mb-1">🎨</div>
-            <div class="text-[12px] font-medium">Дизайн топ 1%</div>
-            <div class="text-[11px] text-white/40">Как Stripe, Linear</div>
-          </div>
-          <div class="glass rounded-xl p-3 text-left">
-            <div class="text-[18px] mb-1">⚡</div>
-            <div class="text-[12px] font-medium">30 сек</div>
-            <div class="text-[11px] text-white/40">От идеи до сайта</div>
-          </div>
-          <div class="glass rounded-xl p-3 text-left">
-            <div class="text-[18px] mb-1">💬</div>
-            <div class="text-[12px] font-medium">Чат-правки</div>
-            <div class="text-[11px] text-white/40">Скажи что изменить</div>
-          </div>
-        </div>
-      </div>
-      <iframe id="previewFrame" class="w-full h-full border-0 hidden bg-white" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-      <div id="loadingOverlay" class="absolute inset-0 bg-[#070A12]/90 backdrop-blur-xl hidden flex-col items-center justify-center p-8">
-        <div class="relative w-20 h-20 mb-6">
-          <div class="absolute inset-0 rounded-full border-2 border-white/10"></div>
-          <div class="absolute inset-0 rounded-full border-2 border-t-[#6C5CFF] animate-spin"></div>
-          <div class="absolute inset-2 rounded-full bg-gradient-to-br from-[#6C5CFF]/20 to-[#00D9FF]/20 flex items-center justify-center text-[24px]">✦</div>
-        </div>
-        <div class="font-space font-bold text-[16px] mb-2" id="loadingTitle">Генерирую магию...</div>
-        <div class="text-[13px] text-white/50 text-center max-w-[320px]" id="loadingText">Claude Sonnet 4.5 пишет код, подбирает картинки, делает анимации</div>
-        <div class="mt-6 w-[280px] h-1 rounded-full bg-white/10 overflow-hidden">
-          <div id="loadingBar" class="h-full bg-gradient-to-r from-[#6C5CFF] to-[#00D9FF] transition-all duration-500" style="width: 10%"></div>
-        </div>
-        <div class="mt-3 text-[11px] font-mono text-white/30" id="loadingStep">Инициализация Polza AI...</div>
-      </div>
-    </div>
-
-    <!-- Code View -->
-    <div id="codeView" class="hidden glass rounded-[16px] overflow-hidden">
-      <div class="flex items-center justify-between px-4 py-2.5 border-b border-white/10">
-        <div class="flex items-center gap-2 text-[12px] font-mono"><span class="w-2 h-2 rounded-full bg-[#00D492]"></span> generated.html • <span id="codeSize">0 KB</span></div>
-        <button onclick="toggleCode()" class="text-white/40 hover:text-white text-[12px]">✕ Закрыть</button>
-      </div>
-      <pre class="p-4 overflow-auto max-h-[400px] text-[12px] font-mono leading-relaxed"><code id="codeContent" class="text-white/80"></code></pre>
-    </div>
-
-    <!-- Quick Stats -->
-    <div class="grid grid-cols-3 gap-3">
-      <div class="glass rounded-xl p-3 flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-[#6C5CFF]/20 flex items-center justify-center text-[14px]">⚡</div>
-        <div><div class="text-[12px] font-medium" id="statTime">—</div><div class="text-[11px] text-white/40">Время генерации</div></div>
-      </div>
-      <div class="glass rounded-xl p-3 flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-[#00D9FF]/20 flex items-center justify-center text-[14px]">📦</div>
-        <div><div class="text-[12px] font-medium" id="statSize">—</div><div class="text-[11px] text-white/40">Размер кода</div></div>
-      </div>
-      <div class="glass rounded-xl p-3 flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-[#FF4D8D]/20 flex items-center justify-center text-[14px]">🧠</div>
-        <div><div class="text-[12px] font-medium" id="statModel">—</div><div class="text-[11px] text-white/40">Модель Polza</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIGHT: Chat -->
-  <div class="lg:sticky lg:top-[88px] space-y-4 order-3">
-    <div class="glass rounded-[20px] flex flex-col" style="height: 520px;">
-      <div class="p-4 border-b border-white/5 flex items-center justify-between">
-        <h3 class="font-space font-bold text-[14px] flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#00D9FF]/20 flex items-center justify-center text-[12px]">💬</span> Чат-доработка</h3>
-        <span class="text-[10px] font-mono px-2 py-1 rounded-full bg-[#00D492]/10 border border-[#00D492]/20 text-[#00D492]">AI LIVE</span>
-      </div>
-      
-      <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3">
-        <div class="chat-bubble glass rounded-[14px] rounded-bl-[4px] p-3 text-[13px] leading-relaxed">
-          <div class="font-medium text-white mb-1">Привет! Я твой AI-дизайнер ✦</div>
-          <div class="text-white/60">Сгенерируй сайт, а потом пиши мне что исправить. Например:</div>
-          <div class="mt-2 space-y-1">
-            <button onclick="quickChat('Сделай более минималистично, убери лишнее')" class="block w-full text-left px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[12px] border border-white/5">→ «Сделай более минималистично»</button>
-            <button onclick="quickChat('Поменяй цвета на темную тему с золотыми акцентами')" class="block w-full text-left px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[12px] border border-white/5">→ «Темная тема + золото»</button>
-            <button onclick="quickChat('Добавь секцию с отзывами и логотипами клиентов')" class="block w-full text-left px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[12px] border border-white/5">→ «Добавь отзывы»</button>
-            <button onclick="quickChat('Сделай hero более вау, добавь 3D и градиенты')" class="block w-full text-left px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-[12px] border border-white/5">→ «Вау hero с 3D»</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="p-3 border-t border-white/5 space-y-2">
-        <div class="flex gap-1.5 flex-wrap">
-          <button onclick="quickChat('Сделай светлее')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">☀️ Светлее</button>
-          <button onclick="quickChat('Сделай темнее')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">🌙 Темнее</button>
-          <button onclick="quickChat('Добавь больше анимаций')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">✨ Анимаций</button>
-          <button onclick="quickChat('Добавь секцию тарифов')" class="px-2.5 py-1 rounded-full bg-white/5 hover:bg-white/10 text-[11px] border border-white/5">💳 Тарифы</button>
-        </div>
-        <div class="flex gap-2">
-          <input id="chatInput" class="input-field flex-1 px-3.5 py-2.5 rounded-xl text-[13px]" placeholder="Что исправить? Например: сделай кнопку больше" onkeydown="if(event.key==='Enter') sendChat()">
-          <button onclick="sendChat()" class="btn-primary w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold">↑</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Export & History -->
-    <div class="glass rounded-[20px] p-4 space-y-3">
-      <h3 class="font-space font-semibold text-[13px]">Экспорт и деплой</h3>
-      <div class="grid grid-cols-2 gap-2">
-        <button onclick="downloadSite()" class="btn-ghost py-2.5 rounded-xl text-[12px] font-medium">⬇ HTML</button>
-        <button onclick="copyCode()" class="btn-ghost py-2.5 rounded-xl text-[12px] font-medium">📋 Копировать</button>
-        <button onclick="openInNewTab()" class="btn-ghost py-2.5 rounded-xl text-[12px] font-medium">↗ Открыть</button>
-        <button onclick="shareSite()" class="btn-ghost py-2.5 rounded-xl text-[12px] font-medium">🔗 Поделиться</button>
-      </div>
-      <div class="pt-2 border-t border-white/5">
-        <div class="text-[11px] font-mono text-white/40 mb-2">История генераций</div>
-        <div id="historyList" class="space-y-1.5 max-h-[120px] overflow-y-auto">
-          <div class="text-[11px] text-white/30">Пока пусто — сгенерируй первый сайт</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Polza Promo -->
-    <div class="rounded-[16px] p-4 bg-gradient-to-br from-[#6C5CFF]/20 to-[#00D9FF]/10 border border-[#6C5CFF]/20">
-      <div class="flex items-start gap-3">
-        <div class="w-8 h-8 rounded-lg bg-[#6C5CFF] flex items-center justify-center text-white font-bold text-[14px]">P</div>
-        <div class="flex-1">
-          <div class="font-bold text-[13px]">Работает на Polza AI</div>
-          <div class="text-[11px] text-white/60 leading-relaxed mt-1">400+ моделей в одном API, оплата в рублях, без VPN. Лучшие цены в РФ.</div>
-          <a href="https://polza.ai/" target="_blank" class="inline-flex mt-2 text-[11px] text-[#8B7DFF] hover:text-white">polza.ai →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Key Modal - ГДЕ ВЗЯТЬ КЛЮЧ -->
-<div id="keyModal" class="hidden fixed inset-0 z-[110] bg-black/80 backdrop-blur-xl p-4 md:p-8 overflow-y-auto">
-  <div class="max-w-[640px] mx-auto mt-10">
-    <div class="glass-strong rounded-[24px] p-6 md:p-8 border border-[#6C5CFF]/20">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="font-space font-bold text-[22px] md:text-[28px]">🔑 Куда вставить ключ Polza AI?</h2>
-        <button onclick="document.getElementById('keyModal').classList.add('hidden')" class="w-9 h-9 rounded-xl glass flex items-center justify-center">✕</button>
-      </div>
-      
-      <div class="space-y-5">
-        <div class="rounded-xl bg-[#6C5CFF]/10 border border-[#6C5CFF]/20 p-4">
-          <div class="font-bold text-[14px] mb-2">📍 Вариант 1: В браузере (для GitHub Pages) — самый простой</div>
-          <div class="text-[13px] text-white/70 leading-relaxed">
-            1. В шапке сайта найди поле <code class="px-2 py-0.5 rounded bg-white/10 font-mono text-[12px]">🔑 Polza API ключ (sk-polza-...)</code> — оно вверху справа<br>
-            2. Вставь туда ключ с Polza AI<br>
-            3. Нажми OK — ключ сохранится в браузере (localStorage) и подсветится зеленым ●<br>
-            4. Теперь можешь генерировать сайты!
-          </div>
-          <div class="mt-3 flex gap-2">
-            <img src="https://via.placeholder.com/600x80/151A2D/8B7DFF?text=HEADER+:+[●]+[____Polza+API+key____]+[👁]+[OK]+[Model]+[Получить+ключ]+[Мозги]" class="w-full rounded-lg border border-white/10 opacity-60">
-          </div>
-        </div>
-
-        <div class="rounded-xl bg-[#00D9FF]/10 border border-[#00D9FF]/20 p-4">
-          <div class="font-bold text-[14px] mb-2">📍 Вариант 2: На сервере (для локального запуска / Render / Railway)</div>
-          <div class="text-[13px] text-white/70 leading-relaxed">
-            Если запускаешь <code class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-[11px]">python generator_server.py</code>:
-            <div class="mt-2 p-3 rounded-lg bg-black/40 border border-white/5 font-mono text-[12px] leading-relaxed">
-              # Создай файл .env в корне проекта<br>
-              cp .env.example .env<br>
-              # Открой .env и вставь:<br>
-              POLZA_API_KEY=sk-polza-твой-ключ-сюда<br>
-              POLZA_BASE_URL=https://polza.ai/api/v1<br><br>
-              # Или через переменную окружения:<br>
-              export POLZA_API_KEY=sk-polza-...<br>
-              python generator_server.py
-            </div>
-            Тогда ключ в браузере указывать не нужно — бекенд сам проксирует запросы.
-          </div>
-        </div>
-
-        <div class="rounded-xl bg-[#00D492]/10 border border-[#00D492]/20 p-4">
-          <div class="font-bold text-[14px] mb-2">🔗 Где взять ключ Polza AI?</div>
-          <div class="text-[13px] text-white/70 leading-relaxed space-y-2">
-            <div>1. Иди на <a href="https://polza.ai/register" target="_blank" class="text-[#8B7DFF] underline">https://polza.ai/register</a> — регистрация за 30 сек</div>
-            <div>2. Пополни баланс на 100-300₽ (хватит на 20-30 сайтов) — оплата российской картой, без VPN</div>
-            <div>3. Dashboard → <b>API Keys</b> → Create Key → скопируй <code class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-[11px]">sk-polza-...</code></div>
-            <div>4. Вставь в генератор!</div>
-          </div>
-          <a href="https://polza.ai/register" target="_blank" class="mt-3 inline-flex btn-primary px-5 py-2.5 rounded-xl text-[13px] font-bold text-white">Получить ключ на polza.ai →</a>
-        </div>
-
-        <div class="rounded-xl bg-white/5 border border-white/10 p-4">
-          <div class="font-bold text-[13px] mb-2">🔒 Безопасность</div>
-          <div class="text-[12px] text-white/50 leading-relaxed">
-            • В браузере ключ хранится только у тебя в localStorage, никуда не отправляется кроме api.polza.ai<br>
-            • Для продакшена используй бекенд (generator_server.py) — он скрывает ключ<br>
-            • Можешь в любой момент удалить: очисти localStorage или нажми "Очистить" в генераторе
-          </div>
-        </div>
-
-        <div class="flex gap-3">
-          <input id="keyModalInput" type="text" placeholder="Вставь сюда sk-polza-..." class="input-field flex-1 px-4 py-3 rounded-xl text-[14px] font-mono" onkeydown="if(event.key==='Enter') saveKeyFromModal()">
-          <button onclick="saveKeyFromModal()" class="btn-primary px-6 py-3 rounded-xl text-[14px] font-bold text-white">💾 Сохранить ключ</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Brains Modal -->
-<div id="brainsModal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl p-4 md:p-8 overflow-y-auto">
-  <div class="max-w-[1100px] mx-auto">
-    <div class="flex items-center justify-between mb-6">
-      <h2 class="font-space font-bold text-[24px] md:text-[32px]">🧠 Мозги Polza AI — рекомендации</h2>
-      <button onclick="document.getElementById('brainsModal').classList.add('hidden')" class="w-9 h-9 rounded-xl glass flex items-center justify-center">✕</button>
-    </div>
-    
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="md:col-span-3 glass rounded-[20px] p-5 border border-[#6C5CFF]/20">
-        <h3 class="font-bold text-[16px] mb-3">💡 Как это работает? Единый API для 400+ моделей</h3>
-        <p class="text-[13px] text-white/60 leading-relaxed">Polza AI — агрегатор №1 в РФ. Один ключ, один баланс в рублях, доступ ко всем моделям OpenAI, Anthropic, Google, DeepSeek, Qwen, Meta и др. Без VPN, без прокси. OpenAI-совместимый API: <code class="px-1.5 py-0.5 rounded bg-white/10 text-[11px]">https://polza.ai/api/v1</code></p>
-        <div class="mt-3 flex flex-wrap gap-2">
-          <span class="px-2.5 py-1 rounded-full bg-[#6C5CFF]/20 text-[11px] border border-[#6C5CFF]/20">400+ моделей</span>
-          <span class="px-2.5 py-1 rounded-full bg-[#00D492]/10 text-[11px] border border-[#00D492]/20">Оплата в ₽</span>
-          <span class="px-2.5 py-1 rounded-full bg-[#00D9FF]/10 text-[11px] border border-[#00D9FF]/20">Без VPN</span>
-          <span class="px-2.5 py-1 rounded-full bg-white/5 text-[11px] border border-white/10">OpenAI SDK</span>
-        </div>
-      </div>
-
-      <div class="glass rounded-[20px] p-5">
-        <h4 class="font-bold text-[14px] mb-3 flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#6C5CFF]/20 flex items-center justify-center">💻</span> Генерация сайтов (текст → код)</h4>
-        <div class="space-y-2.5" id="textModelsList"></div>
-      </div>
-      <div class="glass rounded-[20px] p-5">
-        <h4 class="font-bold text-[14px] mb-3 flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#FF4D8D]/20 flex items-center justify-center">🎨</span> Картинки и иллюстрации</h4>
-        <div class="space-y-2.5" id="imageModelsList"></div>
-      </div>
-      <div class="glass rounded-[20px] p-5">
-        <h4 class="font-bold text-[14px] mb-3 flex items-center gap-2"><span class="w-6 h-6 rounded-lg bg-[#00D9FF]/20 flex items-center justify-center">🎬</span> Видео и анимации</h4>
-        <div class="space-y-2.5" id="videoModelsList"></div>
-      </div>
-
-      <div class="md:col-span-3 glass rounded-[20px] p-5">
-        <h4 class="font-bold text-[14px] mb-3">🏆 Наша рекомендация — связка для генератора</h4>
-        <div class="grid md:grid-cols-3 gap-3 text-[12px]">
-          <div class="rounded-xl bg-[#6C5CFF]/10 border border-[#6C5CFF]/20 p-3">
-            <div class="font-bold mb-1">🥇 Основной генератор</div>
-            <div class="font-mono text-[#8B7DFF]">anthropic/claude-sonnet-4-5</div>
-            <div class="text-white/50 mt-1">Лучший для фронтенда, понимает дизайн, пишет чистый Tailwind + GSAP, делает вау-анимации</div>
-          </div>
-          <div class="rounded-xl bg-[#FF4D8D]/10 border border-[#FF4D8D]/20 p-3">
-            <div class="font-bold mb-1">🎨 Картинки</div>
-            <div class="font-mono text-[#FF4D8D]">bytedance/seedream-4.5</div>
-            <div class="text-white/50 mt-1">Фотореализм топ уровня, фоны, hero изображения, продукт</div>
-          </div>
-          <div class="rounded-xl bg-[#00D9FF]/10 border border-[#00D9FF]/20 p-3">
-            <div class="font-bold mb-1">💬 Доработки в чате</div>
-            <div class="font-mono text-[#00D9FF]">anthropic/claude-haiku-4-5</div>
-            <div class="text-white/50 mt-1">Быстрый, дешевый, идеален для правок «сделай темнее», «добавь секцию»</div>
-          </div>
-        </div>
-        <div class="mt-4 p-3 rounded-xl bg-black/30 border border-white/5">
-          <div class="text-[11px] font-mono text-white/40 mb-1.5">Пример кода (Python, OpenAI SDK):</div>
-          <pre class="text-[11px] font-mono text-white/70 overflow-x-auto"><code>from openai import OpenAI
-client = OpenAI(
-  base_url="https://polza.ai/api/v1",
-  api_key="POLZA_KEY"
-)
-resp = client.chat.completions.create(
-  model="anthropic/claude-sonnet-4-5",
-  messages=[{"role":"user","content":"Создай лендинг..."}]
-)</code></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Toast -->
-<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[200] hidden">
-  <div class="glass-strong px-4 py-2.5 rounded-full text-[13px] font-medium shadow-2xl flex items-center gap-2">
-    <span id="toastIcon">✦</span> <span id="toastText">Готово!</span>
-  </div>
-</div>
-
+</div></section>
+<style>
+.demo-bubble{max-width:78%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeUp .4s ease both}
+.demo-bubble.bot{background:#fff;border:1px solid #e2e8f0;border-radius:4px 16px 16px 16px;align-self:flex-start;color:#1e293b}
+.demo-bubble.user{background:#2563eb;color:#fff;border-radius:16px 4px 16px 16px;align-self:flex-end}
+.demo-time{font-size:11px;color:#94a3b8;align-self:flex-start;margin-top:-4px}
+.demo-typing{display:flex;gap:4px;align-items:center;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:4px 16px 16px 16px;align-self:flex-start;width:fit-content}
+.demo-typing span{width:7px;height:7px;border-radius:50%;background:#94a3b8;animation:blink 1.2s infinite}
+.demo-typing span:nth-child(2){animation-delay:.2s}
+.demo-typing span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
 <script>
-// ---------- State ----------
-let currentHtml = '';
-let history = JSON.parse(localStorage.getItem('neuralsite_history') || '[]');
-let isGenerating = false;
-
-// ---------- Models Data (fallback if API not available) ----------
-const MODELS = {
-  text: [
-    {id:"anthropic/claude-sonnet-4-5", name:"Claude Sonnet 4.5", best:"Фронтенд, дизайн, код - ЛУЧШИЙ", price:"~$3/1M", badge:"🔥 Рекомендуем", context:"200k"},
-    {id:"openai/gpt-5", name:"GPT-5", best:"Сложные SaaS, логика", price:"~$5/1M", badge:"💎 Премиум", context:"400k"},
-    {id:"google/gemini-2.5-pro", name:"Gemini 2.5 Pro", best:"Креатив, 1M контекст", price:"~$2.5/1M", badge:"🎨 Креатив", context:"1M"},
-    {id:"deepseek/deepseek-v3.2", name:"DeepSeek V3.2", best:"Быстро и дешево", price:"~$0.5/1M", badge:"⚡ Быстро", context:"128k"},
-    {id:"qwen/qwen3-235b-a22b:free", name:"Qwen3 235B", best:"Бесплатно, русский", price:"FREE", badge:"🆓 Бесплатно", context:"32k"},
-    {id:"anthropic/claude-haiku-4-5", name:"Claude Haiku 4.5", best:"Доработки в чате", price:"~$1/1M", badge:"💬 Чат", context:"200k"},
-  ],
-  image: [
-    {id:"bytedance/seedream-4.5", name:"Seedream 4.5", best:"Фотореализм, лучший", price:"~$0.05", badge:"🔥 Топ"},
-    {id:"openai/gpt-image-1.5", name:"GPT Image 1.5", best:"Иконки, точность", price:"~$0.08", badge:"🎯 Точность"},
-    {id:"black-forest-labs/flux-2-pro", name:"Flux 2 Pro", best:"Фоны, быстро", price:"~$0.03", badge:"⚡ Быстро"},
-    {id:"google/nano-banana-pro", name:"Nano Banana Pro", best:"Редактирование", price:"~$0.04", badge:"✏️ Редактор"},
-  ],
-  video: [
-    {id:"bytedance/seedance-2.5", name:"Seedance 2.5", best:"Видео для hero", price:"~$0.20/sec", badge:"🔥 Топ"},
-    {id:"kuaishou/kling-3.0", name:"Kling 3.0", best:"Кинематографичность", price:"~$0.15/sec", badge:"🎬 Кино"},
-    {id:"alibaba/wan-3.0", name:"Wan 3.0", best:"Моушн графика", price:"~$0.12/sec", badge:"✨ Моушн"},
-    {id:"google/veo-3.1", name:"Veo 3.1", best:"Макс качество", price:"~$0.30/sec", badge:"💎 Премиум"},
-  ]
-};
-
-function renderModels(){
-  const textEl = document.getElementById('textModelsList');
-  const imgEl = document.getElementById('imageModelsList');
-  const vidEl = document.getElementById('videoModelsList');
-  if(textEl) textEl.innerHTML = MODELS.text.map(m=>`
-    <div class="rounded-xl bg-white/[0.03] border border-white/5 p-3 hover:bg-white/[0.05] transition cursor-pointer" onclick="selectModel('${m.id}')">
-      <div class="flex items-center justify-between mb-1"><span class="font-bold text-[13px]">${m.name}</span><span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/10">${m.badge}</span></div>
-      <div class="text-[11px] text-white/50">${m.best}</div>
-      <div class="flex gap-2 mt-2 text-[10px] font-mono"><span class="px-1.5 py-0.5 rounded bg-black/30">${m.price}</span><span class="px-1.5 py-0.5 rounded bg-black/30">${m.context || ''}</span></div>
-      <div class="text-[10px] font-mono text-[#8B7DFF] mt-1 truncate">${m.id}</div>
-    </div>`).join('');
-  if(imgEl) imgEl.innerHTML = MODELS.image.map(m=>`
-    <div class="rounded-xl bg-white/[0.03] border border-white/5 p-3 hover:bg-white/[0.05] transition cursor-pointer" onclick="selectModel('${m.id}', 'image')">
-      <div class="flex items-center justify-between mb-1"><span class="font-bold text-[13px]">${m.name}</span><span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/10">${m.badge}</span></div>
-      <div class="text-[11px] text-white/50">${m.best}</div>
-      <div class="text-[10px] font-mono text-[#FF4D8D] mt-1 truncate">${m.id}</div>
-    </div>`).join('');
-  if(vidEl) vidEl.innerHTML = MODELS.video.map(m=>`
-    <div class="rounded-xl bg-white/[0.03] border border-white/5 p-3 hover:bg-white/[0.05] transition">
-      <div class="flex items-center justify-between mb-1"><span class="font-bold text-[13px]">${m.name}</span><span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/10">${m.badge}</span></div>
-      <div class="text-[11px] text-white/50">${m.best}</div>
-      <div class="text-[10px] font-mono text-[#00D9FF] mt-1 truncate">${m.id}</div>
-    </div>`).join('');
-}
-renderModels();
-
-function selectModel(id, type='text'){
-  if(type==='text'){
-    document.getElementById('modelSelect').value = id;
-    document.getElementById('modelSelectMobile').value = id;
-  }
-  toast(`Выбрана модель: ${id}`, '🧠');
-  document.getElementById('brainsModal').classList.add('hidden');
-}
-
-// ---------- Helpers ----------
-function getKey(){
-  return (document.getElementById('polzaKey')?.value || document.getElementById('polzaKeyMobile')?.value || document.getElementById('keyModalInput')?.value || '').trim() || localStorage.getItem('polza_key') || '';
-}
-function getModel(){
-  return document.getElementById('modelSelect')?.value || document.getElementById('modelSelectMobile')?.value || 'anthropic/claude-sonnet-4-5';
-}
-function toast(text, icon='✦'){
-  const t = document.getElementById('toast');
-  document.getElementById('toastText').textContent = text;
-  document.getElementById('toastIcon').textContent = icon;
-  t.classList.remove('hidden');
-  setTimeout(()=>t.classList.add('hidden'), 3000);
-}
-function toggleKey(){
-  const i = document.getElementById('polzaKey');
-  if(i) i.type = i.type==='password'?'text':'password';
-  const m = document.getElementById('polzaKeyMobile');
-  if(m) m.type = m.type==='password'?'text':'password';
-}
-function saveKey(){
-  const k = getKey();
-  if(!k){
-    toast('Вставь ключ Polza AI!', '🔑');
-    document.getElementById('keyModal').classList.remove('hidden');
-    return;
-  }
-  if(!k.startsWith('sk-')){
-    toast('Ключ должен начинаться с sk-...', '⚠️');
-    return;
-  }
-  localStorage.setItem('polza_key', k);
-  document.getElementById('polzaKey').value = k;
-  const mobile = document.getElementById('polzaKeyMobile');
-  if(mobile) mobile.value = k;
-  const modalInput = document.getElementById('keyModalInput');
-  if(modalInput) modalInput.value = k;
-  updateKeyUI();
-  toast('Ключ сохранен! Можно генерировать', '✅');
-}
-function saveKeyFromModal(){
-  const input = document.getElementById('keyModalInput');
-  const k = input.value.trim();
-  if(!k){ toast('Вставь ключ!', '🔑'); return; }
-  localStorage.setItem('polza_key', k);
-  document.getElementById('polzaKey').value = k;
-  const mobile = document.getElementById('polzaKeyMobile');
-  if(mobile) mobile.value = k;
-  updateKeyUI();
-  document.getElementById('keyModal').classList.add('hidden');
-  toast('Ключ сохранен! Теперь генерируй сайт', '✅');
-}
-function updateKeyUI(){
-  const k = getKey();
-  const hasKey = !!k;
-  const dot = document.getElementById('keyDot');
-  const wrapper = document.getElementById('keyWrapper');
-  const wrapperMobile = document.getElementById('keyWrapperMobile');
-  const banner = document.getElementById('keyBanner');
-  
-  if(dot){
-    dot.className = `w-2 h-2 rounded-full ${hasKey ? 'bg-[#00D492]' : 'bg-[#FF4D8D]'} animate-pulse`;
-  }
-  if(wrapper){
-    wrapper.className = `hidden md:flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 transition-all ${hasKey ? 'border-[#00D492]/30 bg-[#00D492]/5' : 'border-[#FF4D8D]/30 bg-[#FF4D8D]/5 animate-pulse'}`;
-  }
-  if(wrapperMobile){
-    wrapperMobile.className = `flex-1 flex items-center gap-2 glass px-3 py-2 rounded-xl border-2 ${hasKey ? 'border-[#00D492]/30' : 'border-[#FF4D8D]/30'}`;
-  }
-  if(banner){
-    if(hasKey) banner.classList.add('hidden');
-    else banner.classList.remove('hidden');
-  }
-}
-function checkKeyOnStart(){
-  updateKeyUI();
-  const k = getKey();
-  if(!k){
-    setTimeout(()=>{
-      document.getElementById('keyModal').classList.remove('hidden');
-      toast('Сначала укажи Polza API ключ!', '🔑');
-    }, 1000);
-  }
-}
-function setPrompt(t){ document.getElementById('mainPrompt').value = t; }
-function setColors(c){ document.getElementById('colorInput').value = c; }
-
-function getFormData(){
-  const features = [...document.querySelectorAll('.feature-check:checked')].map(c=>c.value);
-  return {
-    prompt: document.getElementById('mainPrompt').value.trim(),
-    site_name: document.getElementById('siteName').value.trim() || 'NeuraSite',
-    business_type: document.getElementById('businessType').value,
-    site_type: document.getElementById('siteType').value,
-    style: document.getElementById('styleSelect').value,
-    colors: document.getElementById('colorInput').value,
-    contacts: {
-      phone: document.getElementById('contactPhone').value,
-      email: document.getElementById('contactEmail').value,
-      address: document.getElementById('contactAddress').value,
-      telegram: document.getElementById('contactTg').value,
-      instagram: document.getElementById('contactInst').value,
-      cta: document.getElementById('ctaText').value,
-    },
-    features
-  };
-}
-
-// ---------- Backend vs Direct ----------
-async function callGenerateAPI(data){
-  const apiKey = getKey();
-  const model = getModel();
-  
-  // Попробуем backend сначала
-  try{
-    const res = await fetch('/api/generate', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({...data, model, api_key: apiKey || undefined})
-    });
-    if(res.ok){
-      const j = await res.json();
-      return {html: j.html, model: j.model_used || model, source:'backend'};
-    }
-  }catch(e){ console.log('Backend not available, fallback to direct', e); }
-
-  // Direct Polza API
-  if(!apiKey){
-    throw new Error('Укажите Polza API ключ в шапке! Получить: https://polza.ai/register');
-  }
-  
-  const system = `Ты — элитный веб-дизайнер уровня Apple, Stripe, Linear + senior frontend. Сгенерируй ОДИН ПОЛНЫЙ HTML файл сайта. Требования: один файл, Tailwind CDN, Google Fonts, GSAP для анимаций, современный премиум дизайн, анимации обязательно (fade-up, parallax, hover), картинки с https://images.unsplash.com, адаптив, интерактив (меню, форма, FAQ). Структура: header sticky blur, hero вау, фичи, о компании, соцдоказательства, тарифы/каталог, FAQ, контакты+форма, footer. Русский язык. Только HTML код, без объяснений, начни с <!DOCTYPE html>. Стиль: ${data.style}, цвета: ${data.colors || 'подбери премиум палитру'}`;
-
-  const user = `Название: ${data.site_name}
-Сфера: ${data.business_type}
-Тип: ${data.site_type}
-Фичи: ${data.features.join(', ')}
-Контакты: ${JSON.stringify(data.contacts)}
-Описание: ${data.prompt}
-СГЕНЕРИРУЙ ПОЛНЫЙ HTML СЕЙЧАС.`;
-
-  const resp = await fetch('https://polza.ai/api/v1/chat/completions', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
-    body: JSON.stringify({model, messages:[{role:'system',content:system},{role:'user',content:user}], temperature:0.85, max_tokens:16000})
-  });
-  if(!resp.ok){
-    const err = await resp.text();
-    throw new Error(`Polza API error ${resp.status}: ${err.slice(0,500)}`);
-  }
-  const j = await resp.json();
-  let html = j.choices[0].message.content;
-  html = html.replace(/^```html\s*/,'').replace(/^```\s*/,'').replace(/\s*```$/,'').trim();
-  return {html, model, source:'direct'};
-}
-
-async function callRefineAPI(currentHtml, message){
-  const apiKey = getKey();
-  const model = document.getElementById('modelSelect')?.value?.includes('haiku') ? getModel() : 'anthropic/claude-haiku-4-5';
-  
-  try{
-    const res = await fetch('/api/refine', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({current_html: currentHtml, message, model, api_key: apiKey || undefined})
-    });
-    if(res.ok){
-      const j = await res.json();
-      return j.html;
-    }
-  }catch(e){}
-
-  if(!apiKey) throw new Error('Нужен Polza ключ');
-  
-  const system = `Ты senior frontend, дорабатываешь сайт. Дают текущий HTML и запрос что исправить. Верни ПОЛНЫЙ обновленный HTML, сохранив все остальное. Только код, без объяснений.`;
-  const user = `Запрос: ${message}\n\nТекущий HTML:\n${currentHtml.slice(0,80000)}\n\nВерни ПОЛНЫЙ обновленный HTML.`;
-  
-  const resp = await fetch('https://polza.ai/api/v1/chat/completions', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
-    body: JSON.stringify({model, messages:[{role:'system',content:system},{role:'user',content:user}], temperature:0.7, max_tokens:16000})
-  });
-  if(!resp.ok) throw new Error('Polza API error');
-  const j = await resp.json();
-  let html = j.choices[0].message.content;
-  html = html.replace(/^```html\s*/,'').replace(/^```\s*/,'').replace(/\s*```$/,'').trim();
-  return html;
-}
-
-// ---------- Generate ----------
-async function generateSite(){
-  const data = getFormData();
-  if(!data.prompt){
-    toast('Опиши какой сайт нужен!', '⚠️');
-    document.getElementById('mainPrompt').focus();
-    return;
-  }
-  if(isGenerating) return;
-  isGenerating = true;
-  
-  const btn = document.getElementById('generateBtn');
-  btn.disabled = true;
-  btn.innerHTML = '⏳ Генерирую...';
-  
-  const overlay = document.getElementById('loadingOverlay');
-  overlay.classList.remove('hidden');
-  overlay.classList.add('flex');
-  document.getElementById('previewPlaceholder').classList.add('hidden');
-  
-  const steps = [
-    'Подключаюсь к Polza AI...',
-    'Claude Sonnet 4.5 думает над дизайном...',
-    'Пишу Tailwind + GSAP анимации...',
-    'Подбираю картинки с Unsplash...',
-    'Делаю адаптив и интерактив...',
-    'Финальные штрихи...'
+(function(){
+  const msgs=[
+    {from:'bot',text:'Привет! 👋 Я Константин, консультант NueraLead. Помогу подобрать бота для вашего бизнеса.\n\nЧем занимается ваша компания?'},
+    {from:'user',text:'У меня стоматология'},
+    {from:'bot',text:'Отлично! 🦷 Для стоматологии мы настраиваем бота, который:\n\n• Записывает пациентов 24/7\n• Отвечает на вопросы о ценах и процедурах\n• Снижает no-show на 40% через напоминания\n\nСколько пациентов обращается к вам в месяц?'},
+    {from:'user',text:'Примерно 150-200'},
+    {from:'bot',text:'Это хороший поток! 💪 При 200 пациентах в месяц бот освободит администратора от ~4 часов рутинных звонков ежедневно.\n\nОставьте номер — я свяжусь и покажу демо именно под вашу клинику 👇'},
   ];
-  let step = 0;
-  const interval = setInterval(()=>{
-    if(step < steps.length){
-      document.getElementById('loadingStep').textContent = steps[step];
-      document.getElementById('loadingBar').style.width = `${15 + step*15}%`;
-      step++;
-    }
-  }, 800);
-  
-  const start = Date.now();
-  try{
-    const result = await callGenerateAPI(data);
-    currentHtml = result.html;
-    
-    clearInterval(interval);
-    document.getElementById('loadingBar').style.width = '100%';
-    document.getElementById('loadingStep').textContent = 'Готово! Рендерю...';
-    
-    setTimeout(()=>{
-      renderPreview(currentHtml);
-      overlay.classList.add('hidden');
-      overlay.classList.remove('flex');
-      
-      const elapsed = ((Date.now()-start)/1000).toFixed(1);
-      document.getElementById('statTime').textContent = `${elapsed} сек`;
-      document.getElementById('statSize').textContent = `${(currentHtml.length/1024).toFixed(1)} KB`;
-      document.getElementById('statModel').textContent = result.model.split('/').pop();
-      
-      // History
-      history.unshift({name: data.site_name, prompt: data.prompt.slice(0,60), time: new Date().toLocaleTimeString(), size: currentHtml.length});
-      history = history.slice(0,10);
-      localStorage.setItem('neuralsite_history', JSON.stringify(history));
-      renderHistory();
-      
-      addChatMessage('assistant', `Готово! ✨ Сгенерировал сайт "${data.site_name}" за ${elapsed} сек на модели ${result.model}. Как тебе? Скажи что улучшить — я сразу исправлю.`);
-      toast('Сайт сгенерирован! 🔥', '✦');
-    }, 600);
-    
-  }catch(e){
-    clearInterval(interval);
-    overlay.classList.add('hidden');
-    overlay.classList.remove('flex');
-    document.getElementById('previewPlaceholder').classList.remove('hidden');
-    toast(e.message, '❌');
-    addChatMessage('assistant', `Ошибка: ${e.message}. Проверь Polza API ключ и баланс на https://polza.ai/dashboard`);
-  }finally{
-    isGenerating = false;
-    btn.disabled = false;
-    btn.innerHTML = '<span class="text-[18px]">✦</span> Сгенерировать сайт <span class="text-[11px] font-mono bg-white/20 px-2 py-0.5 rounded-full">⌘ + Enter</span>';
-    if(getKey()) localStorage.setItem('polza_key', getKey());
+  const box=document.getElementById('demo-msgs');
+  if(!box)return;
+  let i=0;
+  function showNext(){
+    if(i>=msgs.length)return;
+    const m=msgs[i++];
+    const typing=document.createElement('div');
+    typing.className='demo-typing';
+    typing.innerHTML='<span></span><span></span><span></span>';
+    if(m.from==='bot'){box.appendChild(typing);box.scrollTop=box.scrollHeight;}
+    setTimeout(function(){
+      if(typing.parentNode)typing.remove();
+      const b=document.createElement('div');
+      b.className='demo-bubble '+m.from;
+      b.style.whiteSpace='pre-wrap';
+      b.textContent=m.text;
+      box.appendChild(b);
+      const t=document.createElement('div');
+      t.className='demo-time';
+      t.textContent=m.from==='bot'?'Константин · сейчас':'Вы · сейчас';
+      box.appendChild(t);
+      box.scrollTop=box.scrollHeight;
+      setTimeout(showNext,m.from==='bot'?1800:900);
+    },m.from==='bot'?1200:300);
   }
-}
-
-function renderPreview(html){
-  const frame = document.getElementById('previewFrame');
-  const placeholder = document.getElementById('previewPlaceholder');
-  placeholder.classList.add('hidden');
-  frame.classList.remove('hidden');
-  frame.srcdoc = html;
-  currentHtml = html;
-  document.getElementById('codeContent').textContent = html;
-  document.getElementById('codeSize').textContent = `${(html.length/1024).toFixed(1)} KB`;
-}
-
-function setDevice(type){
-  const wrapper = document.getElementById('previewWrapper');
-  document.querySelectorAll('.device-btn').forEach(b=>{b.classList.remove('bg-white','text-black'); b.classList.add('text-white/60')});
-  document.getElementById(`btn-${type}`).classList.add('bg-white','text-black');
-  document.getElementById(`btn-${type}`).classList.remove('text-white/60');
-  
-  if(type==='desktop'){ wrapper.style.width='100%'; wrapper.style.margin='0'; }
-  if(type==='tablet'){ wrapper.style.width='768px'; wrapper.style.margin='0 auto'; }
-  if(type==='mobile'){ wrapper.style.width='390px'; wrapper.style.margin='0 auto'; }
-}
-
-function toggleCode(){
-  document.getElementById('codeView').classList.toggle('hidden');
-}
-function copyCode(){
-  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
-  navigator.clipboard.writeText(currentHtml);
-  toast('Код скопирован!', '📋');
-}
-function downloadSite(){
-  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
-  const blob = new Blob([currentHtml], {type:'text/html'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `${(document.getElementById('siteName').value || 'site').replace(/\s+/g,'-').toLowerCase()}.html`;
-  a.click();
-  URL.revokeObjectURL(url);
-  toast('Скачан!', '⬇');
-}
-function openInNewTab(){
-  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
-  const w = window.open();
-  w.document.write(currentHtml);
-  w.document.close();
-}
-function openFullscreen(){
-  const frame = document.getElementById('previewFrame');
-  if(frame.requestFullscreen) frame.requestFullscreen();
-}
-function shareSite(){
-  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
-  // Create data URL or use localStorage sharing via URL hash (compress?)
-  const encoded = btoa(unescape(encodeURIComponent(currentHtml))).slice(0,2000);
-  toast('Скопируй ссылку из адресной строки после сохранения', '🔗');
-}
-
-// ---------- Chat ----------
-function addChatMessage(role, text){
-  const cont = document.getElementById('chatMessages');
-  const div = document.createElement('div');
-  div.className = `chat-bubble ${role==='user' ? 'ml-8 bg-[#6C5CFF] text-white rounded-[14px] rounded-br-[4px]' : 'glass rounded-[14px] rounded-bl-[4px]'} p-3 text-[13px] leading-relaxed`;
-  div.textContent = text;
-  cont.appendChild(div);
-  cont.scrollTop = cont.scrollHeight;
-}
-
-function quickChat(text){
-  document.getElementById('chatInput').value = text;
-  sendChat();
-}
-
-async function sendChat(){
-  const input = document.getElementById('chatInput');
-  const msg = input.value.trim();
-  if(!msg) return;
-  if(!currentHtml){
-    toast('Сначала сгенерируй сайт', '⚠️');
-    return;
-  }
-  addChatMessage('user', msg);
-  input.value = '';
-  
-  const typing = document.createElement('div');
-  typing.className = 'chat-bubble glass rounded-[14px] rounded-bl-[4px] p-3 flex gap-1';
-  typing.innerHTML = '<span class="w-2 h-2 rounded-full bg-white/40 typing-dot"></span><span class="w-2 h-2 rounded-full bg-white/40 typing-dot"></span><span class="w-2 h-2 rounded-full bg-white/40 typing-dot"></span>';
-  typing.id = 'typing';
-  document.getElementById('chatMessages').appendChild(typing);
-  document.getElementById('chatMessages').scrollTop = 99999;
-  
-  try{
-    const newHtml = await callRefineAPI(currentHtml, msg);
-    document.getElementById('typing')?.remove();
-    renderPreview(newHtml);
-    addChatMessage('assistant', 'Готово! Исправил. Что еще улучшить?');
-    toast('Сайт обновлен!', '✦');
-  }catch(e){
-    document.getElementById('typing')?.remove();
-    addChatMessage('assistant', `Ошибка: ${e.message}`);
-    toast(e.message, '❌');
-  }
-}
-
-// ---------- Images ----------
-async function searchImages(){
-  const q = document.getElementById('imageQuery').value.trim();
-  if(!q) return;
-  const cont = document.getElementById('imageResults');
-  cont.classList.remove('hidden');
-  cont.innerHTML = '<div class="col-span-3 text-center py-4 text-[12px] text-white/40">Ищу...</div>';
-  
-  try{
-    // Try backend
-    let images = [];
-    try{
-      const res = await fetch('/api/search-images', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query:q, count:6})});
-      if(res.ok){ const j = await res.json(); images = j.images; }
-    }catch{}
-    
-    if(!images.length){
-      // Fallback unsplash
-      images = Array.from({length:6}, (_,i)=>({url:`https://images.unsplash.com/photo-${1490000000000+i*1000}?w=400&h=300&fit=crop&q=80&auto=format&ixlib=rb-4.0.3&ixid=${i}&q=${encodeURIComponent(q)}`, query:q}));
-      // Use real working urls
-      const real = [
-        `https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop`,
-        `https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop`,
-        `https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop`,
-        `https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop`,
-        `https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop`,
-        `https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop`,
-      ];
-      images = real.map(url=>({url, query:q}));
-    }
-    
-    cont.innerHTML = images.map(img=>`<div class="group relative rounded-xl overflow-hidden aspect-[4/3] bg-white/5 border border-white/10 cursor-pointer hover:border-[#6C5CFF]/50" onclick="insertImage('${img.url}')">
-      <img src="${img.url}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-      <div class="absolute bottom-1 left-1 right-1 text-[10px] text-white opacity-0 group-hover:opacity-100 transition truncate">${img.query}</div>
-    </div>`).join('');
-  }catch(e){
-    cont.innerHTML = `<div class="col-span-3 text-[12px] text-red-400">${e.message}</div>`;
-  }
-}
-
-function insertImage(url){
-  if(!currentHtml) return toast('Сначала сгенерируй сайт', '⚠️');
-  quickChat(`Замени одну из картинок на ${url} — подбери подходящее место`);
-  toast('Отправляю в чат...', '🖼');
-}
-
-async function generateImage(){
-  const prompt = document.getElementById('imagePrompt').value.trim();
-  if(!prompt) return toast('Опиши что сгенерить', '⚠️');
-  
-  const apiKey = getKey();
-  if(!apiKey) return toast('Нужен Polza API ключ', '⚠️');
-  
-  toast('Генерю картинку... 10-20 сек', '🎨');
-  
-  try{
-    // Try backend
-    let result;
-    try{
-      const res = await fetch('/api/generate-image', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({prompt, api_key: apiKey})});
-      if(res.ok) result = await res.json();
-    }catch{}
-    
-    if(!result || result.fallback){
-      // Direct
-      const resp = await fetch('https://polza.ai/api/v1/images/generations', {
-        method:'POST',
-        headers:{'Content-Type':'application/json','Authorization':`Bearer ${apiKey}`},
-        body: JSON.stringify({model:'bytedance/seedream-4.5', prompt, size:'1024x1024', n:1})
-      });
-      if(!resp.ok) throw new Error('Image gen failed, попробуй другую модель');
-      result = await resp.json();
-      result.url = result.data?.[0]?.url;
-    }
-    
-    if(result.url){
-      const cont = document.getElementById('imageResults');
-      cont.classList.remove('hidden');
-      cont.innerHTML = `<div class="col-span-3 rounded-xl overflow-hidden border border-[#6C5CFF]/30">
-        <img src="${result.url}" class="w-full aspect-square object-cover">
-        <div class="p-2 flex gap-2">
-          <button onclick="insertImage('${result.url}')" class="flex-1 btn-primary py-1.5 rounded-lg text-[11px] text-white">Вставить в сайт</button>
-          <a href="${result.url}" target="_blank" class="btn-ghost px-3 py-1.5 rounded-lg text-[11px]">Открыть</a>
-        </div>
-      </div>` + cont.innerHTML;
-      toast('Картинка готова!', '✦');
-    }
-  }catch(e){
-    toast(e.message, '❌');
-  }
-}
-
-// ---------- Utils ----------
-function randomize(){
-  const niches = ["IT / SaaS / Стартап","Ресторан / Кафе","Клиника / Медицина","Фитнес / Спорт","Недвижимость","Образование / Курсы","Красота / Салон","Креатив / Агентство"];
-  const styles = ["modern premium like Linear/Stripe","glassmorphism + gradients","minimalism + typography","luxury dark + gold","cyberpunk neon","corporate trust blue"];
-  const prompts = [
-    "Лендинг для AI-агентства которое делает чат-ботов, темный премиум, как Linear, с градиентами, анимациями, тарифами",
-    "Сайт кофейни specialty, уютный, теплый, много фото, меню, история, адрес с картой",
-    "Клиника косметологии, светлый, премиум, доверие, услуги, врачи, до/после, отзывы",
-    "Фитнес-клуб, темный, мощный, брутальный, тарифы, тренеры, расписание",
-    "Агентство недвижимости, корпоративный, синий, каталог квартир, преимущества, отзывы"
-  ];
-  document.getElementById('businessType').value = niches[Math.floor(Math.random()*niches.length)];
-  document.getElementById('styleSelect').value = styles[Math.floor(Math.random()*styles.length)];
-  document.getElementById('mainPrompt').value = prompts[Math.floor(Math.random()*prompts.length)];
-  document.getElementById('siteName').value = ['Lumen','Aurora','Nova','Pulse','Velo','Astra','Flux'][Math.floor(Math.random()*7)] + ' Studio';
-  toast('Рандомайзер 🎲', '✦');
-}
-function clearAll(){
-  document.querySelectorAll('input, textarea').forEach(i=>{ if(i.id!=='polzaKey' && i.id!=='polzaKeyMobile') i.value=''; });
-  toast('Очищено', '↺');
-}
-function loadExample(){
-  document.getElementById('siteName').value = 'Lumen AI Studio';
-  document.getElementById('businessType').value = 'IT / SaaS / Стартап';
-  document.getElementById('siteType').value = 'saas';
-  document.getElementById('styleSelect').value = 'modern premium like Linear/Stripe';
-  document.getElementById('colorInput').value = '#6C5CFF,#00D9FF';
-  document.getElementById('mainPrompt').value = 'Современный SaaS лендинг для AI-студии которая делает сайты за 30 секунд. Темный премиум дизайн как Linear, Stripe, Vercel. Hero с анимированным градиентом и мокапом, 6 фич с иконками, секция как это работает (3 шага), тарифы (3 плана), отзывы с фото, FAQ, финальный CTA. Хочу glassmorphism, GSAP анимации при скролле, floating элементы, вау-эффект.';
-  document.getElementById('contactPhone').value = '+7 999 123-45-67';
-  document.getElementById('contactEmail').value = 'hello@lumen.studio';
-  document.getElementById('ctaText').value = 'Создать сайт за 30 сек';
-  toast('Пример загружен', '📄');
-}
-function renderHistory(){
-  const el = document.getElementById('historyList');
-  if(!history.length){ el.innerHTML = '<div class="text-[11px] text-white/30">Пока пусто</div>'; return; }
-  el.innerHTML = history.map((h,i)=>`<div class="flex items-center justify-between p-2 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 cursor-pointer" onclick="document.getElementById('siteName').value='${h.name}'; document.getElementById('mainPrompt').value='${h.prompt}'">
-    <div><div class="text-[12px] font-medium truncate max-w-[150px]">${h.name}</div><div class="text-[10px] text-white/40 truncate max-w-[150px]">${h.prompt}</div></div>
-    <div class="text-[10px] font-mono text-white/30">${h.time}</div>
-  </div>`).join('');
-}
-renderHistory();
-
-// Load saved key
-const savedKey = localStorage.getItem('polza_key');
-if(savedKey){
-  document.getElementById('polzaKey').value = savedKey;
-  const m = document.getElementById('polzaKeyMobile');
-  if(m) m.value = savedKey;
-  const modal = document.getElementById('keyModalInput');
-  if(modal) modal.value = savedKey;
-}
-updateKeyUI();
-
-// Keyboard shortcut
-document.addEventListener('keydown', (e)=>{
-  if((e.metaKey || e.ctrlKey) && e.key==='Enter'){
-    e.preventDefault();
-    generateSite();
-  }
-});
-
-// Init - check key
-setTimeout(checkKeyOnStart, 800);
-
-// Sync key inputs
-['polzaKey','polzaKeyMobile','keyModalInput'].forEach(id=>{
-  const el = document.getElementById(id);
-  if(el){
-    el.addEventListener('input', ()=>{
-      const v = el.value.trim();
-      if(v){
-        document.getElementById('polzaKey').value = v;
-        const m = document.getElementById('polzaKeyMobile');
-        if(m) m.value = v;
-        const modal = document.getElementById('keyModalInput');
-        if(modal) modal.value = v;
-        localStorage.setItem('polza_key', v);
-        updateKeyUI();
-      }
-    });
-  }
-});
+  const obs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){obs.disconnect();setTimeout(showNext,800);}
+  },{threshold:.3});
+  obs.observe(document.getElementById('demo-chat-section'));
+})();
 </script>
+
+<section class="section-light"><div class="wrap">
+  <h2 class="s-title">Тарифы под ключ</h2>
+  <p class="s-sub">Фиксированная цена: настройка, загрузка ваших данных, запуск — всё включено</p>
+  <div class="plans">
+  <div class="plan">
+    <h3>🔘 Кнопочный бот</h3>
+    <div class="price">15 000 ₽</div>
+    <div class="old">на рынке 30 000–50 000 ₽</div>
+    <ul>
+      <li>Telegram или MAX — на выбор</li>
+      <li>Меню услуг, кнопки, анкеты</li>
+      <li>Заявки вам в мессенджер</li>
+      <li>Запуск за 3–5 дней</li>
+      <li class="no">Свободный диалог</li>
+      <li class="no">Работа сразу в двух платформах</li>
+    </ul>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+  <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram</a>
+  <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px">🤖 MAX</a>
+</div>
+  </div>
+  <div class="plan hot">
+    <div class="plan-badge">⭐ Популярный</div>
+    <h3>🤖 Бот который записывает клиентов пока вы спите</h3>
+    <div class="price">50 000 ₽</div>
+    <div class="old">на рынке 150 000–300 000 ₽</div>
+    <ul>
+      <li>Telegram + MAX сразу</li>
+      <li>Понимает свободные вопросы</li>
+      <li>Консультирует как сотрудник</li>
+      <li>Клиенты пишут откуда удобно — вы не теряете ни одного</li>
+      <li>Запуск за 7–10 дней</li>
+      <li>Поддержка 30 дней</li>
+    </ul>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+  <a class="btn" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram</a>
+  <a class="btn-max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener" style="font-size:15px;padding:12px 22px">🤖 MAX</a>
+</div>
+  </div>
+</div>
+<p class="guarantee">🛡 <span>Гарантия:</span> если бот не понравится — вернём деньги в течение 7 дней</p></div>
+</div></section>
+
+<div class="final-cta"><div class="wrap">
+  <h2>Попробуйте демо прямо сейчас — бесплатно</h2>
+  <p>Без регистрации. Без оплаты. Просто напишите боту — и посмотрите как он работает.</p>
+  <ul><li>Бот работает 24/7 без выходных и праздников</li><li>Запуск за 3–10 дней под ключ</li><li>Гарантия возврата 7 дней</li></ul>
+  <div class="cta-btns">
+    <a class="btn-white" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Попробовать в Telegram</a>
+    <a class="btn-ghost" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener">🤖 Попробовать в MAX</a>
+  </div>
+</div></div>
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Neura<span>Lead</span></div>
+        <p style="margin-top:8px">Чат-боты для бизнеса в Telegram и MAX</p>
+      </div>
+      <div>
+        <p>☎ <a href="tel:+79206980858" style="color:#93c5fd">+7 920 698-08-58</a></p>
+        <p style="margin-top:6px"><a href="https://t.me/+79206980858" target="_blank" style="color:#93c5fd">Написать в Telegram</a></p>
+      </div>
+    </div>
+    <div class="footer-community">
+      Присоединяйтесь к нашему комьюнити — кейсы, ИИ-тренды и розыгрыши:&nbsp;
+      <a href="https://t.me/neuralead_ru" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg> Telegram-канал</a> &nbsp;·&nbsp;
+      <a href="https://max.ru/join/bYn6fyupJAvUMewahMupBilprw_7jFxmGYNwHMJYxzQ" target="_blank" rel="noopener">🤖 MAX-канал</a>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-links" style="justify-content:center;margin-bottom:12px"><a href="business.html">Любой бизнес</a> · <a href="dental.html">Стоматология</a> · <a href="clinic.html">Клиника</a> · <a href="salon.html">Салон красоты</a> · <a href="fitness.html">Фитнес-клуб</a> · <a href="autoservice.html">Автосервис</a> · <a href="horeca.html">Отель/Ресторан</a> · <a href="education.html">Образование</a> · <a href="hr.html">HR и рекрутинг</a> · <a href="finance.html">Финансы</a></div>
+      <p>© 2025 NueraLead · Работаем по всей России</p>
+    </div>
+  </div>
+</footer>
+
+<!-- CHAT WIDGET -->
+<div id="chat-widget">
+  <button id="chat-btn" onclick="document.getElementById('chat-popup').classList.toggle('open')" aria-label="Открыть чат">
+    <span id="chat-ico">💬</span>
+  </button>
+  <div id="chat-popup">
+    <div id="chat-head">
+      <div id="chat-ava">К</div>
+      <div>
+        <div id="chat-name">Константин</div>
+        <div id="chat-status">● Онлайн · консультант NueraLead</div>
+      </div>
+      <button id="chat-close" onclick="document.getElementById('chat-popup').classList.remove('open')">✕</button>
+    </div>
+    <div id="chat-body">
+      <div class="cmsg bot">Здравствуйте! 👋 Я Константин, консультант NueraLead.<br>Помогу подобрать ИИ-бота для вашего бизнеса. Попробуйте демо прямо сейчас:</div>
+    </div>
+    <div id="chat-actions">
+      <a class="cact-btn tg" href="https://t.me/Konstantin2323_bot" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0C5.348 0 0 5.348 0 11.944c0 6.596 5.348 11.944 11.944 11.944 6.596 0 11.944-5.348 11.944-11.944C23.888 5.348 18.54 0 11.944 0zm5.84 8.13l-1.97 9.296c-.146.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.135-.953l11.57-4.461c.537-.194 1.006.128.833.926z"/></svg>
+        Открыть в Telegram
+      </a>
+      <a class="cact-btn max" href="https://max.ru/se13305080_bot" target="_blank" rel="noopener">🤖 Открыть в MAX</a>
+    </div>
+    <div id="chat-note">Демо бесплатно · Отвечаем за 2 минуты</div>
+  </div>
+</div>
+<style>
+#chat-widget{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+#chat-btn{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border:none;cursor:pointer;font-size:26px;box-shadow:0 4px 20px rgba(37,99,235,.5);transition:.2s;display:flex;align-items:center;justify-content:center}
+#chat-btn:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,99,235,.6)}
+#chat-popup{position:absolute;bottom:72px;right:0;width:320px;background:#fff;border-radius:18px;box-shadow:0 8px 40px rgba(0,0,0,.18);overflow:hidden;display:none;flex-direction:column;animation:popIn .2s ease}
+#chat-popup.open{display:flex}
+@keyframes popIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#chat-head{background:#1e3a8a;padding:14px 16px;display:flex;align-items:center;gap:12px;color:#fff}
+#chat-ava{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex:0 0 auto}
+#chat-name{font-weight:700;font-size:15px}
+#chat-status{font-size:11px;color:#86efac;margin-top:2px}
+#chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;cursor:pointer;line-height:1;padding:4px}
+#chat-close:hover{color:#fff}
+#chat-body{padding:16px;background:#f8fafc;min-height:80px}
+.cmsg{font-size:14px;line-height:1.6;color:#1e293b;background:#fff;border-radius:12px 12px 12px 4px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+#chat-actions{padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+.cact-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:.2s}
+.cact-btn.tg{background:linear-gradient(135deg,#2aabee,#229ed9);color:#fff}
+.cact-btn.max{background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff}
+.cact-btn:hover{opacity:.9;transform:translateY(-1px)}
+#chat-note{text-align:center;font-size:11px;color:#94a3b8;padding:0 16px 14px}
+@media(max-width:400px){#chat-popup{width:calc(100vw - 32px);right:-8px}}
+</style>
+
 </body>
 </html>
