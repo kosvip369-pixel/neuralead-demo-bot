@@ -42,12 +42,12 @@
 
 | Задача | Модель | Почему | Цена |
 |--------|--------|--------|------|
-| **Генерация сайтов** | `anthropic/claude-sonnet-4-5` | 🔥 Лучший для фронтенда, понимает дизайн, пишет чистый Tailwind + GSAP | ~$3/1M |
+| **Генерация сайтов** | `anthropic/claude-sonnet-5.5` | 🔥 Лучший для фронтенда, понимает дизайн, пишет чистый Tailwind + GSAP | ~$3/1M |
 | **Сложные SaaS** | `openai/gpt-5` | 💎 Премиум логика, большие проекты | ~$5/1M |
 | **Креатив** | `google/gemini-2.5-pro` | 🎨 1M контекст, креатив, мультимодальность | ~$2.5/1M |
 | **Быстро/дешево** | `deepseek/deepseek-v3.2` | ⚡ Лендинги за копейки | ~$0.5/1M |
 | **Бесплатно** | `qwen/qwen3-235b-a22b:free` | 🆓 Русский, простые сайты | FREE |
-| **Чат-правки** | `anthropic/claude-haiku-4-5` | 💬 Быстрый, дешевый для доработок | ~$1/1M |
+| **Чат-правки** | `anthropic/claude-haiku-5.5` | 💬 Быстрый, дешевый для доработок | ~$1/1M |
 | **Картинки фото** | `bytedance/seedream-4.5` | 🔥 Фотореализм топ | ~$0.05/img |
 | **Иконки** | `openai/gpt-image-1.5` | 🎯 Точность, иконки | ~$0.08/img |
 | **Фоны** | `black-forest-labs/flux-2-pro` | ⚡ Быстро, фоны | ~$0.03/img |
@@ -159,7 +159,7 @@ client = OpenAI(
 
 # Генерация сайта
 resp = client.chat.completions.create(
-  model="anthropic/claude-sonnet-4-5",
+  model="anthropic/claude-sonnet-5.5",
   messages=[
     {"role": "system", "content": "Ты элитный веб-дизайнер..."},
     {"role": "user", "content": "Создай лендинг для кофейни..."}

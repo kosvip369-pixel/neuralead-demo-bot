@@ -6,14 +6,14 @@
   "recommendation": {
     "stack": "Лучшая связка для генератора",
     "main_generator": {
-      "id": "anthropic/claude-sonnet-4-5",
+      "id": "anthropic/claude-sonnet-5.5",
       "why": "Лучшая модель для фронтенда. Понимает дизайн-системы, пишет чистый Tailwind CSS, делает вау-анимации с GSAP, знает современные тренды (Linear, Stripe, Vercel). Идеально для генерации сайтов.",
       "context": "200k",
       "price": "~$3 / 1M токенов",
       "badge": "🔥 Рекомендуем для генерации"
     },
     "fast_edits": {
-      "id": "anthropic/claude-haiku-4-5",
+      "id": "anthropic/claude-haiku-5.5",
       "why": "Быстрая и дешевая для доработок в чате. Отлично справляется с запросами типа 'сделай темнее', 'добавь секцию', 'поменяй цвета'. Экономит деньги и время.",
       "context": "200k",
       "price": "~$1 / 1M",
@@ -33,8 +33,8 @@
   },
   "text_models": [
     {
-      "id": "anthropic/claude-sonnet-4-5",
-      "name": "Claude Sonnet 4.5",
+      "id": "anthropic/claude-sonnet-5.5",
+      "name": "Claude Sonnet 5.5",
       "provider": "Anthropic",
       "best_for": "Фронтенд, дизайн, код - ЛУЧШИЙ ВЫБОР для генератора",
       "context": 200000,
@@ -88,7 +88,7 @@
       "pros": ["Бесплатно", "Русский", "Быстро"]
     },
     {
-      "id": "anthropic/claude-haiku-4-5",
+      "id": "anthropic/claude-haiku-5.5",
       "name": "Claude Haiku 4.5",
       "provider": "Anthropic",
       "best_for": "Доработки в чате, быстрые правки",
@@ -198,7 +198,7 @@
     }
   ],
   "usage_tips": {
-    "generation": "Для первой генерации используй Claude Sonnet 4.5 или GPT-5 - они делают самый красивый код",
+    "generation": "Для первой генерации используй Claude Sonnet 5.5 или GPT-5 - они делают самый красивый код",
     "refine": "Для доработок в чате используй Haiku 4.5 - быстро и дешево, экономит токены",
     "images": "Seedream 4.5 для фото, GPT Image 1.5 для иконок и иллюстраций",
     "budget": "Если бюджет ограничен: Qwen3 Free для текста + Flux 2 Pro для картинок",

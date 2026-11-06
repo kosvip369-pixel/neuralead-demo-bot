@@ -84,7 +84,7 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
         <button onclick="saveKey()" class="btn-primary px-2.5 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
       </div>
       <select id="modelSelect" class="hidden md:block glass px-3 py-2 rounded-xl text-[13px] outline-none bg-[#151A2D] border border-white/10">
-        <option value="anthropic/claude-sonnet-4-5">🔥 Claude Sonnet 4.5 — лучший для фронта</option>
+        <option value="anthropic/claude-sonnet-5.5">🔥 Claude Sonnet 5.5 — лучший для фронта</option>
         <option value="openai/gpt-5">💎 GPT-5 — премиум логика</option>
         <option value="google/gemini-2.5-pro">🎨 Gemini 2.5 Pro — креатив 1M контекст</option>
         <option value="deepseek/deepseek-v3.2">⚡ DeepSeek V3.2 — быстро/дешево</option>
@@ -101,7 +101,7 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
       <button onclick="saveKey()" class="btn-primary px-3 py-1 rounded-lg text-[11px] text-white font-bold">OK</button>
     </div>
     <select id="modelSelectMobile" class="glass px-2 py-2 rounded-xl text-[12px] outline-none bg-[#151A2D] max-w-[140px]">
-      <option value="anthropic/claude-sonnet-4-5">Claude 4.5</option>
+      <option value="anthropic/claude-sonnet-5.5">Claude 4.5</option>
       <option value="openai/gpt-5">GPT-5</option>
       <option value="google/gemini-2.5-pro">Gemini Pro</option>
       <option value="deepseek/deepseek-v3.2">DeepSeek</option>
@@ -312,7 +312,7 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
           <div class="absolute inset-2 rounded-full bg-gradient-to-br from-[#6C5CFF]/20 to-[#00D9FF]/20 flex items-center justify-center text-[24px]">✦</div>
         </div>
         <div class="font-space font-bold text-[16px] mb-2" id="loadingTitle">Генерирую магию...</div>
-        <div class="text-[13px] text-white/50 text-center max-w-[320px]" id="loadingText">Claude Sonnet 4.5 пишет код, подбирает картинки, делает анимации</div>
+        <div class="text-[13px] text-white/50 text-center max-w-[320px]" id="loadingText">Claude Sonnet 5.5 пишет код, подбирает картинки, делает анимации</div>
         <div class="mt-6 w-[280px] h-1 rounded-full bg-white/10 overflow-hidden">
           <div id="loadingBar" class="h-full bg-gradient-to-r from-[#6C5CFF] to-[#00D9FF] transition-all duration-500" style="width: 10%"></div>
         </div>
@@ -520,7 +520,7 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
         <div class="grid md:grid-cols-3 gap-3 text-[12px]">
           <div class="rounded-xl bg-[#6C5CFF]/10 border border-[#6C5CFF]/20 p-3">
             <div class="font-bold mb-1">🥇 Основной генератор</div>
-            <div class="font-mono text-[#8B7DFF]">anthropic/claude-sonnet-4-5</div>
+            <div class="font-mono text-[#8B7DFF]">anthropic/claude-sonnet-5.5</div>
             <div class="text-white/50 mt-1">Лучший для фронтенда, понимает дизайн, пишет чистый Tailwind + GSAP, делает вау-анимации</div>
           </div>
           <div class="rounded-xl bg-[#FF4D8D]/10 border border-[#FF4D8D]/20 p-3">
@@ -530,7 +530,7 @@ body{background:var(--bg);color:#E6E8F0;font-family:'Manrope',sans-serif;overflo
           </div>
           <div class="rounded-xl bg-[#00D9FF]/10 border border-[#00D9FF]/20 p-3">
             <div class="font-bold mb-1">💬 Доработки в чате</div>
-            <div class="font-mono text-[#00D9FF]">anthropic/claude-haiku-4-5</div>
+            <div class="font-mono text-[#00D9FF]">anthropic/claude-haiku-5.5</div>
             <div class="text-white/50 mt-1">Быстрый, дешевый, идеален для правок «сделай темнее», «добавь секцию»</div>
           </div>
         </div>
@@ -542,7 +542,7 @@ client = OpenAI(
   api_key="POLZA_KEY"
 )
 resp = client.chat.completions.create(
-  model="anthropic/claude-sonnet-4-5",
+  model="anthropic/claude-sonnet-5.5",
   messages=[{"role":"user","content":"Создай лендинг..."}]
 )</code></pre>
         </div>
@@ -567,12 +567,12 @@ let isGenerating = false;
 // ---------- Models Data (fallback if API not available) ----------
 const MODELS = {
   text: [
-    {id:"anthropic/claude-sonnet-4-5", name:"Claude Sonnet 4.5", best:"Фронтенд, дизайн, код - ЛУЧШИЙ", price:"~$3/1M", badge:"🔥 Рекомендуем", context:"200k"},
+    {id:"anthropic/claude-sonnet-5.5", name:"Claude Sonnet 5.5", best:"Фронтенд, дизайн, код - ЛУЧШИЙ", price:"~$3/1M", badge:"🔥 Рекомендуем", context:"200k"},
     {id:"openai/gpt-5", name:"GPT-5", best:"Сложные SaaS, логика", price:"~$5/1M", badge:"💎 Премиум", context:"400k"},
     {id:"google/gemini-2.5-pro", name:"Gemini 2.5 Pro", best:"Креатив, 1M контекст", price:"~$2.5/1M", badge:"🎨 Креатив", context:"1M"},
     {id:"deepseek/deepseek-v3.2", name:"DeepSeek V3.2", best:"Быстро и дешево", price:"~$0.5/1M", badge:"⚡ Быстро", context:"128k"},
     {id:"qwen/qwen3-235b-a22b:free", name:"Qwen3 235B", best:"Бесплатно, русский", price:"FREE", badge:"🆓 Бесплатно", context:"32k"},
-    {id:"anthropic/claude-haiku-4-5", name:"Claude Haiku 4.5", best:"Доработки в чате", price:"~$1/1M", badge:"💬 Чат", context:"200k"},
+    {id:"anthropic/claude-haiku-5.5", name:"Claude Haiku 4.5", best:"Доработки в чате", price:"~$1/1M", badge:"💬 Чат", context:"200k"},
   ],
   image: [
     {id:"bytedance/seedream-4.5", name:"Seedream 4.5", best:"Фотореализм, лучший", price:"~$0.05", badge:"🔥 Топ"},
@@ -629,7 +629,7 @@ function getKey(){
   return (document.getElementById('polzaKey')?.value || document.getElementById('polzaKeyMobile')?.value || document.getElementById('keyModalInput')?.value || '').trim() || localStorage.getItem('polza_key') || hardcoded;
 }
 function getModel(){
-  return document.getElementById('modelSelect')?.value || document.getElementById('modelSelectMobile')?.value || 'anthropic/claude-sonnet-4-5';
+  return document.getElementById('modelSelect')?.value || document.getElementById('modelSelectMobile')?.value || 'anthropic/claude-sonnet-5.5';
 }
 function toast(text, icon='✦'){
   const t = document.getElementById('toast');
@@ -782,7 +782,7 @@ async function callGenerateAPI(data){
 
 async function callRefineAPI(currentHtml, message){
   const apiKey = getKey();
-  const model = document.getElementById('modelSelect')?.value?.includes('haiku') ? getModel() : 'anthropic/claude-haiku-4-5';
+  const model = document.getElementById('modelSelect')?.value?.includes('haiku') ? getModel() : 'anthropic/claude-haiku-5.5';
   
   try{
     const res = await fetch('/api/refine', {
@@ -835,7 +835,7 @@ async function generateSite(){
   
   const steps = [
     'Подключаюсь к Polza AI...',
-    'Claude Sonnet 4.5 думает над дизайном...',
+    'Claude Sonnet 5.5 думает над дизайном...',
     'Пишу Tailwind + GSAP анимации...',
     'Подбираю картинки с Unsplash...',
     'Делаю адаптив и интерактив...',
