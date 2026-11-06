@@ -23,6 +23,8 @@ from storage import Storage
 
 logging.basicConfig(format="%(asctime)s %(levelname)s %(name)s: %(message)s", level=logging.INFO)
 log = logging.getLogger("bots")
+# httpx пишет в лог полные адреса запросов вместе с токеном бота — оставляем только предупреждения
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "")
 ADMIN_CHAT_ID = os.getenv("ADMIN_CHAT_ID", "")
