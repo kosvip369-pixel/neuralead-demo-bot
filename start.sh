@@ -1,27 +1,15 @@
 #!/bin/bash
-# NeuraSite AI + NeuraLead Bots starter
+# NeuraSite AI (генератор сайтов) + демо-бот «Наш дом. Медиа» × NeuraLead (Telegram + MAX)
 
-# Если есть POLZA_API_KEY - запускаем генератор сайтов (основной)
-if [ ! -z "$POLZA_API_KEY" ] || [ ! -z "$DEEPSEEK_API_KEY" ]; then
-  echo "🚀 Starting NeuraSite AI Generator on port ${PORT:-8000}"
+if [ -n "$POLZA_API_KEY" ] || [ -n "$DEEPSEEK_API_KEY" ]; then
+  echo "🚀 Генератор сайтов на порту ${PORT:-8000}"
   python generator_server.py &
-  GEN_PID=$!
 fi
 
-# Если есть BOT_TOKEN - запускаем ботов (совместимость)
-if [ ! -z "$BOT_TOKEN" ]; then
-  echo "🤖 Starting Telegram bots"
-  python bot.py &
-  BOT_PID=$!
-  python bot_max.py &
-  MAX_PID=$!
-fi
-
-# Если ничего не запустилось - запускаем генератор в любом случае
-if [ -z "$GEN_PID" ] && [ -z "$BOT_PID" ]; then
-  echo "⚠️ No keys found, starting generator anyway (needs key in UI)"
-  python generator_server.py &
-  GEN_PID=$!
+# Telegram и MAX работают в ОДНОМ процессе — без двойных ответов
+if [ -n "$BOT_TOKEN" ] || [ -n "$MAX_BOT_TOKEN" ]; then
+  echo "🤖 Демо-бот (Telegram/MAX)"
+  python run_bots.py &
 fi
 
 wait

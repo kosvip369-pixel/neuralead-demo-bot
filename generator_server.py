@@ -30,10 +30,10 @@ POLZA_BASE_URL = os.environ.get("POLZA_BASE_URL", "https://polza.ai/api/v1")
 PORT = int(os.environ.get("PORT", 8000))
 
 # Модели по умолчанию - рекомендации с polza.ai
-DEFAULT_TEXT_MODEL = "anthropic/claude-sonnet-4-5"  # Лучшая для фронтенда
+DEFAULT_TEXT_MODEL = "anthropic/claude-sonnet-5.5"  # Лучшая для фронтенда
 DEFAULT_IMAGE_MODEL = "bytedance/seedream-4.5"
 FALLBACK_MODELS = [
-    "anthropic/claude-sonnet-4-5",
+    "anthropic/claude-sonnet-5.5",
     "openai/gpt-5",
     "google/gemini-2.5-pro",
     "deepseek/deepseek-v3.2",
@@ -256,8 +256,8 @@ async def get_models():
     return {
         "text_models": [
             {
-                "id": "anthropic/claude-sonnet-4-5",
-                "name": "Claude Sonnet 4.5",
+                "id": "anthropic/claude-sonnet-5.5",
+                "name": "Claude Sonnet 5.5",
                 "best_for": "Фронтенд, дизайн, код - ЛУЧШИЙ ВЫБОР",
                 "price": "~$3 / 1M токенов",
                 "context": "200k",
@@ -296,7 +296,7 @@ async def get_models():
                 "badge": "🆓 Бесплатно"
             },
             {
-                "id": "anthropic/claude-haiku-4-5",
+                "id": "anthropic/claude-haiku-5.5",
                 "name": "Claude Haiku 4.5",
                 "best_for": "Доработки в чате, быстрые правки",
                 "price": "~$1 / 1M",
@@ -393,7 +393,7 @@ async def generate_site(req: GenerateRequest):
 
 @app.post("/api/refine")
 async def refine_site(req: RefineRequest):
-    model = req.model or "anthropic/claude-haiku-4-5"  # для доработок быстрая модель
+    model = req.model or "anthropic/claude-haiku-5.5"  # для доработок быстрая модель
     
     # Ограничим размер HTML для контекста (если слишком большой - обрежем)
     html_to_send = req.current_html
@@ -544,7 +544,7 @@ if __name__ == "__main__":
 Docs: http://localhost:{PORT}/docs
 
 Рекомендуемые модели Polza AI:
-- Текст: anthropic/claude-sonnet-4-5 (лучший для фронта)
+- Текст: anthropic/claude-sonnet-5.5 (лучший для фронта)
 - Картинки: bytedance/seedream-4.5
 - Видео: bytedance/seedance-2.5
     """)

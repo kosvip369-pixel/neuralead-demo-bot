@@ -3,3 +3,7 @@
 .github/
 .claude/
 __pycache__/
+data/
+*.sqlite3
+seen_users.json
+.env

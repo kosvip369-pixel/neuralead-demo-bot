@@ -102,7 +102,7 @@ docker run -p 8000:8000 -e POLZA_API_KEY=sk-polza-... neurasite
 ```env
 POLZA_API_KEY=sk-polza-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 POLZA_BASE_URL=https://polza.ai/api/v1
-POLZA_TEXT_MODEL=anthropic/claude-sonnet-4-5
+POLZA_TEXT_MODEL=anthropic/claude-sonnet-5.5
 POLZA_IMAGE_MODEL=bytedance/seedream-4.5
 ```
 
@@ -117,7 +117,7 @@ BOT_TOKEN=123456:ABC...
 ADMIN_CHAT_ID=123456789
 DEEPSEEK_API_KEY=sk-polza-...  # можно использовать POLZA_API_KEY как DEEPSEEK_API_KEY
 LLM_BASE_URL=https://polza.ai/api/v1
-LLM_MODELS=anthropic/claude-sonnet-4-5,openai/gpt-5
+LLM_MODELS=anthropic/claude-sonnet-5.5,openai/gpt-5
 ```
 
 Бот тоже работает через Polza AI.
@@ -139,7 +139,7 @@ LLM_MODELS=anthropic/claude-sonnet-4-5,openai/gpt-5
 - Да, но лучше каждому свой. Один ключ = один баланс.
 
 **Сколько стоит генерация?**
-- Сайт: ~5-15₽ (Claude Sonnet 4.5)
+- Сайт: ~5-15₽ (Claude Sonnet 5.5)
 - Картинка: ~3-8₽ (Seedream 4.5)
 - На 300₽ — 20-30 сайтов.
 
