@@ -218,6 +218,11 @@ async def run_max():
             data = r.json()
             marker = data.get("marker", marker)
             for upd in data.get("updates", []):
+                body = ((upd.get("message") or {}).get("body") or {})
+                if upd.get("update_type") != "message_created" or not body.get("text"):
+                    import json as _json, re as _re
+                    log.info("MAX: обновление %s", _re.sub(r'(https?://[^"\s]+|"token": "[^"]+")', "…",
+                                                          _json.dumps(upd, ensure_ascii=False))[:1500])
                 try:
                     await max_handle(upd)
                 except Exception as e:
