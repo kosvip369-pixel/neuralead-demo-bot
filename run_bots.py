@@ -67,10 +67,12 @@ def _tg_who(user) -> str:
 async def tg_on_text(update, context):
     msg = update.effective_message
     text = msg.text or ""
-    if msg.voice:
+    media = msg.voice or msg.audio
+    if media and not text:
         try:
-            f = await msg.voice.get_file()
+            f = await media.get_file()
             text = await transcribe(bytes(await f.download_as_bytearray()))
+            log.info("Telegram: голосовое расшифровано (%s симв.)", len(text))
         except Exception as e:
             log.error("Не удалось расшифровать голосовое: %s", e)
             await msg.reply_text("Не расслышал голосовое — напишите, пожалуйста, текстом.")
@@ -110,7 +112,7 @@ async def run_telegram():
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("leads", tg_on_leads))
     app.add_handler(CallbackQueryHandler(tg_on_button))
-    app.add_handler(MessageHandler((filters.TEXT | filters.VOICE), tg_on_text))  # /start тоже сюда
+    app.add_handler(MessageHandler((filters.TEXT | filters.VOICE | filters.AUDIO), tg_on_text))  # /start тоже сюда
     _tg_app = app
     await app.initialize()
     await app.start()
@@ -137,12 +139,43 @@ async def max_send(user_id: int, text: str, buttons=None) -> None:
     r.raise_for_status()
 
 
+_AUDIO_EXT = {"audio/ogg": "ogg", "audio/opus": "ogg", "audio/mpeg": "mp3", "audio/mp3": "mp3", "audio/mp4": "m4a",
+              "audio/x-m4a": "m4a", "audio/aac": "m4a", "audio/wav": "wav", "audio/x-wav": "wav", "audio/webm": "webm"}
+
+
+async def max_voice_text(msg: dict) -> str | None:
+    """Если в сообщении MAX есть голосовое/аудио — скачивает и расшифровывает. None — голосового нет."""
+    for att in (msg.get("body") or {}).get("attachments") or []:
+        if att.get("type") not in ("audio", "voice"):
+            continue
+        url = (att.get("payload") or {}).get("url")
+        if not url:
+            continue
+        r = await _max_client.get(url, timeout=60, follow_redirects=True)
+        r.raise_for_status()
+        ctype = r.headers.get("content-type", "").split(";")[0].strip().lower()
+        ext = _AUDIO_EXT.get(ctype) or url.split("?")[0].rsplit(".", 1)[-1].lower()
+        if ext not in ("ogg", "mp3", "m4a", "wav", "webm", "mp4", "mpeg", "mpga", "oga", "flac"):
+            ext = "ogg"
+        text = await transcribe(r.content, f"voice.{ext}")
+        log.info("MAX: голосовое расшифровано (%s симв.)", len(text))
+        return text
+    return None
+
+
 async def max_handle(update: dict) -> None:
     kind = update.get("update_type")
     if kind == "message_created":
         msg = update.get("message") or {}
         user = msg.get("sender") or {}
         uid, text = user.get("user_id"), ((msg.get("body") or {}).get("text") or "").strip()
+        if not text and uid and not user.get("is_bot"):
+            try:
+                text = await max_voice_text(msg) or ""
+            except Exception as e:
+                log.error("MAX: не удалось расшифровать голосовое: %s", e)
+                await max_send(int(uid), "Не расслышал голосовое — напишите, пожалуйста, текстом.")
+                return
     elif kind == "message_callback":
         cb = update.get("callback") or {}
         user = cb.get("user") or {}
