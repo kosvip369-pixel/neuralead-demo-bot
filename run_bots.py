@@ -170,6 +170,10 @@ async def max_handle(update: dict) -> None:
         user = msg.get("sender") or {}
         uid, text = user.get("user_id"), ((msg.get("body") or {}).get("text") or "").strip()
         if not text and uid and not user.get("is_bot"):
+            atts = (msg.get("body") or {}).get("attachments") or []
+            log.info("MAX: сообщение без текста, вложения: %s", [
+                {"type": a.get("type"), "payload_keys": sorted((a.get("payload") or {}).keys()),
+                 "keys": sorted(a.keys())} for a in atts] or "нет")
             try:
                 text = await max_voice_text(msg) or ""
             except Exception as e:
