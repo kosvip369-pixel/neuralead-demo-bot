@@ -128,6 +128,7 @@ class TestDemoBrain(unittest.TestCase):
         self.assertEqual(json.loads(tool_msg["content"])["month_rub"], 5590)   # 115×54×0,9 = 5 589 → 5 590
         self.assertEqual(self.llm.calls[0]["tools"], ["calc_ad_price", "save_lead", "start_demo"])
         self.assertIn("не притворяйся человеком", self.llm.calls[0]["messages"][0]["content"])
+        self.assertIn("любого города", self.llm.calls[0]["messages"][0]["content"])
 
     def test_lead_saved_and_owner_notified(self):
         b = self.brain([
@@ -228,6 +229,8 @@ class TestSales(unittest.TestCase):
         self.assertIn("Никогда не ври", sysmsg)
         self.assertIn("Никаких скидок", sysmsg)
         self.assertIn("A4 200 ₽", sysmsg)
+        self.assertIn("любого города", sysmsg)                 # боты — не только для Удомли
+        self.assertNotIn("местного бизнеса", sysmsg)
 
     def test_policy(self):
         from sales_policy import decide, is_repeated_spam
